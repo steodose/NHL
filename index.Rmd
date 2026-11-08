@@ -97,14 +97,14 @@ make_conference_table <- function(conf) {
               locations = cells_body(points)) %>%
     tab_style(style = cell_text(color = "grey50", size = px(12)),
               locations = cells_body(pos)) %>%
-    tab_style(style = cell_text(color = "#35b0ab", weight = "bold", size = px(12)),
+    tab_style(style = cell_text(color = "#2b7bb9", weight = "bold", size = px(12)),
               locations = cells_body(pos, rows = wc_rows)) %>%
     tab_style(style = cell_borders(sides = "bottom", color = "grey60",
                                    style = "dashed", weight = px(2)),
               locations = cells_body(rows = cut_rows)) %>%
     cols_align(align = "center", columns = -c(team_logo, team_common_name)) %>%
     tab_header(title = md(glue("**{conf} Conference**")),
-               subtitle = glue("Thru games of {thru_label}")) %>%
+               subtitle = glue("Thru games as of {thru_label}")) %>%
     tab_source_note(md("Dashed line = top 3 in division. **WC** = wild card. Data: fastRhockey"))
 }
 
@@ -114,9 +114,9 @@ make_conference_table <- function(conf) {
 htmltools::div(
   style = "display:flex; flex-wrap:wrap; gap:24px; justify-content:center; align-items:flex-start;",
   htmltools::div(style = "flex:1 1 560px; min-width:0; overflow-x:auto;",
-                 gt::as_raw_html(make_conference_table("Eastern"), inline_css = FALSE)),
+                 gt::as_raw_html(make_conference_table("Western"), inline_css = FALSE)),
   htmltools::div(style = "flex:1 1 560px; min-width:0; overflow-x:auto;",
-                 gt::as_raw_html(make_conference_table("Western"), inline_css = FALSE))
+                 gt::as_raw_html(make_conference_table("Eastern"), inline_css = FALSE))
 )
 ```
 

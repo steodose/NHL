@@ -65,4 +65,5 @@ theme_538 <- function() {
   )
 }
 
-my_color_pal <- c("#ffffff", "#f2fbd2", "#c9ecb4", "#93d3ab", "#35b0ab")
+# White to ice blue, for table heatmaps (P%).
+my_color_pal <- c("#ffffff", "#e8f5fb", "#c8e7f5", "#9dd3ec", "#64b5dd")

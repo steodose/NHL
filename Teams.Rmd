@@ -91,7 +91,7 @@ stats_5v5 <- team_totals(filter(shots, is_5v5)) %>%
   ) %>%
   left_join(nhl_teams, by = c("team" = "team_abbr"))
 
-subtitle_base <- glue("{season_label} regular season | Thru games of {thru_label}")
+subtitle_base <- glue("{season_label} regular season | Thru games as of {thru_label}")
 ```
 
 Team-level advanced stats for the `r season_label` NHL season, through `r n_games` regular-season games. Shot and expected-goal data come from NHL play-by-play via [fastRhockey](https://fastrhockey.sportsdataverse.org/), whose xG model scores every unblocked shot attempt.

@@ -50,7 +50,7 @@ those are called namespaced. Keep doing that.
 
 ## Styling
 
-Font is **Outfit** everywhere (loaded via `header.html`, installed in CI).
+Charts and gt/reactable tables use **Outfit** (loaded via `header.html`, installed in CI); page text keeps the cosmo theme font, as on the NFL site.
 `theme_custom()` is built on `theme_bw`, not `theme_minimal` (see the NFL
 CLAUDE.md for why). Standings are laid out with a flexbox div rather than
 `gtExtras::gt_two_column_layout()`, whose floats overflow the page column.
