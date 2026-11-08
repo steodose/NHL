@@ -239,7 +239,10 @@ ggplot(expect_df, aes(x = team_name, y = diff)) +
   geom_col(aes(fill = team_color), width = 0.5, alpha = 0.8) +
   scale_fill_identity() +
   geom_image(aes(image = team_logo), size = 0.03, by = "width", asp = asp_ratio) +
-  scale_y_continuous(labels = percent_format(accuracy = 1),
+  # Sports-style points %: +.200, .000, -.100 (no leading zero).
+  scale_y_continuous(labels = function(x) ifelse(
+                       abs(x) < 1e-9, ".000",
+                       sub("^([+-])0\\.", "\\1.", sprintf("%+.3f", x))),
                      breaks = pretty_breaks(n = 8)) +
   labs(x = NULL, y = "Points % over expected",
        title = "Performance Relative to Expectations",
