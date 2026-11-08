@@ -1,0 +1,178 @@
+---
+title: "Summary"
+date: 'Last updated: `r format(Sys.Date())`'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+```{r, echo=FALSE}
+# NHL shield in the top right of the page
+htmltools::img(src = "nhl-logo.png",
+               alt = "logo",
+               style = "position:absolute; top:60px; right:0; padding:10px; width:70px;")
+```
+
+```{css, echo=FALSE}
+/* Room for the two conference tables side by side. */
+.main-container { max-width: 1320px; }
+```
+
+```{r libraries}
+source("R/helpers.R")
+library(gt)
+library(gtExtras)
+library(reactable)
+library(reactablefmtr) # masks gt::google_font and gt::html, so call those namespaced
+```
+
+Current NHL standings for the `r season_label` season. Data comes from the [fastRhockey](https://fastrhockey.sportsdataverse.org/) package from the SportsDataverse. For live scores and box scores, see [NHL Scores](https://steodose.github.io/nhl-scores/).
+
+```{r data}
+standings_raw <- nhl_standings()
+
+# Date of the most recent completed game ("OFF" = final in the NHL schedule).
+schedule <- load_nhl_schedule(nhl_season)
+thru_date <- schedule %>%
+  filter(game_type == "R", game_state %in% c("OFF", "FINAL")) %>%
+  summarise(d = max(as.Date(game_date))) %>%
+  pull(d)
+thru_label <- format(thru_date, "%B %e, %Y") %>% str_squish()
+
+standings <- standings_raw %>%
+  select(-team_logo) %>%  # NHL SVG; use the ESPN PNG from nhl_teams instead
+  left_join(select(nhl_teams, team_abbr, team_logo), by = "team_abbr") %>%
+  mutate(
+    # Playoff position: top 3 in each division, then two wild cards per
+    # conference. wildcard_sequence is 0 for the division top 3.
+    pos = case_when(
+      wildcard_sequence == 0 ~ paste0(division_abbrev, division_sequence),
+      wildcard_sequence <= 2 ~ paste0("WC", wildcard_sequence),
+      TRUE ~ ""
+    ),
+    l10 = glue("{l10_wins}-{l10_losses}-{l10_ot_losses}"),
+    streak = paste0(streak_code, streak_count)
+  )
+```
+
+***
+### Division Standings
+
+```{r division-tables}
+make_conference_table <- function(conf) {
+  df <- standings %>%
+    filter(conference_name == conf) %>%
+    arrange(division_name, division_sequence) %>%
+    transmute(division_name, team_logo, team_common_name, pos,
+              games_played, wins, losses, ot_losses, points, point_pctg,
+              regulation_wins, goals_for, goals_against, goal_differential,
+              l10, streak)
+
+  # Rows that end each division's top 3 get a dashed rule under them, the
+  # line between automatic playoff spots and the wild-card race.
+  cut_rows <- which(df$pos %in% c("A3", "M3", "C3", "P3"))
+  wc_rows <- which(startsWith(df$pos, "WC"))
+
+  df %>%
+    gt(groupname_col = "division_name") %>%
+    gt_img_rows(columns = team_logo, height = 25, img_source = "web") %>%
+    gt_theme_538(quiet = TRUE) %>%
+    opt_table_font(font = list(gt::google_font("Outfit"), default_fonts())) %>%
+    cols_label(
+      team_logo = "", team_common_name = "Team", pos = "",
+      games_played = "GP", wins = "W", losses = "L", ot_losses = "OTL",
+      points = "PTS", point_pctg = "P%", regulation_wins = "RW",
+      goals_for = "GF", goals_against = "GA", goal_differential = "DIFF",
+      l10 = "L10", streak = "STRK"
+    ) %>%
+    fmt_number(point_pctg, decimals = 3, drop_trailing_zeros = FALSE) %>%
+    fmt_number(goal_differential, decimals = 0, force_sign = TRUE) %>%
+    data_color(columns = point_pctg, palette = my_color_pal) %>%
+    tab_style(style = cell_text(color = "#1a9850", weight = "bold"),
+              locations = cells_body(goal_differential, rows = goal_differential > 0)) %>%
+    tab_style(style = cell_text(color = "#d73027", weight = "bold"),
+              locations = cells_body(goal_differential, rows = goal_differential < 0)) %>%
+    tab_style(style = cell_text(weight = "bold"),
+              locations = cells_body(points)) %>%
+    tab_style(style = cell_text(color = "grey50", size = px(12)),
+              locations = cells_body(pos)) %>%
+    tab_style(style = cell_text(color = "#35b0ab", weight = "bold", size = px(12)),
+              locations = cells_body(pos, rows = wc_rows)) %>%
+    tab_style(style = cell_borders(sides = "bottom", color = "grey60",
+                                   style = "dashed", weight = px(2)),
+              locations = cells_body(rows = cut_rows)) %>%
+    cols_align(align = "center", columns = -c(team_logo, team_common_name)) %>%
+    tab_header(title = md(glue("**{conf} Conference**")),
+               subtitle = glue("Thru games of {thru_label}")) %>%
+    tab_source_note(md("Dashed line = top 3 in division. **WC** = wild card. Data: fastRhockey"))
+}
+
+# Side by side on wide screens, stacked on narrow ones. gt_two_column_layout()
+# uses floats that overflow the page column and pull the next heading up
+# beside the tables, so this uses flexbox instead.
+htmltools::div(
+  style = "display:flex; flex-wrap:wrap; gap:24px; justify-content:center; align-items:flex-start;",
+  htmltools::div(style = "flex:1 1 560px; min-width:0; overflow-x:auto;",
+                 gt::as_raw_html(make_conference_table("Eastern"), inline_css = FALSE)),
+  htmltools::div(style = "flex:1 1 560px; min-width:0; overflow-x:auto;",
+                 gt::as_raw_html(make_conference_table("Western"), inline_css = FALSE))
+)
+```
+
+***
+### League Standings
+
+Click a column header to sort. Teams are ranked by points percentage.
+
+```{r league-table}
+league_df <- standings %>%
+  arrange(desc(point_pctg), desc(points), desc(regulation_wins)) %>%
+  mutate(
+    rank = row_number(),
+    gf_gp = goals_for / games_played,
+    ga_gp = goals_against / games_played
+  ) %>%
+  select(rank, team_logo, team_name, conference_name, division_name,
+         games_played, wins, losses, ot_losses, points, point_pctg,
+         gf_gp, ga_gp, goal_differential, l10, streak)
+
+reactable(
+  league_df,
+  theme = theme_538,
+  showSortIcon = TRUE,
+  searchable = TRUE,
+  language = reactableLang(searchPlaceholder = "SEARCH FOR A TEAM..."),
+  pagination = FALSE,
+  compact = TRUE,
+  fullWidth = FALSE,
+  defaultColDef = colDef(align = "center", minWidth = 60),
+  columns = list(
+    rank = colDef(name = "Rank", maxWidth = 55),
+    team_logo = colDef(name = "", maxWidth = 50, sortable = FALSE,
+                       cell = embed_img(height = "25", width = "25")),
+    team_name = colDef(name = "Team", align = "left", minWidth = 180),
+    conference_name = colDef(name = "Conf", minWidth = 80),
+    division_name = colDef(name = "Division", minWidth = 100),
+    games_played = colDef(name = "GP"),
+    wins = colDef(name = "W"),
+    losses = colDef(name = "L"),
+    ot_losses = colDef(name = "OTL"),
+    points = colDef(name = "PTS", style = list(fontWeight = "bold")),
+    point_pctg = colDef(name = "P%", minWidth = 70,
+                        format = colFormat(digits = 3),
+                        style = color_scales(league_df, colors = my_color_pal)),
+    gf_gp = colDef(name = "GF/GP", minWidth = 70, format = colFormat(digits = 2)),
+    ga_gp = colDef(name = "GA/GP", minWidth = 70, format = colFormat(digits = 2)),
+    goal_differential = colDef(
+      name = "DIFF",
+      style = function(value) list(
+        color = if (value > 0) "#1a9850" else if (value < 0) "#d73027" else "#333",
+        fontWeight = "bold"
+      )
+    ),
+    l10 = colDef(name = "L10", sortable = FALSE, minWidth = 70),
+    streak = colDef(name = "STRK", sortable = FALSE)
+  )
+)
+```

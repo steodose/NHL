@@ -1,0 +1,124 @@
+name: Refresh site
+
+# Renders the R Markdown site and commits the output back to master, which is
+# what GitHub Pages serves.
+#
+# Schedule: daily at 11:00 UTC (03:00 PST / 04:00 PDT). The sportsdataverse
+# NHL releases (play-by-play, schedules) update around 08:00 UTC, so this
+# picks up every finished game from the night before. A single daily slot
+# needs no DST gate - it lands in the early-morning Pacific window year-round.
+on:
+  schedule:
+    - cron: '0 11 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-site
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      # Full history: the push step rebases onto a freshly fetched master.
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: r-lib/actions/setup-pandoc@v2
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: release
+          use-public-rspm: true
+
+      # Charts are drawn in Outfit. knitr runs with warning=FALSE, so a missing
+      # font substitutes silently rather than failing - hence the check.
+      - name: Install fonts
+        run: |
+          set -euo pipefail
+          dir=~/.local/share/fonts
+          mkdir -p "$dir"
+          curl -fsSL -o "$dir/Outfit.ttf" \
+            "https://raw.githubusercontent.com/google/fonts/main/ofl/outfit/Outfit%5Bwght%5D.ttf"
+          fc-cache -f
+          fc-list | grep -qi outfit || { echo 'Outfit missing'; exit 1; }
+          echo 'Fonts registered.'
+
+      # dependencies: hard installs only Depends/Imports/LinkingTo. Pulling
+      # Suggests drags in dataui (via reactablefmtr), a GitHub-only package that
+      # aborts the whole pak solve. Anything loaded lazily must therefore be
+      # named explicitly: svglite (gtExtras inline plots), crosstalk
+      # (reactable), and progressr, xgboost and chromote, which fastRhockey and
+      # gtExtras load at render time (found by diffing loadedNamespaces()).
+      # reactablefmtr is archived on CRAN, so it comes from GitHub.
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          cache-version: 1
+          dependencies: '"hard"'
+          packages: |
+            any::fastRhockey
+            any::tidyverse
+            any::glue
+            any::gt
+            any::gtExtras
+            any::reactable
+            github::kcuilla/reactablefmtr
+            any::ggimage
+            any::ggtext
+            any::scales
+            any::magick
+            any::ragg
+            any::systemfonts
+            any::svglite
+            any::crosstalk
+            any::curl
+            any::progressr
+            any::xgboost
+            any::chromote
+            any::rmarkdown
+            any::knitr
+            any::htmltools
+
+      - name: Render site
+        run: Rscript -e 'rmarkdown::render_site(encoding = "UTF-8")'
+
+      # Teams.Rmd appends new games to data/attendance.csv on every render, so
+      # data files are committed alongside the rendered HTML. Everything here is
+      # regenerated output, so on a moved master the fresh render wins: rebase
+      # with -X theirs and retry.
+      - name: Commit and push
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if [ -z "$(git status --porcelain)" ]; then
+            echo 'Nothing changed - not committing.'
+            exit 0
+          fi
+          msg="Auto refresh site ($(TZ=America/Los_Angeles date '+%Y-%m-%d %H:%M %Z')) [skip ci]"
+          git add -A
+          git commit -m "$msg"
+          for attempt in 1 2 3 4 5; do
+            if git push origin HEAD:master; then
+              echo "Pushed on attempt $attempt."
+              exit 0
+            fi
+            echo "Push rejected (master moved); rebasing and retrying."
+            git fetch origin master
+            if ! git rebase -X theirs origin/master; then
+              git rebase --abort || true
+              echo 'Could not rebase onto master.'
+              exit 1
+            fi
+            if git diff --quiet origin/master HEAD; then
+              echo 'Render matches current master - nothing left to push.'
+              exit 0
+            fi
+          done
+          echo 'Could not push after 5 attempts.'
+          exit 1

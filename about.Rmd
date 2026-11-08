@@ -1,0 +1,14 @@
+---
+title: "About"
+---
+
+This site is a season-to-date look at the NHL season through advanced analytics. Data comes from the [fastRhockey](https://fastrhockey.sportsdataverse.org/) package, part of the [SportsDataverse](https://sportsdataverse.org/), which packages NHL play-by-play, schedules and standings, including an expected-goals model built on that play-by-play.
+
+- **Summary**: current division and league standings.
+- **Teams**: expected goals, shot share, PDO and attendance by team.
+
+The site refreshes automatically every morning. For live scores and box scores, see [NHL Scores](https://steodose.github.io/nhl-scores/).
+
+Read more at my blog [Between the Pipes](https://betweenthepipes.substack.com/).
+
+This site is not associated with the NHL.

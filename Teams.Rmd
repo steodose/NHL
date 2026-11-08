@@ -1,0 +1,291 @@
+---
+title: "Team Analytics"
+date: 'Last updated: `r format(Sys.Date())`'
+output:
+  html_document:
+    fig_width: 10
+    fig_height: 7
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+```{r, echo=FALSE}
+htmltools::img(src = "nhl-logo.png",
+               alt = "logo",
+               style = "position:absolute; top:60px; right:0; padding:10px; width:70px;")
+```
+
+```{r libraries}
+source("R/helpers.R")
+library(ggimage)
+library(ggtext)
+library(scales)
+```
+
+```{r load-pbp}
+pbp_raw <- load_nhl_pbp(nhl_season)
+
+# Regular season only (game_id digits 5-6 = "02"), and no shootouts: shootout
+# attempts are not shots in any stat sense.
+pbp <- pbp_raw %>%
+  filter(substr(as.character(game_id), 5, 6) == "02",
+         period_type != "SHOOTOUT")
+
+thru_date <- max(as.Date(pbp$game_date))
+thru_label <- str_squish(format(thru_date, "%B %e, %Y"))
+n_games <- n_distinct(pbp$game_id)
+
+# Shot attempts (Corsi). On BLOCKED_SHOT rows the NHL feed credits
+# event_team_abbr to the BLOCKING team (event_player_1 is the shooter,
+# event_player_2 the blocker), so flip it to the shooting team.
+shots <- pbp %>%
+  filter(event_type %in% c("GOAL", "SHOT", "MISSED_SHOT", "BLOCKED_SHOT")) %>%
+  mutate(
+    other_team = if_else(event_team_abbr == home_abbr, away_abbr, home_abbr),
+    shoot_team = if_else(event_type == "BLOCKED_SHOT", other_team, event_team_abbr),
+    def_team   = if_else(event_type == "BLOCKED_SHOT", event_team_abbr, other_team),
+    is_goal = event_type == "GOAL",
+    is_sog  = event_type %in% c("GOAL", "SHOT"),
+    xg = coalesce(xg, 0),
+    is_5v5 = strength_state == "5v5" & !coalesce(empty_net, FALSE)
+  )
+
+# For/against totals per team for a given set of shot rows.
+team_totals <- function(df) {
+  f <- df %>% group_by(team = shoot_team) %>%
+    summarise(CF = n(), SF = sum(is_sog), GF = sum(is_goal), xGF = sum(xg))
+  a <- df %>% group_by(team = def_team) %>%
+    summarise(CA = n(), SA = sum(is_sog), GA = sum(is_goal), xGA = sum(xg))
+  inner_join(f, a, by = "team")
+}
+
+# 5v5 time on ice. Each event's state holds until the next event (CHANGE
+# events are in the feed, so the gaps are short); summing those gaps gives
+# the 5v5 seconds per game, which both teams share.
+toi_5v5 <- pbp %>%
+  arrange(game_id, game_seconds, event_idx) %>%
+  group_by(game_id) %>%
+  mutate(dt = lead(game_seconds) - game_seconds) %>%
+  filter(!is.na(dt), strength_state == "5v5") %>%
+  summarise(toi = sum(dt) / 60, home = first(home_abbr), away = first(away_abbr),
+            .groups = "drop") %>%
+  pivot_longer(c(home, away), values_to = "team") %>%
+  group_by(team) %>%
+  summarise(toi_5v5 = sum(toi))
+
+stats_all <- team_totals(shots) %>%
+  left_join(nhl_teams, by = c("team" = "team_abbr"))
+
+stats_5v5 <- team_totals(filter(shots, is_5v5)) %>%
+  left_join(toi_5v5, by = "team") %>%
+  mutate(
+    xGF60 = xGF / toi_5v5 * 60,
+    xGA60 = xGA / toi_5v5 * 60,
+    CF_pct = CF / (CF + CA),
+    GF_pct = GF / (GF + GA),
+    sh_pct = GF / SF,
+    sv_pct = 1 - GA / SA,
+    PDO = 100 * (sh_pct + sv_pct)
+  ) %>%
+  left_join(nhl_teams, by = c("team" = "team_abbr"))
+
+subtitle_base <- glue("{season_label} regular season | Thru games of {thru_label}")
+```
+
+Team-level advanced stats for the `r season_label` NHL season, through `r n_games` regular-season games. Shot and expected-goal data come from NHL play-by-play via [fastRhockey](https://fastrhockey.sportsdataverse.org/), whose xG model scores every unblocked shot attempt.
+
+***
+## Expected Goals {.tabset}
+
+Expected goals (xG) weight every unblocked shot by its probability of scoring, based on factors such as distance, angle and shot type. **xGF** is the quality of chances a team creates and **xGA** what it allows. Teams in the top-right quadrant create more than the league average and allow less. The diagonal lines mark equal expected-goal differential.
+
+```{r xg-plot-fn}
+xg_plot <- function(df, x, y, title, subtitle, xlab, ylab, tier_step) {
+  mx <- mean(df[[x]]); my <- mean(df[[y]])
+  rng <- range(c(df[[x]], df[[y]]))
+  tiers <- seq(-10, 10) * tier_step
+  ggplot(df, aes(x = .data[[x]], y = .data[[y]])) +
+    # Lines of constant xGD (y = x - k). Drawn as segments in data space
+    # because geom_abline's intercept does not follow scale_y_reverse.
+    geom_segment(
+      data = tibble(k = tiers),
+      aes(x = rng[1] - 1, xend = rng[2] + 1,
+          y = rng[1] - 1 - k, yend = rng[2] + 1 - k),
+      inherit.aes = FALSE, alpha = 0.15
+    ) +
+    geom_hline(yintercept = my, color = "red", linetype = "dashed") +
+    geom_vline(xintercept = mx, color = "red", linetype = "dashed") +
+    geom_image(aes(image = team_logo), size = 0.065, by = "width", asp = asp_ratio) +
+    scale_y_reverse() +
+    coord_cartesian(xlim = range(df[[x]]) + c(-1, 1) * diff(range(df[[x]])) * 0.05,
+                    ylim = range(df[[y]]) + c(-1, 1) * diff(range(df[[y]])) * 0.05) +
+    labs(x = xlab, y = ylab, title = title, subtitle = subtitle,
+         caption = caption_btp) +
+    theme_custom() +
+    theme(aspect.ratio = 1 / asp_ratio)
+}
+```
+
+### 5v5 per 60
+
+```{r xg-5v5}
+xg_plot(stats_5v5, "xGF60", "xGA60",
+        title = "5v5 Expected Goals per 60",
+        subtitle = glue("xGF/60 vs. xGA/60 at 5-on-5 | {subtitle_base}"),
+        xlab = "xGF/60 (higher is better)", ylab = "xGA/60 (lower is better)",
+        tier_step = 0.25)
+```
+
+### All Situations
+
+```{r xg-all}
+xg_plot(stats_all, "xGF", "xGA",
+        title = "Expected Goals, All Situations",
+        subtitle = glue("Season xGF vs. xGA, all strengths | {subtitle_base}"),
+        xlab = "xGF (higher is better)", ylab = "xGA (lower is better)",
+        tier_step = 5)
+```
+
+## {-}
+
+***
+### Shot Share vs. Goal Share (5v5)
+
+**Corsi For % (CF%)** is a team's share of all 5-on-5 shot attempts (goals, shots on goal, misses and blocked shots), the standard proxy for puck possession. **Goals For % (GF%)** is its share of 5-on-5 goals. Teams above the diagonal score a bigger share of the goals than their shot share suggests, through finishing, goaltending or luck. Teams below it are under-converting.
+
+```{r cf-gf}
+lims <- range(c(stats_5v5$CF_pct, stats_5v5$GF_pct)) + c(-0.02, 0.02)
+
+ggplot(stats_5v5, aes(x = CF_pct, y = GF_pct)) +
+  geom_abline(slope = 1, intercept = 0, color = "grey60", linetype = "dotted") +
+  geom_hline(yintercept = 0.5, color = "red", linetype = "dashed") +
+  geom_vline(xintercept = 0.5, color = "red", linetype = "dashed") +
+  geom_image(aes(image = team_logo), size = 0.065, by = "width", asp = asp_ratio) +
+  scale_x_continuous(labels = percent_format(accuracy = 1)) +
+  scale_y_continuous(labels = percent_format(accuracy = 1)) +
+  coord_cartesian(xlim = range(stats_5v5$CF_pct) + c(-0.01, 0.01),
+                  ylim = range(stats_5v5$GF_pct) + c(-0.02, 0.02)) +
+  labs(x = "5v5 Corsi For %", y = "5v5 Goals For %",
+       title = "Shot Share vs. Goal Share",
+       subtitle = glue("5-on-5 | Dotted line: GF% = CF% | {subtitle_base}"),
+       caption = caption_btp) +
+  theme_custom() +
+  theme(aspect.ratio = 1 / asp_ratio)
+```
+
+***
+### 5v5 PDO
+
+**PDO** is 5-on-5 shooting percentage plus save percentage (on shots on goal), times 100. The league as a whole sums to 100, and team PDO tends to regress toward it over a season, so a team far above 100 has probably been getting the bounces, and one far below has been unlucky.
+
+```{r pdo, fig.height = 10}
+pdo_df <- stats_5v5 %>%
+  mutate(diff = PDO - 100,
+         team = fct_reorder(team, PDO),
+         label = sprintf("%.1f", PDO),
+         logo_x = diff + if_else(diff >= 0, 0.35, -0.35))
+
+ggplot(pdo_df, aes(x = diff, y = team)) +
+  geom_col(aes(fill = diff > 0), width = 0.7, show.legend = FALSE) +
+  geom_vline(xintercept = 0, color = "grey30") +
+  geom_image(aes(x = logo_x, image = team_logo), size = 0.028, asp = 10 / 10) +
+  geom_text(aes(x = logo_x + if_else(diff >= 0, 0.45, -0.45), label = label,
+                hjust = if_else(diff >= 0, 0, 1)),
+            family = "Outfit", size = 3.2, color = "grey30") +
+  scale_fill_manual(values = c(`TRUE` = "#35b0ab", `FALSE` = "#d73027")) +
+  scale_x_continuous(labels = function(x) sprintf("%.0f", x + 100),
+                     expand = expansion(mult = 0.15)) +
+  labs(x = "5v5 PDO (Sh% + Sv%)", y = NULL,
+       title = "5v5 PDO by Team",
+       subtitle = glue("Above 100 = running hot, below 100 = running cold | {subtitle_base}"),
+       caption = caption_btp) +
+  theme_custom() +
+  theme(panel.grid.major.y = element_blank(),
+        axis.text.y = element_text(face = "bold", size = 10))
+```
+
+***
+### Average Home Attendance
+
+Average attendance at each team's regular-season home games, as reported by ESPN. Neutral-site games, such as the Global Series, are excluded.
+
+```{r attendance-data}
+# ESPN's scoreboard is the only fastRhockey source with attendance, and its
+# date-range form errors, so it is fetched one game date at a time. Finished
+# dates are cached in data/attendance.csv (committed) so each refresh only
+# fetches new dates. The last 3 dates are refetched in case ESPN revised them.
+cache_path <- "data/attendance.csv"
+cache <- if (file.exists(cache_path)) {
+  readr::read_csv(cache_path, col_types = readr::cols(.default = "c")) %>%
+    mutate(attendance = as.integer(attendance),
+           neutral_site = as.logical(neutral_site))
+} else {
+  tibble(game_date = character(), game_id = character(), home_abbr = character(),
+         venue = character(), neutral_site = logical(), attendance = integer())
+}
+
+schedule <- load_nhl_schedule(nhl_season)
+final_dates <- schedule %>%
+  filter(game_type == "R", game_state %in% c("OFF", "FINAL")) %>%
+  distinct(game_date) %>%
+  pull(game_date) %>%
+  as.character() %>%
+  sort()
+
+to_fetch <- union(setdiff(final_dates, cache$game_date), tail(final_dates, 3))
+
+fetch_day <- function(d) {
+  sb <- tryCatch(
+    suppressMessages(espn_nhl_scoreboard(dates = gsub("-", "", d))),
+    error = function(e) NULL
+  )
+  if (!is.data.frame(sb) || nrow(sb) == 0) return(NULL)
+  sb %>%
+    filter(season_type == 2, status_type_completed) %>%
+    transmute(game_date = d, game_id = as.character(game_id),
+              home_abbr = home_abbreviation, venue = venue_full_name,
+              neutral_site = as.logical(neutral_site),
+              attendance = as.integer(attendance))
+}
+
+fresh <- map(to_fetch, fetch_day) %>% compact() %>% bind_rows()
+
+if (nrow(fresh) > 0) {
+  cache <- cache %>%
+    filter(!game_id %in% fresh$game_id) %>%
+    bind_rows(fresh) %>%
+    arrange(game_date, game_id)
+  readr::write_csv(cache, cache_path)
+}
+
+attendance <- cache %>%
+  filter(!neutral_site, !is.na(attendance), attendance > 0) %>%
+  group_by(espn_abbr = home_abbr) %>%
+  summarise(avg_att = mean(attendance), games = n(), .groups = "drop") %>%
+  inner_join(nhl_teams, by = "espn_abbr")
+```
+
+```{r attendance, fig.height = 10}
+att_df <- attendance %>%
+  mutate(team = fct_reorder(team_abbr, avg_att))
+
+league_avg <- weighted.mean(att_df$avg_att, att_df$games)
+
+ggplot(att_df, aes(x = avg_att, y = team)) +
+  # League-average line sits under the bars so it doesn't cross the labels.
+  geom_vline(xintercept = league_avg, color = "red", linetype = "dashed") +
+  geom_col(fill = att_df$team_color, width = 0.7, alpha = 0.85) +
+  geom_image(aes(x = avg_att + 650, image = team_logo), size = 0.028, asp = 1) +
+  geom_text(aes(x = avg_att + 1350, label = comma(round(avg_att))),
+            hjust = 0, family = "Outfit", size = 3.2, color = "grey30") +
+  scale_x_continuous(labels = comma, expand = expansion(mult = c(0, 0.12))) +
+  labs(x = "Average home attendance", y = NULL,
+       title = "Average Home Attendance",
+       subtitle = glue("Regular-season home games, neutral sites excluded | Dashed line: league average ({comma(round(league_avg))}) | {subtitle_base}"),
+       caption = "Data: ESPN via fastRhockey | Plot: @steodosescu") +
+  theme_custom() +
+  theme(panel.grid.major.y = element_blank(),
+        axis.text.y = element_text(face = "bold", size = 10))
+```
