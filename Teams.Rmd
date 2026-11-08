@@ -207,6 +207,50 @@ ggplot(pdo_df, aes(x = diff, y = team)) +
 ```
 
 ***
+### Performance vs. Expectations
+
+Each team's current points percentage compared with what the sportsbooks expected before the season. The preseason points over/under (from Hockey Reference) is turned into an implied points percentage by dividing it by the maximum possible points (2 × games in the season). Bars above zero mean a team is beating its preseason expectations.
+
+```{r expectations}
+# Preseason points O/U and Stanley Cup odds, from Hockey Reference before
+# opening night. Team names match nhl_teams$team_name exactly.
+preseason <- readr::read_csv("data/2026_preseason_odds.csv", show_col_types = FALSE) %>%
+  rename(team_name = Team, cup_odds = `Stanley Cup Odds`, pts_ou = `Pts. O/U`)
+
+# Games per team this season, from the schedule (not hardcoded: the NHL moved
+# from 82 to 84 games).
+season_sched <- load_nhl_schedule(nhl_season) %>% filter(game_type == "R")
+games_per_team <- 2 * nrow(season_sched) / n_distinct(season_sched$home_team_abbr)
+
+expect_df <- nhl_standings() %>%
+  select(team_abbr, games_played, points, point_pctg) %>%
+  inner_join(nhl_teams, by = "team_abbr") %>%
+  inner_join(preseason, by = "team_name") %>%
+  mutate(
+    implied_pctg = pts_ou / (2 * games_per_team),
+    diff = point_pctg - implied_pctg,
+    team_name = fct_reorder(team_name, -diff)
+  )
+
+stopifnot(nrow(expect_df) == 32)  # a name mismatch would silently drop a team
+
+ggplot(expect_df, aes(x = team_name, y = diff)) +
+  geom_hline(yintercept = 0, color = "black", linewidth = 1) +
+  geom_col(aes(fill = team_color), width = 0.5, alpha = 0.8) +
+  scale_fill_identity() +
+  geom_image(aes(image = team_logo), size = 0.03, by = "width", asp = asp_ratio) +
+  scale_y_continuous(labels = percent_format(accuracy = 1),
+                     breaks = pretty_breaks(n = 8)) +
+  labs(x = NULL, y = "Points % over expected",
+       title = "Performance Relative to Expectations",
+       subtitle = glue("Actual points % vs. implied by preseason points over/under | {subtitle_base}"),
+       caption = "Data: fastRhockey / Hockey Reference | Plot: @steodosescu") +
+  theme_custom() +
+  theme(axis.text.x = element_blank(),
+        panel.grid.major.x = element_blank())
+```
+
+***
 ### Average Home Attendance
 
 Average attendance at each team's regular-season home games, as reported by ESPN. Neutral-site games, such as the Global Series, are excluded.

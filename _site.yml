@@ -7,6 +7,8 @@ navbar:
       href: index.html
     - text: "Teams"
       href: Teams.html
+    - text: "Players"
+      href: Players.html
     - text: "About"
       href: about.html
   right:

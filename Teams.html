@@ -260,6 +260,9 @@ $(document).ready(function () {
   <a href="Teams.html">Teams</a>
 </li>
 <li>
+  <a href="Players.html">Players</a>
+</li>
+<li>
   <a href="about.html">About</a>
 </li>
       </ul>
@@ -298,13 +301,13 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Team Analytics</h1>
-<h4 class="date">Last updated: 2026-11-07</h4>
+<h4 class="date">Last updated: 2026-11-08</h4>
 
 </div>
 
 
 <img src="nhl-logo.png" alt="logo" style="position:absolute; top:60px; right:0; padding:10px; width:70px;"/>
-<p>Team-level advanced stats for the 2026-27 NHL season, through 264 regular-season games. Shot and expected-goal data come from NHL play-by-play via <a href="https://fastrhockey.sportsdataverse.org/">fastRhockey</a>, whose xG model scores every unblocked shot attempt.</p>
+<p>Team-level advanced stats for the 2026-27 NHL season, through 276 regular-season games. Shot and expected-goal data come from NHL play-by-play via <a href="https://fastrhockey.sportsdataverse.org/">fastRhockey</a>, whose xG model scores every unblocked shot attempt.</p>
 <hr />
 <div id="expected-goals" class="section level2 tabset">
 <h2 class="tabset">Expected Goals</h2>
@@ -331,6 +334,12 @@ $(document).ready(function () {
 <h3>5v5 PDO</h3>
 <p><strong>PDO</strong> is 5-on-5 shooting percentage plus save percentage (on shots on goal), times 100. The league as a whole sums to 100, and team PDO tends to regress toward it over a season, so a team far above 100 has probably been getting the bounces, and one far below has been unlucky.</p>
 <p><img src="Teams_files/figure-html/pdo-1.png" width="960" /></p>
+<hr />
+</div>
+<div id="performance-vs.-expectations" class="section level3">
+<h3>Performance vs. Expectations</h3>
+<p>Each team’s current points percentage compared with what the sportsbooks expected before the season. The preseason points over/under (from Hockey Reference) is turned into an implied points percentage by dividing it by the maximum possible points (2 × games in the season). Bars above zero mean a team is beating its preseason expectations.</p>
+<p><img src="Teams_files/figure-html/expectations-1.png" width="960" /></p>
 <hr />
 </div>
 <div id="average-home-attendance" class="section level3">

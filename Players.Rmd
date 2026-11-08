@@ -1,0 +1,5 @@
+---
+title: "Players"
+---
+
+Player-level analytics are coming soon. In the meantime, check out the [Summary](index.html) and [Teams](Teams.html) pages.

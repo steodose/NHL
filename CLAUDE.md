@@ -7,7 +7,7 @@ and `*_files/` are committed on purpose. Live scores live in the separate
 `../nhl-scores` site; this site does not show them.
 
 Pages: `index.Rmd` (Summary: standings, the landing page), `Teams.Rmd` (charts),
-`about.Rmd`. Shared setup is in `R/helpers.R` (themes, `nhl_season`,
+`Players.Rmd` (placeholder), `about.Rmd`. Shared setup is in `R/helpers.R` (themes, `nhl_season`,
 `nhl_teams`), `source()`d by each page.
 
 ## Rendering
