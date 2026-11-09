@@ -23,3 +23,13 @@
             mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z'/%3E%3C/svg%3E") no-repeat center / contain;
   }
 </style>
+<!-- Open the navbar's right-hand (external) links in a new tab. _site.yml
+     has no target option for navbar items, so it is set here on page load. -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".navbar-right a[href^='http']").forEach(function (a) {
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+    });
+  });
+</script>
