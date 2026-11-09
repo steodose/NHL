@@ -1,7 +1,7 @@
 name: Refresh site
 
 # Renders the R Markdown site and commits the output back to master, which is
-# what GitHub Pages serves.
+# what GitHub Pages serves (Settings > Pages: master, / root).
 #
 # Schedule: daily at 11:00 UTC (03:00 PST / 04:00 PDT). The sportsdataverse
 # NHL releases (play-by-play, schedules) update around 08:00 UTC, so this
