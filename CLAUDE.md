@@ -55,6 +55,13 @@ Charts and gt/reactable tables use **Outfit** (loaded via `header.html`, install
 CLAUDE.md for why). Standings are laid out with a flexbox div rather than
 `gtExtras::gt_two_column_layout()`, whose floats overflow the page column.
 
+## External links
+
+`header.html` sets `target="_blank"` on every link whose href is an absolute
+`http(s)://` URL, on page load. Keep the site's own links relative (`Teams.html`,
+not a full URL) or they will open in a new tab too. Don't switch the rule to a
+host comparison: NHL Scores is on the same host (`steodose.github.io`).
+
 ## CI
 
 `.github/workflows/refresh-site.yml` renders and commits daily at 11:00 UTC.
