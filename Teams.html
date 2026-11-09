@@ -13,7 +13,7 @@
 
 <title>Team Analytics</title>
 
-<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.32/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -334,24 +334,33 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Team Analytics</h1>
-<h4 class="date">Last updated: 2026-11-08</h4>
+<h4 class="date">Last updated: 2026-11-09</h4>
 
 </div>
 
 
 <img src="nhl-logo.png" alt="logo" style="position:absolute; top:60px; right:0; padding:10px; width:70px;"/>
-<p>Team-level advanced stats for the 2026-27 NHL season, through 276 regular-season games. Shot and expected-goal data come from NHL play-by-play via <a href="https://fastrhockey.sportsdataverse.org/">fastRhockey</a>, whose xG model scores every unblocked shot attempt.</p>
+<p>Team-level advanced stats for the 2026-27 NHL season, through 276
+regular-season games. Shot and expected-goal data come from NHL
+play-by-play via <a
+href="https://fastrhockey.sportsdataverse.org/">fastRhockey</a>, whose
+xG model scores every unblocked shot attempt.</p>
 <hr />
 <div id="expected-goals" class="section level2 tabset">
 <h2 class="tabset">Expected Goals</h2>
-<p>Expected goals (xG) weight every unblocked shot by its probability of scoring, based on factors such as distance, angle and shot type. <strong>xGF</strong> is the quality of chances a team creates and <strong>xGA</strong> what it allows. Teams in the top-right quadrant create more than the league average and allow less. The diagonal lines mark equal expected-goal differential.</p>
+<p>Expected goals (xG) weight every unblocked shot by its probability of
+scoring, based on factors such as distance, angle and shot type.
+<strong>xGF</strong> is the quality of chances a team creates and
+<strong>xGA</strong> what it allows. Teams in the top-right quadrant
+create more than the league average and allow less. The diagonal lines
+mark equal expected-goal differential.</p>
 <div id="v5-per-60" class="section level3">
 <h3>5v5 per 60</h3>
-<p><img src="Teams_files/figure-html/xg-5v5-1.png" width="960" /></p>
+<p><img src="Teams_files/figure-html/xg-5v5-1.png" alt="" width="960" /></p>
 </div>
 <div id="all-situations" class="section level3">
 <h3>All Situations</h3>
-<p><img src="Teams_files/figure-html/xg-all-1.png" width="960" /></p>
+<p><img src="Teams_files/figure-html/xg-all-1.png" alt="" width="960" /></p>
 </div>
 </div>
 <div id="section" class="section level2 unnumbered">
@@ -359,26 +368,41 @@ $(document).ready(function () {
 <hr />
 <div id="shot-share-vs.-goal-share-5v5" class="section level3">
 <h3>Shot Share vs. Goal Share (5v5)</h3>
-<p><strong>Corsi For % (CF%)</strong> is a team’s share of all 5-on-5 shot attempts (goals, shots on goal, misses and blocked shots), the standard proxy for puck possession. <strong>Goals For % (GF%)</strong> is its share of 5-on-5 goals. Teams above the diagonal score a bigger share of the goals than their shot share suggests, through finishing, goaltending or luck. Teams below it are under-converting.</p>
-<p><img src="Teams_files/figure-html/cf-gf-1.png" width="960" /></p>
+<p><strong>Corsi For % (CF%)</strong> is a team’s share of all 5-on-5
+shot attempts (goals, shots on goal, misses and blocked shots), the
+standard proxy for puck possession. <strong>Goals For % (GF%)</strong>
+is its share of 5-on-5 goals. Teams above the diagonal score a bigger
+share of the goals than their shot share suggests, through finishing,
+goaltending or luck. Teams below it are under-converting.</p>
+<p><img src="Teams_files/figure-html/cf-gf-1.png" alt="" width="960" /></p>
 <hr />
 </div>
 <div id="v5-pdo" class="section level3">
 <h3>5v5 PDO</h3>
-<p><strong>PDO</strong> is 5-on-5 shooting percentage plus save percentage (on shots on goal), times 100. The league as a whole sums to 100, and team PDO tends to regress toward it over a season, so a team far above 100 has probably been getting the bounces, and one far below has been unlucky.</p>
-<p><img src="Teams_files/figure-html/pdo-1.png" width="960" /></p>
+<p><strong>PDO</strong> is 5-on-5 shooting percentage plus save
+percentage (on shots on goal), times 100. The league as a whole sums to
+100, and team PDO tends to regress toward it over a season, so a team
+far above 100 has probably been getting the bounces, and one far below
+has been unlucky.</p>
+<p><img src="Teams_files/figure-html/pdo-1.png" alt="" width="960" /></p>
 <hr />
 </div>
 <div id="performance-vs.-expectations" class="section level3">
 <h3>Performance vs. Expectations</h3>
-<p>Each team’s current points percentage compared with what the sportsbooks expected before the season. The preseason points over/under (from Hockey Reference) is turned into an implied points percentage by dividing it by the maximum possible points (2 × games in the season). Bars above zero mean a team is beating its preseason expectations.</p>
-<p><img src="Teams_files/figure-html/expectations-1.png" width="960" /></p>
+<p>Each team’s current points percentage compared with what the
+sportsbooks expected before the season. The preseason points over/under
+(from Hockey Reference) is turned into an implied points percentage by
+dividing it by the maximum possible points (2 × games in the season).
+Bars above zero mean a team is beating its preseason expectations.</p>
+<p><img src="Teams_files/figure-html/expectations-1.png" alt="" width="960" /></p>
 <hr />
 </div>
 <div id="average-home-attendance" class="section level3">
 <h3>Average Home Attendance</h3>
-<p>Average attendance at each team’s regular-season home games, as reported by ESPN. Neutral-site games, such as the Global Series, are excluded.</p>
-<p><img src="Teams_files/figure-html/attendance-1.png" width="960" /></p>
+<p>Average attendance at each team’s regular-season home games, as
+reported by ESPN. Neutral-site games, such as the Global Series, are
+excluded.</p>
+<p><img src="Teams_files/figure-html/attendance-1.png" alt="" width="960" /></p>
 </div>
 </div>
 
