@@ -26,6 +26,11 @@ those are called namespaced. Keep doing that.
   GitHub releases (refreshed daily around 08:00 UTC). 0.4.0 points at a dead
   repo. On R 4.4 the CRAN *binary* is stuck at 0.4.0; install with
   `type = "source"`.
+- The `load_nhl_*()` loaders do **not** error when the GitHub release
+  download fails (a 504 happened on 2026-11-08): they warn and return an
+  empty table. Teams.Rmd retries `load_nhl_pbp()` 3 times, then `stop()`s with
+  a clear message, so CI fails loudly and pushes nothing. Wrap any new loader
+  the same way.
 - Seasons are labelled by **end year** (2026-27 = 2027).
   `most_recent_nhl_season()` handles the rollover, so nothing is hardcoded.
 - `load_nhl_pbp()` ships an `xg` column on GOAL / SHOT / MISSED_SHOT

@@ -25,7 +25,19 @@ library(scales)
 ```
 
 ```{r load-pbp}
-pbp_raw <- load_nhl_pbp(nhl_season)
+# load_nhl_pbp() does not error when the GitHub release download fails (e.g. a
+# 504): it warns and returns an empty table, which later surfaces as a
+# confusing "object 'game_id' not found". Retry, then fail loudly.
+pbp_raw <- NULL
+for (attempt in 1:3) {
+  pbp_raw <- suppressWarnings(load_nhl_pbp(nhl_season))
+  if (nrow(pbp_raw) > 0) break
+  Sys.sleep(30)
+}
+if (nrow(pbp_raw) == 0) {
+  stop("load_nhl_pbp(", nhl_season, ") returned no rows after 3 attempts ",
+       "(sportsdataverse-data release download failed).")
+}
 
 # Regular season only (game_id digits 5-6 = "02"), and no shootouts: shootout
 # attempts are not shots in any stat sense.
@@ -149,6 +161,56 @@ xg_plot(stats_all, "xGF", "xGA",
 ```
 
 ## {-}
+
+***
+### Expected Goal Differential Race
+
+Each team's running expected-goal differential (xGF − xGA, all situations), game by game. Teams climbing steadily are consistently out-chancing their opponents. The x-axis spans the full regular season, so it also shows how far into the season we are.
+
+```{r xgd-race}
+# Games per team this season, from the schedule (84 in 2026-27).
+race_sched <- load_nhl_schedule(nhl_season) %>% filter(game_type == "R")
+race_games <- 2 * nrow(race_sched) / n_distinct(race_sched$home_team_abbr)
+
+# xGF and xGA per team per game (all situations; shootouts already excluded),
+# then a running total in date order.
+game_xgf <- shots %>%
+  group_by(game_id, game_date, team = shoot_team) %>%
+  summarise(xGF = sum(xg), .groups = "drop")
+game_xga <- shots %>%
+  group_by(game_id, team = def_team) %>%
+  summarise(xGA = sum(xg), .groups = "drop")
+
+xgd_race <- game_xgf %>%
+  full_join(game_xga, by = c("game_id", "team")) %>%
+  group_by(game_id) %>%
+  tidyr::fill(game_date, .direction = "downup") %>%
+  ungroup() %>%
+  mutate(across(c(xGF, xGA), ~ coalesce(.x, 0))) %>%
+  arrange(team, game_date, game_id) %>%
+  group_by(team) %>%
+  mutate(game_num = row_number(), xgd_running = cumsum(xGF - xGA)) %>%
+  ungroup() %>%
+  left_join(select(nhl_teams, team_abbr, team_logo), by = c("team" = "team_abbr"))
+
+race_ends <- xgd_race %>%
+  group_by(team) %>%
+  slice_max(game_num, n = 1) %>%
+  ungroup()
+
+ggplot(xgd_race, aes(x = game_num, y = xgd_running, group = team)) +
+  geom_hline(yintercept = 0, color = "grey60") +
+  geom_line(linewidth = 0.8, color = "grey70") +
+  geom_image(data = race_ends, aes(x = game_num, y = xgd_running, image = team_logo),
+             size = 0.04, inherit.aes = FALSE) +
+  scale_x_continuous(limits = c(0, race_games),
+                     breaks = seq(0, race_games, by = 12)) +
+  labs(x = "Game number", y = "Cumulative xGD",
+       title = "Expected Goal Differential Race",
+       subtitle = glue("Running xGF − xGA, all situations | {subtitle_base}"),
+       caption = caption_btp) +
+  theme_custom()
+```
 
 ***
 ### Shot Share vs. Goal Share (5v5)
