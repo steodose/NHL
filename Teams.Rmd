@@ -163,9 +163,9 @@ xg_plot(stats_all, "xGF", "xGA",
 ## {-}
 
 ***
-### Expected Goal Differential Race
+### Expected Goal Differential
 
-Each team's running expected-goal differential (xGF − xGA, all situations), game by game. Teams climbing steadily are consistently out-chancing their opponents. The x-axis spans the full regular season, so it also shows how far into the season we are.
+Each team's running expected-goal differential (xGF − xGA, all situations), game by game. Teams climbing steadily are consistently out-chancing their opponents.
 
 ```{r xgd-race}
 # Games per team this season, from the schedule (84 in 2026-27).
@@ -206,7 +206,7 @@ ggplot(xgd_race, aes(x = game_num, y = xgd_running, group = team)) +
   scale_x_continuous(limits = c(0, race_games),
                      breaks = seq(0, race_games, by = 12)) +
   labs(x = "Game number", y = "Cumulative xGD",
-       title = "Expected Goal Differential Race",
+       title = "Expected Goal Differential",
        subtitle = glue("Running xGF − xGA, all situations | {subtitle_base}"),
        caption = caption_btp) +
   theme_custom()
