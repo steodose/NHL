@@ -51,6 +51,22 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap">
+<!-- Font Awesome has no Substack icon, and the navbar escapes HTML in `text`,
+     so _site.yml uses `icon: fa-substack` and the logo is drawn here as a CSS
+     mask (Simple Icons path) filled with currentColor, so it matches the other
+     navbar icons' colour and hover state. -->
+<style>
+  .fa-substack::before {
+    content: "";
+    display: inline-block;
+    width: 0.95em;
+    height: 0.95em;
+    vertical-align: -0.1em;
+    background-color: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z'/%3E%3C/svg%3E") no-repeat center / contain;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z'/%3E%3C/svg%3E") no-repeat center / contain;
+  }
+</style>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -295,7 +311,7 @@ $(document).ready(function () {
 </li>
 <li>
   <a href="https://betweenthepipes.substack.com/">
-    <span class="fa fa-wordpress fa-lg"></span>
+    <span class="fa fa-substack fa-lg"></span>
      
   </a>
 </li>
@@ -324,28 +340,28 @@ $(document).ready(function () {
 <div id="division-standings" class="section level3">
 <h3>Division Standings</h3>
 <div style="display:flex; flex-wrap:wrap; gap:24px; justify-content:center; align-items:flex-start;">
-<div style="flex:1 1 560px; min-width:0; overflow-x:auto;"><div id="xpiodqjhbe" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div style="flex:1 1 560px; min-width:0; overflow-x:auto;"><div id="rmrfzbxqzb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   <style>@import url("https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cairo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#xpiodqjhbe table {
+#rmrfzbxqzb table {
   font-family: Outfit, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', Cairo;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#xpiodqjhbe thead, #xpiodqjhbe tbody, #xpiodqjhbe tfoot, #xpiodqjhbe tr, #xpiodqjhbe td, #xpiodqjhbe th {
+#rmrfzbxqzb thead, #rmrfzbxqzb tbody, #rmrfzbxqzb tfoot, #rmrfzbxqzb tr, #rmrfzbxqzb td, #rmrfzbxqzb th {
   border-style: none;
 }
 
-#xpiodqjhbe p {
+#rmrfzbxqzb p {
   margin: 0;
   padding: 0;
 }
 
-#xpiodqjhbe .gt_table {
+#rmrfzbxqzb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -371,12 +387,12 @@ $(document).ready(function () {
   border-left-color: #D3D3D3;
 }
 
-#xpiodqjhbe .gt_caption {
+#rmrfzbxqzb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xpiodqjhbe .gt_title {
+#rmrfzbxqzb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -388,7 +404,7 @@ $(document).ready(function () {
   border-bottom-width: 0;
 }
 
-#xpiodqjhbe .gt_subtitle {
+#rmrfzbxqzb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -400,7 +416,7 @@ $(document).ready(function () {
   border-top-width: 0;
 }
 
-#xpiodqjhbe .gt_heading {
+#rmrfzbxqzb .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -412,13 +428,13 @@ $(document).ready(function () {
   border-right-color: #D3D3D3;
 }
 
-#xpiodqjhbe .gt_bottom_border {
+#rmrfzbxqzb .gt_bottom_border {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xpiodqjhbe .gt_col_headings {
+#rmrfzbxqzb .gt_col_headings {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -433,7 +449,7 @@ $(document).ready(function () {
   border-right-color: #D3D3D3;
 }
 
-#xpiodqjhbe .gt_col_heading {
+#rmrfzbxqzb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -453,7 +469,7 @@ $(document).ready(function () {
   overflow-x: hidden;
 }
 
-#xpiodqjhbe .gt_column_spanner_outer {
+#rmrfzbxqzb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -465,15 +481,15 @@ $(document).ready(function () {
   padding-right: 4px;
 }
 
-#xpiodqjhbe .gt_column_spanner_outer:first-child {
+#rmrfzbxqzb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xpiodqjhbe .gt_column_spanner_outer:last-child {
+#rmrfzbxqzb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xpiodqjhbe .gt_column_spanner {
+#rmrfzbxqzb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #000000;
@@ -485,11 +501,11 @@ $(document).ready(function () {
   width: 100%;
 }
 
-#xpiodqjhbe .gt_spanner_row {
+#rmrfzbxqzb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#xpiodqjhbe .gt_group_heading {
+#rmrfzbxqzb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -515,7 +531,7 @@ $(document).ready(function () {
   text-align: left;
 }
 
-#xpiodqjhbe .gt_empty_group_heading {
+#rmrfzbxqzb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -530,15 +546,15 @@ $(document).ready(function () {
   vertical-align: middle;
 }
 
-#xpiodqjhbe .gt_from_md > :first-child {
+#rmrfzbxqzb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xpiodqjhbe .gt_from_md > :last-child {
+#rmrfzbxqzb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xpiodqjhbe .gt_row {
+#rmrfzbxqzb .gt_row {
   padding-top: 3px;
   padding-bottom: 3px;
   padding-left: 5px;
@@ -557,7 +573,7 @@ $(document).ready(function () {
   overflow-x: hidden;
 }
 
-#xpiodqjhbe .gt_stub {
+#rmrfzbxqzb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -570,7 +586,7 @@ $(document).ready(function () {
   padding-right: 5px;
 }
 
-#xpiodqjhbe .gt_stub_row_group {
+#rmrfzbxqzb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -584,15 +600,15 @@ $(document).ready(function () {
   vertical-align: top;
 }
 
-#xpiodqjhbe .gt_row_group_first td {
+#rmrfzbxqzb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xpiodqjhbe .gt_row_group_first th {
+#rmrfzbxqzb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#xpiodqjhbe .gt_summary_row {
+#rmrfzbxqzb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -602,16 +618,16 @@ $(document).ready(function () {
   padding-right: 5px;
 }
 
-#xpiodqjhbe .gt_first_summary_row {
+#rmrfzbxqzb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xpiodqjhbe .gt_first_summary_row.thick {
+#rmrfzbxqzb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xpiodqjhbe .gt_last_summary_row {
+#rmrfzbxqzb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -621,7 +637,7 @@ $(document).ready(function () {
   border-bottom-color: #D3D3D3;
 }
 
-#xpiodqjhbe .gt_grand_summary_row {
+#rmrfzbxqzb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -631,7 +647,7 @@ $(document).ready(function () {
   padding-right: 5px;
 }
 
-#xpiodqjhbe .gt_first_grand_summary_row {
+#rmrfzbxqzb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -641,7 +657,7 @@ $(document).ready(function () {
   border-top-color: #D3D3D3;
 }
 
-#xpiodqjhbe .gt_last_grand_summary_row_top {
+#rmrfzbxqzb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -651,11 +667,11 @@ $(document).ready(function () {
   border-bottom-color: #D3D3D3;
 }
 
-#xpiodqjhbe .gt_striped {
+#rmrfzbxqzb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xpiodqjhbe .gt_table_body {
+#rmrfzbxqzb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -664,7 +680,7 @@ $(document).ready(function () {
   border-bottom-color: #D3D3D3;
 }
 
-#xpiodqjhbe .gt_footnotes {
+#rmrfzbxqzb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -678,7 +694,7 @@ $(document).ready(function () {
   border-right-color: #D3D3D3;
 }
 
-#xpiodqjhbe .gt_footnote {
+#rmrfzbxqzb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -687,7 +703,7 @@ $(document).ready(function () {
   padding-right: 5px;
 }
 
-#xpiodqjhbe .gt_sourcenotes {
+#rmrfzbxqzb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -701,7 +717,7 @@ $(document).ready(function () {
   border-right-color: #D3D3D3;
 }
 
-#xpiodqjhbe .gt_sourcenote {
+#rmrfzbxqzb .gt_sourcenote {
   font-size: 12px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -709,76 +725,76 @@ $(document).ready(function () {
   padding-right: 5px;
 }
 
-#xpiodqjhbe .gt_left {
+#rmrfzbxqzb .gt_left {
   text-align: left;
 }
 
-#xpiodqjhbe .gt_center {
+#rmrfzbxqzb .gt_center {
   text-align: center;
 }
 
-#xpiodqjhbe .gt_right {
+#rmrfzbxqzb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xpiodqjhbe .gt_font_normal {
+#rmrfzbxqzb .gt_font_normal {
   font-weight: normal;
 }
 
-#xpiodqjhbe .gt_font_bold {
+#rmrfzbxqzb .gt_font_bold {
   font-weight: bold;
 }
 
-#xpiodqjhbe .gt_font_italic {
+#rmrfzbxqzb .gt_font_italic {
   font-style: italic;
 }
 
-#xpiodqjhbe .gt_super {
+#rmrfzbxqzb .gt_super {
   font-size: 65%;
 }
 
-#xpiodqjhbe .gt_footnote_marks {
+#rmrfzbxqzb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#xpiodqjhbe .gt_asterisk {
+#rmrfzbxqzb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xpiodqjhbe .gt_indent_1 {
+#rmrfzbxqzb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xpiodqjhbe .gt_indent_2 {
+#rmrfzbxqzb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xpiodqjhbe .gt_indent_3 {
+#rmrfzbxqzb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xpiodqjhbe .gt_indent_4 {
+#rmrfzbxqzb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xpiodqjhbe .gt_indent_5 {
+#rmrfzbxqzb .gt_indent_5 {
   text-indent: 25px;
 }
 
-#xpiodqjhbe .katex-display {
+#rmrfzbxqzb .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#xpiodqjhbe div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#rmrfzbxqzb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 
-#xpiodqjhbe tbody tr:last-child {
+#rmrfzbxqzb tbody tr:last-child {
   border-bottom: 2px solid #ffffff00;
 }
 </style>
@@ -1064,28 +1080,28 @@ $(document).ready(function () {
   
 </table>
 </div></div>
-<div style="flex:1 1 560px; min-width:0; overflow-x:auto;"><div id="ewdopzyjse" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div style="flex:1 1 560px; min-width:0; overflow-x:auto;"><div id="hkvgyxizlg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   <style>@import url("https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cairo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#ewdopzyjse table {
+#hkvgyxizlg table {
   font-family: Outfit, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', Cairo;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ewdopzyjse thead, #ewdopzyjse tbody, #ewdopzyjse tfoot, #ewdopzyjse tr, #ewdopzyjse td, #ewdopzyjse th {
+#hkvgyxizlg thead, #hkvgyxizlg tbody, #hkvgyxizlg tfoot, #hkvgyxizlg tr, #hkvgyxizlg td, #hkvgyxizlg th {
   border-style: none;
 }
 
-#ewdopzyjse p {
+#hkvgyxizlg p {
   margin: 0;
   padding: 0;
 }
 
-#ewdopzyjse .gt_table {
+#hkvgyxizlg .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1111,12 +1127,12 @@ $(document).ready(function () {
   border-left-color: #D3D3D3;
 }
 
-#ewdopzyjse .gt_caption {
+#hkvgyxizlg .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ewdopzyjse .gt_title {
+#hkvgyxizlg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1128,7 +1144,7 @@ $(document).ready(function () {
   border-bottom-width: 0;
 }
 
-#ewdopzyjse .gt_subtitle {
+#hkvgyxizlg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1140,7 +1156,7 @@ $(document).ready(function () {
   border-top-width: 0;
 }
 
-#ewdopzyjse .gt_heading {
+#hkvgyxizlg .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -1152,13 +1168,13 @@ $(document).ready(function () {
   border-right-color: #D3D3D3;
 }
 
-#ewdopzyjse .gt_bottom_border {
+#hkvgyxizlg .gt_bottom_border {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ewdopzyjse .gt_col_headings {
+#hkvgyxizlg .gt_col_headings {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1173,7 +1189,7 @@ $(document).ready(function () {
   border-right-color: #D3D3D3;
 }
 
-#ewdopzyjse .gt_col_heading {
+#hkvgyxizlg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1193,7 +1209,7 @@ $(document).ready(function () {
   overflow-x: hidden;
 }
 
-#ewdopzyjse .gt_column_spanner_outer {
+#hkvgyxizlg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1205,15 +1221,15 @@ $(document).ready(function () {
   padding-right: 4px;
 }
 
-#ewdopzyjse .gt_column_spanner_outer:first-child {
+#hkvgyxizlg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ewdopzyjse .gt_column_spanner_outer:last-child {
+#hkvgyxizlg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ewdopzyjse .gt_column_spanner {
+#hkvgyxizlg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #000000;
@@ -1225,11 +1241,11 @@ $(document).ready(function () {
   width: 100%;
 }
 
-#ewdopzyjse .gt_spanner_row {
+#hkvgyxizlg .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ewdopzyjse .gt_group_heading {
+#hkvgyxizlg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1255,7 +1271,7 @@ $(document).ready(function () {
   text-align: left;
 }
 
-#ewdopzyjse .gt_empty_group_heading {
+#hkvgyxizlg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1270,15 +1286,15 @@ $(document).ready(function () {
   vertical-align: middle;
 }
 
-#ewdopzyjse .gt_from_md > :first-child {
+#hkvgyxizlg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ewdopzyjse .gt_from_md > :last-child {
+#hkvgyxizlg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ewdopzyjse .gt_row {
+#hkvgyxizlg .gt_row {
   padding-top: 3px;
   padding-bottom: 3px;
   padding-left: 5px;
@@ -1297,7 +1313,7 @@ $(document).ready(function () {
   overflow-x: hidden;
 }
 
-#ewdopzyjse .gt_stub {
+#hkvgyxizlg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1310,7 +1326,7 @@ $(document).ready(function () {
   padding-right: 5px;
 }
 
-#ewdopzyjse .gt_stub_row_group {
+#hkvgyxizlg .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1324,15 +1340,15 @@ $(document).ready(function () {
   vertical-align: top;
 }
 
-#ewdopzyjse .gt_row_group_first td {
+#hkvgyxizlg .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ewdopzyjse .gt_row_group_first th {
+#hkvgyxizlg .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ewdopzyjse .gt_summary_row {
+#hkvgyxizlg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1342,16 +1358,16 @@ $(document).ready(function () {
   padding-right: 5px;
 }
 
-#ewdopzyjse .gt_first_summary_row {
+#hkvgyxizlg .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ewdopzyjse .gt_first_summary_row.thick {
+#hkvgyxizlg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ewdopzyjse .gt_last_summary_row {
+#hkvgyxizlg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1361,7 +1377,7 @@ $(document).ready(function () {
   border-bottom-color: #D3D3D3;
 }
 
-#ewdopzyjse .gt_grand_summary_row {
+#hkvgyxizlg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1371,7 +1387,7 @@ $(document).ready(function () {
   padding-right: 5px;
 }
 
-#ewdopzyjse .gt_first_grand_summary_row {
+#hkvgyxizlg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1381,7 +1397,7 @@ $(document).ready(function () {
   border-top-color: #D3D3D3;
 }
 
-#ewdopzyjse .gt_last_grand_summary_row_top {
+#hkvgyxizlg .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1391,11 +1407,11 @@ $(document).ready(function () {
   border-bottom-color: #D3D3D3;
 }
 
-#ewdopzyjse .gt_striped {
+#hkvgyxizlg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ewdopzyjse .gt_table_body {
+#hkvgyxizlg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1404,7 +1420,7 @@ $(document).ready(function () {
   border-bottom-color: #D3D3D3;
 }
 
-#ewdopzyjse .gt_footnotes {
+#hkvgyxizlg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1418,7 +1434,7 @@ $(document).ready(function () {
   border-right-color: #D3D3D3;
 }
 
-#ewdopzyjse .gt_footnote {
+#hkvgyxizlg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1427,7 +1443,7 @@ $(document).ready(function () {
   padding-right: 5px;
 }
 
-#ewdopzyjse .gt_sourcenotes {
+#hkvgyxizlg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1441,7 +1457,7 @@ $(document).ready(function () {
   border-right-color: #D3D3D3;
 }
 
-#ewdopzyjse .gt_sourcenote {
+#hkvgyxizlg .gt_sourcenote {
   font-size: 12px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1449,76 +1465,76 @@ $(document).ready(function () {
   padding-right: 5px;
 }
 
-#ewdopzyjse .gt_left {
+#hkvgyxizlg .gt_left {
   text-align: left;
 }
 
-#ewdopzyjse .gt_center {
+#hkvgyxizlg .gt_center {
   text-align: center;
 }
 
-#ewdopzyjse .gt_right {
+#hkvgyxizlg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ewdopzyjse .gt_font_normal {
+#hkvgyxizlg .gt_font_normal {
   font-weight: normal;
 }
 
-#ewdopzyjse .gt_font_bold {
+#hkvgyxizlg .gt_font_bold {
   font-weight: bold;
 }
 
-#ewdopzyjse .gt_font_italic {
+#hkvgyxizlg .gt_font_italic {
   font-style: italic;
 }
 
-#ewdopzyjse .gt_super {
+#hkvgyxizlg .gt_super {
   font-size: 65%;
 }
 
-#ewdopzyjse .gt_footnote_marks {
+#hkvgyxizlg .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ewdopzyjse .gt_asterisk {
+#hkvgyxizlg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ewdopzyjse .gt_indent_1 {
+#hkvgyxizlg .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ewdopzyjse .gt_indent_2 {
+#hkvgyxizlg .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ewdopzyjse .gt_indent_3 {
+#hkvgyxizlg .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ewdopzyjse .gt_indent_4 {
+#hkvgyxizlg .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ewdopzyjse .gt_indent_5 {
+#hkvgyxizlg .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ewdopzyjse .katex-display {
+#hkvgyxizlg .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ewdopzyjse div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#hkvgyxizlg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 
-#ewdopzyjse tbody tr:last-child {
+#hkvgyxizlg tbody tr:last-child {
   border-bottom: 2px solid #ffffff00;
 }
 </style>
@@ -1810,11 +1826,11 @@ $(document).ready(function () {
 <div id="league-standings" class="section level3">
 <h3>League Standings</h3>
 <p>Click a column header to sort. Teams are ranked by points percentage.</p>
-<div class="reactable html-widget html-fill-item" id="htmlwidget-b9df8da5842f771c45de" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-b9df8da5842f771c45de">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"rank":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32],"team_logo":["https://a.espncdn.com/i/teamlogos/nhl/500/car.png","https://a.espncdn.com/i/teamlogos/nhl/500/bos.png","https://a.espncdn.com/i/teamlogos/nhl/500/edm.png","https://a.espncdn.com/i/teamlogos/nhl/500/tb.png","https://a.espncdn.com/i/teamlogos/nhl/500/min.png","https://a.espncdn.com/i/teamlogos/nhl/500/mtl.png","https://a.espncdn.com/i/teamlogos/nhl/500/nj.png","https://a.espncdn.com/i/teamlogos/nhl/500/vgk.png","https://a.espncdn.com/i/teamlogos/nhl/500/dal.png","https://a.espncdn.com/i/teamlogos/nhl/500/ott.png","https://a.espncdn.com/i/teamlogos/nhl/500/nsh.png","https://a.espncdn.com/i/teamlogos/nhl/500/col.png","https://a.espncdn.com/i/teamlogos/nhl/500/wsh.png","https://a.espncdn.com/i/teamlogos/nhl/500/sea.png","https://a.espncdn.com/i/teamlogos/nhl/500/nyr.png","https://a.espncdn.com/i/teamlogos/nhl/500/utah.png","https://a.espncdn.com/i/teamlogos/nhl/500/ana.png","https://a.espncdn.com/i/teamlogos/nhl/500/buf.png","https://a.espncdn.com/i/teamlogos/nhl/500/fla.png","https://a.espncdn.com/i/teamlogos/nhl/500/nyi.png","https://a.espncdn.com/i/teamlogos/nhl/500/tor.png","https://a.espncdn.com/i/teamlogos/nhl/500/det.png","https://a.espncdn.com/i/teamlogos/nhl/500/stl.png","https://a.espncdn.com/i/teamlogos/nhl/500/cbj.png","https://a.espncdn.com/i/teamlogos/nhl/500/cgy.png","https://a.espncdn.com/i/teamlogos/nhl/500/wpg.png","https://a.espncdn.com/i/teamlogos/nhl/500/pit.png","https://a.espncdn.com/i/teamlogos/nhl/500/la.png","https://a.espncdn.com/i/teamlogos/nhl/500/sj.png","https://a.espncdn.com/i/teamlogos/nhl/500/phi.png","https://a.espncdn.com/i/teamlogos/nhl/500/chi.png","https://a.espncdn.com/i/teamlogos/nhl/500/van.png"],"team_name":["Carolina Hurricanes","Boston Bruins","Edmonton Oilers","Tampa Bay Lightning","Minnesota Wild","Montréal Canadiens","New Jersey Devils","Vegas Golden Knights","Dallas Stars","Ottawa Senators","Nashville Predators","Colorado Avalanche","Washington Capitals","Seattle Kraken","New York Rangers","Utah Mammoth","Anaheim Ducks","Buffalo Sabres","Florida Panthers","New York Islanders","Toronto Maple Leafs","Detroit Red Wings","St. Louis Blues","Columbus Blue Jackets","Calgary Flames","Winnipeg Jets","Pittsburgh Penguins","Los Angeles Kings","San Jose Sharks","Philadelphia Flyers","Chicago Blackhawks","Vancouver Canucks"],"conference_name":["Eastern","Eastern","Western","Eastern","Western","Eastern","Eastern","Western","Western","Eastern","Western","Western","Eastern","Western","Eastern","Western","Western","Eastern","Eastern","Eastern","Eastern","Eastern","Western","Eastern","Western","Western","Eastern","Western","Western","Eastern","Western","Western"],"division_name":["Metropolitan","Atlantic","Pacific","Atlantic","Central","Atlantic","Metropolitan","Pacific","Central","Atlantic","Central","Central","Metropolitan","Pacific","Metropolitan","Central","Pacific","Atlantic","Atlantic","Metropolitan","Atlantic","Atlantic","Central","Metropolitan","Pacific","Central","Metropolitan","Pacific","Pacific","Metropolitan","Central","Pacific"],"games_played":[19,18,18,16,19,17,17,19,17,18,17,18,15,16,18,18,17,17,18,16,18,18,17,15,17,17,17,15,19,18,18,19],"wins":[14,13,12,11,12,11,12,12,10,11,8,10,9,9,10,10,9,8,9,7,8,7,7,7,7,6,6,5,7,4,4,3],"losses":[3,4,3,3,3,3,5,5,5,6,4,6,6,6,7,7,7,6,7,6,8,8,8,8,9,8,9,8,11,10,13,15],"ot_losses":[2,1,3,2,4,3,0,2,2,1,5,2,0,1,1,1,1,3,2,3,2,3,2,0,1,3,2,2,1,4,1,1],"points":[30,27,27,24,28,25,24,26,22,23,21,22,18,19,21,21,19,19,20,17,18,17,16,14,15,15,14,12,15,12,9,7],"point_pctg":[0.789474,0.75,0.75,0.75,0.736842,0.735294,0.705882,0.684211,0.647059,0.638889,0.617647,0.611111,0.6,0.59375,0.583333,0.583333,0.558824,0.558824,0.555556,0.53125,0.5,0.472222,0.470588,0.466667,0.441176,0.441176,0.411765,0.4,0.394737,0.333333,0.25,0.184211],"gf_gp":[4.10526315789474,3.77777777777778,4.16666666666667,3.75,3.31578947368421,3.58823529411765,3.64705882352941,3.36842105263158,2.88235294117647,3.22222222222222,3.05882352941176,4,3.53333333333333,3.5625,3.05555555555556,3.5,3.76470588235294,2.94117647058824,3.11111111111111,2.9375,3.55555555555556,2.72222222222222,2.94117647058824,2.66666666666667,2.47058823529412,2.64705882352941,3.29411764705882,3,2.52631578947368,2.16666666666667,2.16666666666667,2.89473684210526],"ga_gp":[2.36842105263158,2.27777777777778,3.05555555555556,3.0625,2.26315789473684,3.11764705882353,3,2.68421052631579,2.41176470588235,3,3,3.11111111111111,3.4,3.5625,2.88888888888889,3.5,3.76470588235294,3.35294117647059,3.05555555555556,3.0625,3.33333333333333,3.11111111111111,3.11764705882353,3.13333333333333,3.52941176470588,3.52941176470588,3.52941176470588,3.46666666666667,3.63157894736842,3.38888888888889,4.22222222222222,4.57894736842105],"goal_differential":[33,27,20,11,20,8,11,13,8,4,1,16,2,0,3,0,0,-7,1,-2,4,-7,-3,-7,-18,-15,-4,-7,-21,-22,-37,-32],"l10":["7-2-1","7-2-1","6-2-2","7-1-2","6-1-3","8-0-2","8-2-0","5-3-2","7-2-1","5-4-1","6-2-2","5-4-1","6-4-0","5-4-1","4-5-1","4-5-1","5-4-1","5-3-2","5-5-0","4-3-3","5-5-0","4-5-1","4-5-1","5-5-0","6-3-1","2-7-1","3-6-1","5-5-0","3-7-0","4-5-1","1-8-1","1-9-0"],"streak":["W2","W4","W1","W3","OT1","W2","W4","W3","W1","W2","W4","W1","W1","L1","W3","L1","W4","L1","L2","OT1","L2","L3","L1","L1","L1","W2","W1","L1","L5","L2","L4","L5"]},"columns":[{"id":"rank","name":"Rank","type":"numeric","minWidth":60,"align":"center","maxWidth":55},{"id":"team_logo","name":"","type":"character","minWidth":60,"align":"center","sortable":false,"cell":[{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/car.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/bos.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/edm.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/tb.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/min.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/mtl.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/nj.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/vgk.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/dal.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/ott.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/nsh.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/col.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/wsh.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/sea.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/nyr.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/utah.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/ana.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/buf.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/fla.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/nyi.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/tor.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/det.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/stl.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/cbj.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/cgy.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/wpg.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/pit.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/la.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/sj.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/phi.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/chi.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/van.png","align":"center","height":"25","width":"25"},"children":[]}]}]}],"maxWidth":50},{"id":"team_name","name":"Team","type":"character","minWidth":180,"align":"left"},{"id":"conference_name","name":"Conf","type":"character","minWidth":80,"align":"center"},{"id":"division_name","name":"Division","type":"character","minWidth":100,"align":"center"},{"id":"games_played","name":"GP","type":"numeric","minWidth":60,"align":"center"},{"id":"wins","name":"W","type":"numeric","minWidth":60,"align":"center"},{"id":"losses","name":"L","type":"numeric","minWidth":60,"align":"center"},{"id":"ot_losses","name":"OTL","type":"numeric","minWidth":60,"align":"center"},{"id":"points","name":"PTS","type":"numeric","minWidth":60,"align":"center","style":{"fontWeight":"bold"}},{"id":"point_pctg","name":"P%","type":"numeric","minWidth":70,"align":"center","format":{"cell":{"digits":3},"aggregated":{"digits":3}},"style":[{"background":"#64B5DDFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#72BCE0FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#72BCE0FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#72BCE0FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#77BFE2FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#78BFE2FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#83C5E5FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#8BC9E7FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#99D1EBFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#9CD2EBFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#A2D5EDFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#A4D6EDFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#A7D8EEFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#A9D8EEFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#ACDAEFFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#ACDAEFFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#B3DDF0FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#B3DDF0FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#B4DDF0FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#BBE1F2FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#C4E5F4FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#CBE8F5FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#CBE8F5FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#CCE8F5FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#D1EBF6FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#D1EBF6FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#D7EDF7FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#DAEFF8FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#DBEFF8FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#E8F5FBFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#F5FAFDFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#FFFFFFFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"}]},{"id":"gf_gp","name":"GF/GP","type":"numeric","minWidth":70,"align":"center","format":{"cell":{"digits":2},"aggregated":{"digits":2}}},{"id":"ga_gp","name":"GA/GP","type":"numeric","minWidth":70,"align":"center","format":{"cell":{"digits":2},"aggregated":{"digits":2}}},{"id":"goal_differential","name":"DIFF","type":"numeric","minWidth":60,"align":"center","style":[{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#333","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#333","fontWeight":"bold"},{"color":"#333","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"}]},{"id":"l10","name":"L10","type":["glue","character"],"minWidth":70,"align":"center","sortable":false},{"id":"streak","name":"STRK","type":"character","minWidth":60,"align":"center","sortable":false}],"searchable":true,"pagination":false,"compact":true,"inline":true,"theme":{"borderColor":"#CDCDCD","style":{"fontFamily":"Outfit"},"headerStyle":{"&:hover[aria-sort]":{"background":"hsl(0, 0%, 80%)"},"&[aria-sort='ascending'], &[aria-sort='descending']":{"background":"#555","color":"#FFF"},"borderColor":"#333"},"searchInputStyle":{"width":"31%","backgroundColor":"#F9F9F9"}},"language":{"searchPlaceholder":"SEARCH FOR A TEAM..."},"dataKey":"16aa8adaff0c1cc0f5a8683e0dcf1d22"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-895420e2efb4ad934749" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-895420e2efb4ad934749">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"rank":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32],"team_logo":["https://a.espncdn.com/i/teamlogos/nhl/500/car.png","https://a.espncdn.com/i/teamlogos/nhl/500/bos.png","https://a.espncdn.com/i/teamlogos/nhl/500/edm.png","https://a.espncdn.com/i/teamlogos/nhl/500/tb.png","https://a.espncdn.com/i/teamlogos/nhl/500/min.png","https://a.espncdn.com/i/teamlogos/nhl/500/mtl.png","https://a.espncdn.com/i/teamlogos/nhl/500/nj.png","https://a.espncdn.com/i/teamlogos/nhl/500/vgk.png","https://a.espncdn.com/i/teamlogos/nhl/500/dal.png","https://a.espncdn.com/i/teamlogos/nhl/500/ott.png","https://a.espncdn.com/i/teamlogos/nhl/500/nsh.png","https://a.espncdn.com/i/teamlogos/nhl/500/col.png","https://a.espncdn.com/i/teamlogos/nhl/500/wsh.png","https://a.espncdn.com/i/teamlogos/nhl/500/sea.png","https://a.espncdn.com/i/teamlogos/nhl/500/nyr.png","https://a.espncdn.com/i/teamlogos/nhl/500/utah.png","https://a.espncdn.com/i/teamlogos/nhl/500/ana.png","https://a.espncdn.com/i/teamlogos/nhl/500/buf.png","https://a.espncdn.com/i/teamlogos/nhl/500/fla.png","https://a.espncdn.com/i/teamlogos/nhl/500/nyi.png","https://a.espncdn.com/i/teamlogos/nhl/500/tor.png","https://a.espncdn.com/i/teamlogos/nhl/500/det.png","https://a.espncdn.com/i/teamlogos/nhl/500/stl.png","https://a.espncdn.com/i/teamlogos/nhl/500/cbj.png","https://a.espncdn.com/i/teamlogos/nhl/500/cgy.png","https://a.espncdn.com/i/teamlogos/nhl/500/wpg.png","https://a.espncdn.com/i/teamlogos/nhl/500/pit.png","https://a.espncdn.com/i/teamlogos/nhl/500/la.png","https://a.espncdn.com/i/teamlogos/nhl/500/sj.png","https://a.espncdn.com/i/teamlogos/nhl/500/phi.png","https://a.espncdn.com/i/teamlogos/nhl/500/chi.png","https://a.espncdn.com/i/teamlogos/nhl/500/van.png"],"team_name":["Carolina Hurricanes","Boston Bruins","Edmonton Oilers","Tampa Bay Lightning","Minnesota Wild","Montréal Canadiens","New Jersey Devils","Vegas Golden Knights","Dallas Stars","Ottawa Senators","Nashville Predators","Colorado Avalanche","Washington Capitals","Seattle Kraken","New York Rangers","Utah Mammoth","Anaheim Ducks","Buffalo Sabres","Florida Panthers","New York Islanders","Toronto Maple Leafs","Detroit Red Wings","St. Louis Blues","Columbus Blue Jackets","Calgary Flames","Winnipeg Jets","Pittsburgh Penguins","Los Angeles Kings","San Jose Sharks","Philadelphia Flyers","Chicago Blackhawks","Vancouver Canucks"],"conference_name":["Eastern","Eastern","Western","Eastern","Western","Eastern","Eastern","Western","Western","Eastern","Western","Western","Eastern","Western","Eastern","Western","Western","Eastern","Eastern","Eastern","Eastern","Eastern","Western","Eastern","Western","Western","Eastern","Western","Western","Eastern","Western","Western"],"division_name":["Metropolitan","Atlantic","Pacific","Atlantic","Central","Atlantic","Metropolitan","Pacific","Central","Atlantic","Central","Central","Metropolitan","Pacific","Metropolitan","Central","Pacific","Atlantic","Atlantic","Metropolitan","Atlantic","Atlantic","Central","Metropolitan","Pacific","Central","Metropolitan","Pacific","Pacific","Metropolitan","Central","Pacific"],"games_played":[19,18,18,16,19,17,17,19,17,18,17,18,15,16,18,18,17,17,18,16,18,18,17,15,17,17,17,15,19,18,18,19],"wins":[14,13,12,11,12,11,12,12,10,11,8,10,9,9,10,10,9,8,9,7,8,7,7,7,7,6,6,5,7,4,4,3],"losses":[3,4,3,3,3,3,5,5,5,6,4,6,6,6,7,7,7,6,7,6,8,8,8,8,9,8,9,8,11,10,13,15],"ot_losses":[2,1,3,2,4,3,0,2,2,1,5,2,0,1,1,1,1,3,2,3,2,3,2,0,1,3,2,2,1,4,1,1],"points":[30,27,27,24,28,25,24,26,22,23,21,22,18,19,21,21,19,19,20,17,18,17,16,14,15,15,14,12,15,12,9,7],"point_pctg":[0.789474,0.75,0.75,0.75,0.736842,0.735294,0.705882,0.684211,0.647059,0.638889,0.617647,0.611111,0.6,0.59375,0.583333,0.583333,0.558824,0.558824,0.555556,0.53125,0.5,0.472222,0.470588,0.466667,0.441176,0.441176,0.411765,0.4,0.394737,0.333333,0.25,0.184211],"gf_gp":[4.10526315789474,3.77777777777778,4.16666666666667,3.75,3.31578947368421,3.58823529411765,3.64705882352941,3.36842105263158,2.88235294117647,3.22222222222222,3.05882352941176,4,3.53333333333333,3.5625,3.05555555555556,3.5,3.76470588235294,2.94117647058824,3.11111111111111,2.9375,3.55555555555556,2.72222222222222,2.94117647058824,2.66666666666667,2.47058823529412,2.64705882352941,3.29411764705882,3,2.52631578947368,2.16666666666667,2.16666666666667,2.89473684210526],"ga_gp":[2.36842105263158,2.27777777777778,3.05555555555556,3.0625,2.26315789473684,3.11764705882353,3,2.68421052631579,2.41176470588235,3,3,3.11111111111111,3.4,3.5625,2.88888888888889,3.5,3.76470588235294,3.35294117647059,3.05555555555556,3.0625,3.33333333333333,3.11111111111111,3.11764705882353,3.13333333333333,3.52941176470588,3.52941176470588,3.52941176470588,3.46666666666667,3.63157894736842,3.38888888888889,4.22222222222222,4.57894736842105],"goal_differential":[33,27,20,11,20,8,11,13,8,4,1,16,2,0,3,0,0,-7,1,-2,4,-7,-3,-7,-18,-15,-4,-7,-21,-22,-37,-32],"l10":["7-2-1","7-2-1","6-2-2","7-1-2","6-1-3","8-0-2","8-2-0","5-3-2","7-2-1","5-4-1","6-2-2","5-4-1","6-4-0","5-4-1","4-5-1","4-5-1","5-4-1","5-3-2","5-5-0","4-3-3","5-5-0","4-5-1","4-5-1","5-5-0","6-3-1","2-7-1","3-6-1","5-5-0","3-7-0","4-5-1","1-8-1","1-9-0"],"streak":["W2","W4","W1","W3","OT1","W2","W4","W3","W1","W2","W4","W1","W1","L1","W3","L1","W4","L1","L2","OT1","L2","L3","L1","L1","L1","W2","W1","L1","L5","L2","L4","L5"]},"columns":[{"id":"rank","name":"Rank","type":"numeric","minWidth":60,"align":"center","maxWidth":55},{"id":"team_logo","name":"","type":"character","minWidth":60,"align":"center","sortable":false,"cell":[{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/car.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/bos.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/edm.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/tb.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/min.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/mtl.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/nj.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/vgk.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/dal.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/ott.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/nsh.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/col.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/wsh.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/sea.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/nyr.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/utah.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/ana.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/buf.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/fla.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/nyi.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/tor.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/det.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/stl.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/cbj.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/cgy.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/wpg.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/pit.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/la.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/sj.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/phi.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/chi.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/van.png","align":"center","height":"25","width":"25"},"children":[]}]}]}],"maxWidth":50},{"id":"team_name","name":"Team","type":"character","minWidth":180,"align":"left"},{"id":"conference_name","name":"Conf","type":"character","minWidth":80,"align":"center"},{"id":"division_name","name":"Division","type":"character","minWidth":100,"align":"center"},{"id":"games_played","name":"GP","type":"numeric","minWidth":60,"align":"center"},{"id":"wins","name":"W","type":"numeric","minWidth":60,"align":"center"},{"id":"losses","name":"L","type":"numeric","minWidth":60,"align":"center"},{"id":"ot_losses","name":"OTL","type":"numeric","minWidth":60,"align":"center"},{"id":"points","name":"PTS","type":"numeric","minWidth":60,"align":"center","style":{"fontWeight":"bold"}},{"id":"point_pctg","name":"P%","type":"numeric","minWidth":70,"align":"center","format":{"cell":{"digits":3},"aggregated":{"digits":3}},"style":[{"background":"#64B5DDFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#72BCE0FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#72BCE0FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#72BCE0FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#77BFE2FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#78BFE2FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#83C5E5FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#8BC9E7FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#99D1EBFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#9CD2EBFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#A2D5EDFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#A4D6EDFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#A7D8EEFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#A9D8EEFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#ACDAEFFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#ACDAEFFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#B3DDF0FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#B3DDF0FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#B4DDF0FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#BBE1F2FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#C4E5F4FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#CBE8F5FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#CBE8F5FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#CCE8F5FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#D1EBF6FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#D1EBF6FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#D7EDF7FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#DAEFF8FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#DBEFF8FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#E8F5FBFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#F5FAFDFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#FFFFFFFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"}]},{"id":"gf_gp","name":"GF/GP","type":"numeric","minWidth":70,"align":"center","format":{"cell":{"digits":2},"aggregated":{"digits":2}}},{"id":"ga_gp","name":"GA/GP","type":"numeric","minWidth":70,"align":"center","format":{"cell":{"digits":2},"aggregated":{"digits":2}}},{"id":"goal_differential","name":"DIFF","type":"numeric","minWidth":60,"align":"center","style":[{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#333","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#333","fontWeight":"bold"},{"color":"#333","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"}]},{"id":"l10","name":"L10","type":["glue","character"],"minWidth":70,"align":"center","sortable":false},{"id":"streak","name":"STRK","type":"character","minWidth":60,"align":"center","sortable":false}],"searchable":true,"pagination":false,"compact":true,"inline":true,"theme":{"borderColor":"#CDCDCD","style":{"fontFamily":"Outfit"},"headerStyle":{"&:hover[aria-sort]":{"background":"hsl(0, 0%, 80%)"},"&[aria-sort='ascending'], &[aria-sort='descending']":{"background":"#555","color":"#FFF"},"borderColor":"#333"},"searchInputStyle":{"width":"31%","backgroundColor":"#F9F9F9"}},"language":{"searchPlaceholder":"SEARCH FOR A TEAM..."},"dataKey":"16aa8adaff0c1cc0f5a8683e0dcf1d22"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 
-<p>Copyright &copy; 2026 Stephan Teodosescu</p>
+<p>Copyright &copy; Stephan Teodosescu (<a href="https://betweenthepipes.substack.com/">Between the Pipes</a>)</p>
 
 
 

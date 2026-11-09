@@ -43,6 +43,22 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap">
+<!-- Font Awesome has no Substack icon, and the navbar escapes HTML in `text`,
+     so _site.yml uses `icon: fa-substack` and the logo is drawn here as a CSS
+     mask (Simple Icons path) filled with currentColor, so it matches the other
+     navbar icons' colour and hover state. -->
+<style>
+  .fa-substack::before {
+    content: "";
+    display: inline-block;
+    width: 0.95em;
+    height: 0.95em;
+    vertical-align: -0.1em;
+    background-color: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z'/%3E%3C/svg%3E") no-repeat center / contain;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z'/%3E%3C/svg%3E") no-repeat center / contain;
+  }
+</style>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -287,7 +303,7 @@ $(document).ready(function () {
 </li>
 <li>
   <a href="https://betweenthepipes.substack.com/">
-    <span class="fa fa-wordpress fa-lg"></span>
+    <span class="fa fa-substack fa-lg"></span>
      
   </a>
 </li>
@@ -349,7 +365,7 @@ $(document).ready(function () {
 </div>
 </div>
 
-<p>Copyright &copy; 2026 Stephan Teodosescu</p>
+<p>Copyright &copy; Stephan Teodosescu (<a href="https://betweenthepipes.substack.com/">Between the Pipes</a>)</p>
 
 
 
