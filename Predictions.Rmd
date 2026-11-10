@@ -319,7 +319,7 @@ tagList(
 ***
 ### How the model works
 
-- **Team ratings.** Every team starts the season with a rating taken from its preseason points over/under. As games are played, the rating moves toward the team's actual results: 70% expected-goal differential per game, 30% real goal differential. By about 40 games, the season counts for half.
+- **Team ratings.** Each team starts from its preseason points over/under, and its play this season gradually takes over: a third of the rating after 20 games, half after 40, two-thirds by season's end. This season's play is measured mostly by expected-goal differential (70%) and partly by actual goal differential (30%).
 - **Games.** Each remaining game is played out by drawing each team's goals from its rating, with a small home-ice edge. Ties go to overtime or a shootout, and the loser gets a point. The share of games reaching overtime is matched to the NHL's actual rate.
 - **Uncertainty.** Each simulated season draws its own team strengths around the ratings, so the forecast allows for teams being better or worse than they've looked so far.
 - **Playoffs.** The top three teams in each division and two wild cards per conference qualify, with ties broken by regulation wins. The bracket is played out in best-of-seven series, with home ice going to the team with more points.

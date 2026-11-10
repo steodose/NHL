@@ -81,6 +81,11 @@ nflseedR is NFL-only, so the simulation is our own. Constants are in `sim_const`
   `data/playoff_odds_history_<season>.csv` (same-date rows replaced), which
   CI commits. `R/backfill_odds.R` rebuilt the 2026-27 history from opening
   night (2,000 sims per date); it is a one-off, not run in CI.
+- **Open idea (not done):** slide the in-season blend from xG toward actual
+  goals as GP grows (actual goals become more reliable with sample size),
+  instead of the fixed 70/30. Test it before switching: backtest a past
+  season's mid-season ratings against rest-of-season results (e.g. log loss
+  on game outcomes) with the fixed and the sliding weights.
 - The odds-over-time charts are plain Plotly.js (`R/odds_chart.js`), loaded
   from jsDelivr with the data inlined as JSON. Don't switch to the R plotly
   package: it commits a 3.6 MB plotly.js into `site_libs/`. Charts in hidden
