@@ -1,0 +1,326 @@
+---
+title: "Predictions"
+date: 'Last updated: `r format(Sys.Date())`'
+output:
+  html_document:
+    fig_width: 10
+    fig_height: 7
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+```{r, echo=FALSE}
+htmltools::img(src = "nhl-logo.png",
+               alt = "logo",
+               style = "position:absolute; top:60px; right:0; padding:10px; width:70px;")
+```
+
+```{css, echo=FALSE}
+/* Room for the full simulation table. */
+.main-container { max-width: 1320px; }
+/* Simulation table, styled after FiveThirtyEight (via Tom Mock), in Outfit. */
+.standings { font-family: Outfit, "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 14px; }
+.standings .title { margin: 18px 0; font-size: 16px; }
+.standings .title h2 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+.standings-table { margin-bottom: 12px; }
+.header, .group-header { display: flex; flex-direction: column; justify-content: flex-end; }
+.header { border-bottom-color: #555; font-size: 12px; font-weight: 600; text-transform: uppercase; }
+.header:hover, .header[aria-sort="ascending"], .header[aria-sort="descending"] { background-color: #eee; }
+.border-left { border-left: 2px solid #555; }
+.cell { box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15); padding: 5px 10px; }
+.group-last .cell { box-shadow: inset 0 -2px 0 #555; }
+.team { display: flex; align-items: center; }
+.team-name { font-size: 15px; font-weight: 700; }
+.team-pts { margin-left: 6px; color: #888; font-size: 13px; font-weight: 400; }
+.logo { margin-right: 8px; height: 24px; }
+.number { font-variant-numeric: tabular-nums; font-size: 14px; line-height: 30px; white-space: pre; }
+.source { color: #666; font-size: 12px; }
+```
+
+```{r libraries}
+source("R/helpers.R")
+source("R/load_pbp.R")
+source("R/sim_model.R")
+library(gt)
+library(gtExtras)
+library(reactable)
+library(ggimage)
+library(ggtext)
+library(scales)
+library(htmltools)
+```
+
+```{r run-model}
+pbp_full <- load_regular_pbp(keep_shootouts = TRUE)
+
+sched <- load_nhl_schedule(nhl_season) %>% filter(game_type == "R")
+if (nrow(sched) == 0) stop("load_nhl_schedule(", nhl_season, ") returned no rows.")
+
+preseason <- read_preseason()
+standings_live <- nhl_standings()
+divisions <- standings_live %>%
+  transmute(team = team_abbr, division = division_name, conference = conference_name)
+
+# Run as of the latest final game in the schedule. Standings are rebuilt from
+# the same schedule, so a game the live NHL standings already count but the
+# schedule release doesn't yet is simply still "remaining": nothing is
+# double-counted.
+thru_date <- sched %>%
+  filter(game_state %in% c("OFF", "FINAL")) %>%
+  summarise(d = max(as.Date(game_date))) %>%
+  pull(d)
+thru_label <- str_squish(format(thru_date, "%B %e, %Y"))
+
+n_sims <- 10000
+pred <- predict_as_of(thru_date, sched, pbp_full, preseason, divisions, n_sims = n_sims)
+odds_history <- update_odds_history(pred)
+
+odds <- pred$team_odds %>%
+  left_join(divisions, by = "team") %>%
+  left_join(select(standings_live, team = team_abbr, team_common_name), by = "team") %>%
+  left_join(nhl_teams, by = c("team" = "team_abbr"))
+```
+
+Forecasts for the `r season_label` NHL season, from `r format(n_sims, big.mark = ",")` simulations of the remaining schedule, thru games as of `r thru_label`.
+
+***
+## Predictions {.tabset}
+
+### Simulations
+
+Each team's chances of making the playoffs, winning its division, winning the Presidents' Trophy, reaching the Stanley Cup Final (Win Conf) and winning the Cup, plus its odds in the draft lottery. **Rating** is the model's power rating, in goals per game above or below a league-average opponent on neutral ice: +0.50 means the team would be expected to outscore an average team by half a goal a game. It starts from the preseason points over/under and moves toward what the team has actually done as the season goes on. Click a column header to sort.
+
+```{r sim-table}
+playoff_pct_color <- col_numeric(palette = my_color_pal, domain = c(0, 1))
+draft_pct_color <- col_numeric(palette = c("white", "lightsalmon", "salmon"), domain = c(0, 1))
+
+format_pct <- function(value) {
+  if (value == 0) "  – "        # en dash for 0%
+  else if (value == 1) "✓"      # check mark for 100%
+  else if (value < 0.01) " <1%"
+  else if (value > 0.99) ">99%"
+  else sprintf("%.1f%%", value * 100)
+}
+
+pct_column <- function(maxWidth = 80, class = NULL, color = playoff_pct_color, ...) {
+  colDef(
+    defaultSortOrder = "desc",
+    cell = format_pct,
+    maxWidth = maxWidth,
+    align = "center",
+    class = paste("cell number", class),
+    style = function(value) {
+      if (value < 0.01) list(color = "#aaa")
+      else list(color = "#111", background = color(value))
+    },
+    ...
+  )
+}
+
+sim_df <- odds %>%
+  left_join(select(pred$ratings, team, rating), by = "team") %>%
+  arrange(division, desc(proj_pts)) %>%
+  select(team = team_common_name, team_name, team_logo, group = division, pts,
+         proj_pts, rating,
+         make_playoffs, win_div, presidents, win_conf, win_cup,
+         first_pick, top3_pick)
+
+sim_table <- reactable(
+  select(sim_df, -team_logo, -team_name, -pts),
+  pagination = FALSE,
+  defaultSorted = list(group = "asc", proj_pts = "desc"),
+  defaultSortOrder = "desc",
+  defaultColDef = colDef(class = "cell", headerClass = "header", vAlign = "center"),
+  defaultColGroup = colGroup(headerClass = "group-header"),
+  columnGroups = list(
+    colGroup(name = "PLAYOFF CHANCES",
+             columns = c("make_playoffs", "win_div", "presidents", "win_conf", "win_cup")),
+    colGroup(name = "DRAFT LOTTERY", columns = c("first_pick", "top3_pick"))
+  ),
+  columns = list(
+    team = colDef(
+      name = "Team", minWidth = 190, defaultSortOrder = "asc",
+      # Nickname with current points beside it in grey, as The Athletic does.
+      cell = function(value, index) {
+        div(class = "team",
+            img(class = "logo", alt = paste(sim_df$team_name[index], "logo"),
+                src = sim_df$team_logo[index]),
+            div(class = "team-name", value,
+                span(class = "team-pts", glue("{sim_df$pts[index]} pts."))))
+      }
+    ),
+    group = colDef(name = "Division", defaultSortOrder = "asc", align = "center",
+                   minWidth = 130, class = "cell group"),
+    proj_pts = colDef(name = "Proj. PTS", align = "center", maxWidth = 80,
+                      format = colFormat(digits = 0), class = "cell number"),
+    rating = colDef(name = "Rating", align = "center", maxWidth = 80,
+                    header = function(value) span(title = "Goals per game above or below a league-average opponent on neutral ice", value),
+                    class = "cell number",
+                    cell = function(value) sprintf("%+.2f", value)),
+    make_playoffs = pct_column(name = "Make Playoffs", class = "border-left"),
+    win_div = pct_column(name = "Win Div"),
+    presidents = pct_column(name = "Presidents' Trophy", maxWidth = 95),
+    win_conf = pct_column(name = "Win Conf"),
+    win_cup = pct_column(name = "Win Cup"),
+    first_pick = pct_column(name = "1st Pick", class = "border-left", color = draft_pct_color),
+    top3_pick = pct_column(name = "Top 3 Pick", color = draft_pct_color)
+  ),
+  # Heavier border between divisions while sorted by division.
+  rowClass = JS("
+    function(rowInfo, state) {
+      const firstSorted = state.sorted[0]
+      if (firstSorted && firstSorted.id === 'group') {
+        const nextRow = state.pageRows[rowInfo.viewIndex + 1]
+        if (nextRow && rowInfo.row.group !== nextRow.group) {
+          return 'group-last'
+        }
+      }
+    }"),
+  showSortIcon = FALSE,
+  borderless = TRUE,
+  class = "standings-table"
+)
+
+div(
+  class = "standings",
+  div(class = "title",
+      h2(glue("{season_label} NHL Simulations")),
+      glue("Thru games as of {thru_label}")),
+  sim_table,
+  div(class = "source",
+      "Simulation by Stephan Teodosescu (",
+      a("Between the Pipes", href = "https://betweenthepipes.substack.com/"),
+      glue(") via {format(n_sims, big.mark = ',')} simulated seasons | Data: fastRhockey / Hockey Reference"))
+)
+```
+
+### Today's Games
+
+```{r todays-games-data}
+today_pt <- as.Date(format(Sys.time(), tz = "America/Los_Angeles"))
+upcoming <- filter(pred$games, game_date >= today_pt)
+game_day <- if (nrow(upcoming) > 0) min(upcoming$game_date) else NA
+```
+
+`r if (is.na(game_day)) "No regular-season games left to forecast." else glue("Win probabilities for {str_squish(format(game_day, '%A, %B %e'))}, including overtime and shootouts, from the same simulations as the Simulations tab. Projected goals are each team's expected goals per game against this opponent.")`
+
+```{r todays-games}
+if (!is.na(game_day)) {
+  logo <- select(nhl_teams, team_abbr, team_name, team_logo)
+  playoff <- select(pred$team_odds, team, make_playoffs)
+
+  day_games <- upcoming %>%
+    filter(game_date == game_day) %>%
+    left_join(rename_with(logo, ~ paste0("away_", .x)), by = c("away" = "away_team_abbr")) %>%
+    left_join(rename_with(logo, ~ paste0("home_", .x)), by = c("home" = "home_team_abbr")) %>%
+    left_join(rename(playoff, away_playoff = make_playoffs), by = c("away" = "team")) %>%
+    left_join(rename(playoff, home_playoff = make_playoffs), by = c("home" = "team")) %>%
+    mutate(win_prob = map2(1 - home_wp, home_wp, c),
+           proj = sprintf("%.1f – %.1f", away_xg, home_xg)) %>%
+    select(away_team_logo, away_team_name, away_playoff, win_prob,
+           home_playoff, home_team_name, home_team_logo, proj)
+
+  day_games %>%
+    gt() %>%
+    gt_img_rows(away_team_logo, height = 30, img_source = "web") %>%
+    gt_img_rows(home_team_logo, height = 30, img_source = "web") %>%
+    gt_plt_bar_stack(win_prob, width = 70,
+                     labels = c("  Away  ", "  Home  "),
+                     palette = c("#d73027", "#2b7bb9"),
+                     fmt_fn = label_percent(accuracy = 0.1)) %>%
+    fmt_percent(c(away_playoff, home_playoff), decimals = 0) %>%
+    cols_label(away_team_logo = "", away_team_name = "Away",
+               away_playoff = "Playoff %", home_playoff = "Playoff %",
+               home_team_name = "Home", home_team_logo = "",
+               proj = "Proj. Goals") %>%
+    cols_align("center", columns = c(away_playoff, home_playoff, proj)) %>%
+    cols_align("right", columns = away_team_name) %>%
+    tab_header(title = md("**Today's Games**"),
+               subtitle = str_squish(format(game_day, "%A, %B %e, %Y"))) %>%
+    tab_source_note(md(glue("Win probability includes OT/SO. Playoff % = current chance to make the playoffs. Simulation by Stephan Teodosescu (Between the Pipes) via {format(n_sims, big.mark = ',')} simulated seasons."))) %>%
+    gt_theme_538(quiet = TRUE) %>%
+    opt_table_font(font = list(gt::google_font("Outfit"), default_fonts()))
+}
+```
+
+### Playoff Odds Over Time {.tabset}
+
+Each team's chance of making the playoffs after every day of the season, from the same model. Earlier days are re-run using only the games played up to that date.
+
+```{r odds-history-data}
+hist_df <- odds_history %>%
+  left_join(divisions, by = "team") %>%
+  left_join(nhl_teams, by = c("team" = "team_abbr"))
+
+# Push sorted values apart to at least `gap`, then shift the block back so it
+# stays centred on the original values (and inside 0-1 where possible).
+spread_out <- function(y, gap) {
+  out <- y
+  for (i in seq_along(out)[-1]) out[i] <- max(out[i], out[i - 1] + gap)
+  out <- out - (mean(out) - mean(y))
+  out <- out - max(0, max(out) - 1.04)
+  out <- out + max(0, -0.02 - min(out))
+  out
+}
+
+# Western Conference first, as on the standings page.
+division_order <- c("Central", "Pacific", "Atlantic", "Metropolitan")
+
+# One JSON blob per division for the Plotly charts below. Logos sit just past
+# the line ends, nudged apart vertically so teams bunched at the same odds
+# (often 0% or 100%) don't overlap.
+odds_json <- map(set_names(division_order), function(d) {
+  df <- filter(hist_df, division == d)
+  ends <- df %>% group_by(team) %>% slice_max(date, n = 1) %>% ungroup() %>%
+    arrange(make_playoffs) %>%
+    mutate(logo_y = spread_out(make_playoffs, gap = 0.075)) %>%
+    arrange(desc(make_playoffs))
+  list(teams = map(seq_len(nrow(ends)), function(i) {
+    t <- filter(df, team == ends$team[i]) %>% arrange(date)
+    list(abbr = ends$team[i], name = ends$team_name[i],
+         color = ends$team_color[i], logo = ends$team_logo[i],
+         x = format(t$date), y = round(t$make_playoffs, 4),
+         logo_y = ends$logo_y[i])
+  }))
+})
+```
+
+```{r odds-history-tabs, results = "asis"}
+for (d in division_order) {
+  cat("#### ", d, "\n\n", sep = "")
+  cat(glue('<div class="odds-chart" data-division="{d}" style="width:100%;height:540px;"></div>'), "\n\n")
+}
+```
+
+```{r odds-history-js}
+# Interactive charts in plain Plotly.js, loaded from a CDN with the data inline
+# (a few KB). The R plotly package would instead commit its 3.6 MB bundle to
+# site_libs/. Charts in hidden tabs have no width, so each is drawn the first
+# time its tab is shown.
+odds_meta <- list(
+  first = format(min(hist_df$date)), last = format(max(hist_df$date)),
+  subtitle = glue("Chance to make the playoffs by date | {season_label} regular season | Thru games as of {thru_label}"),
+  caption = "Data: fastRhockey / Hockey Reference | Model re-run daily | Plot: @steodosescu"
+)
+tagList(
+  tags$script(src = "https://cdn.jsdelivr.net/npm/plotly.js-basic-dist-min@2.35.2/plotly-basic.min.js"),
+  tags$script(HTML(paste0(
+    "window.NHL_ODDS = ", jsonlite::toJSON(odds_json, auto_unbox = TRUE), ";\n",
+    "window.NHL_ODDS_META = ", jsonlite::toJSON(odds_meta, auto_unbox = TRUE), ";\n",
+    readr::read_file("R/odds_chart.js")
+  )))
+)
+```
+
+## {-}
+
+***
+### How the model works
+
+- **Team ratings.** Every team starts the season with a rating taken from its preseason points over/under. As games are played, the rating moves toward the team's actual results: 70% expected-goal differential per game, 30% real goal differential. By about 40 games, the season counts for half.
+- **Games.** Each remaining game is played out by drawing each team's goals from its rating, with a small home-ice edge. Ties go to overtime or a shootout, and the loser gets a point. The share of games reaching overtime is matched to the NHL's actual rate.
+- **Uncertainty.** Each simulated season draws its own team strengths around the ratings, so the forecast allows for teams being better or worse than they've looked so far.
+- **Playoffs.** The top three teams in each division and two wild cards per conference qualify, with ties broken by regulation wins. The bracket is played out in best-of-seven series, with home ice going to the team with more points.
+- **Draft lottery.** The 16 non-playoff teams go into the NHL's two-draw lottery, using the official odds. A team can move up at most 10 spots.

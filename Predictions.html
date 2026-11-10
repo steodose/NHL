@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Predictions</title>
+
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/core-js-2.5.3/shim.min.js"></script>
+<script src="site_libs/react-18.2.0/react.min.js"></script>
+<script src="site_libs/react-18.2.0/react-dom.min.js"></script>
+<script src="site_libs/reactwidget-2.0.0/react-tools.js"></script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="site_libs/reactable-0.4.4/reactable.css" rel="stylesheet" />
+<script src="site_libs/reactable-binding-0.4.4/reactable.js"></script>
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+<!-- Outfit is loaded as a webfont rather than relied on as an installed
+     system font. Safari restricts CSS access to locally installed fonts as a
+     fingerprinting defence, so `font-family: Outfit` on reactable tables
+     would otherwise fall back to the default serif (Times). Only the tables and
+     charts use Outfit; page text keeps the cosmo theme font (as on the NFL
+     site). Included on every page via `_site.yml`; changing it means re-rendering every page. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap">
+<!-- Font Awesome has no Substack icon, and the navbar escapes HTML in `text`,
+     so _site.yml uses `icon: fa-substack` and the logo is drawn here as a CSS
+     mask (Simple Icons path) filled with currentColor, so it matches the other
+     navbar icons' colour and hover state. -->
+<style>
+  .fa-substack::before {
+    content: "";
+    display: inline-block;
+    width: 0.95em;
+    height: 0.95em;
+    vertical-align: -0.1em;
+    background-color: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z'/%3E%3C/svg%3E") no-repeat center / contain;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z'/%3E%3C/svg%3E") no-repeat center / contain;
+  }
+</style>
+<!-- Open every link that leaves the site in a new tab: navbar icons, the
+     footer, and links in page text. Relative links (other pages, in-page
+     anchors) are left alone. Set on page load because _site.yml and R
+     Markdown links have no target option. -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll("a[href]").forEach(function (a) {
+      // The site's own links are all relative, so any absolute http(s) URL
+      // leaves it - including steodose.github.io/nhl-scores, which shares
+      // this site's host and would slip past a host comparison.
+      if (/^https?:\/\//i.test(a.getAttribute("href"))) {
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+      }
+    });
+  });
+</script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"><div><img src="nhl-logo.png" width="24px"></img> NHL Analytics</div></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Summary</a>
+</li>
+<li>
+  <a href="Teams.html">Teams</a>
+</li>
+<li>
+  <a href="Players.html">Players</a>
+</li>
+<li>
+  <a href="Predictions.html">Predictions</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://stephanteodosescu.com/">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://twitter.com/steodosescu">
+    <span class="fa fa-twitter fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://github.com/steodose/NHL">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://betweenthepipes.substack.com/">
+    <span class="fa fa-substack fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Predictions</h1>
+<h4 class="date">Last updated: 2026-11-09</h4>
+
+</div>
+
+
+<img src="nhl-logo.png" alt="logo" style="position:absolute; top:60px; right:0; padding:10px; width:70px;"/>
+<style type="text/css">
+/* Room for the full simulation table. */
+.main-container { max-width: 1320px; }
+/* Simulation table, styled after FiveThirtyEight (via Tom Mock), in Outfit. */
+.standings { font-family: Outfit, "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 14px; }
+.standings .title { margin: 18px 0; font-size: 16px; }
+.standings .title h2 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+.standings-table { margin-bottom: 12px; }
+.header, .group-header { display: flex; flex-direction: column; justify-content: flex-end; }
+.header { border-bottom-color: #555; font-size: 12px; font-weight: 600; text-transform: uppercase; }
+.header:hover, .header[aria-sort="ascending"], .header[aria-sort="descending"] { background-color: #eee; }
+.border-left { border-left: 2px solid #555; }
+.cell { box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15); padding: 5px 10px; }
+.group-last .cell { box-shadow: inset 0 -2px 0 #555; }
+.team { display: flex; align-items: center; }
+.team-name { font-size: 15px; font-weight: 700; }
+.team-pts { margin-left: 6px; color: #888; font-size: 13px; font-weight: 400; }
+.logo { margin-right: 8px; height: 24px; }
+.number { font-variant-numeric: tabular-nums; font-size: 14px; line-height: 30px; white-space: pre; }
+.source { color: #666; font-size: 12px; }
+</style>
+<p>Forecasts for the 2026-27 NHL season, from 10,000 simulations of the remaining schedule, thru games as of November 8, 2026.</p>
+<hr />
+<div id="predictions" class="section level2 tabset">
+<h2 class="tabset">Predictions</h2>
+<div id="simulations" class="section level3">
+<h3>Simulations</h3>
+<p>Each team’s chances of making the playoffs, winning its division, winning the Presidents’ Trophy, reaching the Stanley Cup Final (Win Conf) and winning the Cup, plus its odds in the draft lottery. <strong>Rating</strong> is the model’s power rating, in goals per game above or below a league-average opponent on neutral ice: +0.50 means the team would be expected to outscore an average team by half a goal a game. It starts from the preseason points over/under and moves toward what the team has actually done as the season goes on. Click a column header to sort.</p>
+<div class="standings">
+<div class="title">
+<h2>2026-27 NHL Simulations</h2>
+Thru games as of November 8, 2026
+</div>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-ca72b41e557b728994b0" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-ca72b41e557b728994b0">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"team":["Lightning","Canadiens","Panthers","Bruins","Senators","Sabres","Maple Leafs","Red Wings","Wild","Avalanche","Stars","Mammoth","Predators","Blues","Jets","Blackhawks","Hurricanes","Devils","Capitals","Rangers","Islanders","Blue Jackets","Penguins","Flyers","Oilers","Golden Knights","Ducks","Kings","Kraken","Sharks","Flames","Canucks"],"group":["Atlantic","Atlantic","Atlantic","Atlantic","Atlantic","Atlantic","Atlantic","Atlantic","Central","Central","Central","Central","Central","Central","Central","Central","Metropolitan","Metropolitan","Metropolitan","Metropolitan","Metropolitan","Metropolitan","Metropolitan","Metropolitan","Pacific","Pacific","Pacific","Pacific","Pacific","Pacific","Pacific","Pacific"],"proj_pts":[108.389,102.7336,102.0454,99.7452,98.2116,94.2383,88.9574,84.2832,113.139,107.7354,103.1427,101.183,91.5096,85.5386,83.6012,66.7005,119.1126,108.2082,99.0589,92.6057,86.7737,85.5353,82.479,77.8804,110.5023,108.5791,94.4594,91.0217,83.9684,80.1242,76.671,60.0473],"rating":[0.475621239717126,0.189123668843582,0.435786401082898,0.00343860714293834,0.115118418897764,0.0511457448952454,-0.0125342789835982,-0.201079291950794,0.572754128359526,0.56861431349949,0.293973730741477,0.250669473157213,-0.222072270658519,-0.262711072920295,-0.357895004980769,-0.758662044084909,0.851495593790701,0.409879911878682,0.189290645783492,-0.0459937295957159,-0.244523250870251,-0.224395108729411,-0.22027734256629,-0.343536521487235,0.443660518765773,0.451114258090395,-0.00671901767583154,0.0354513097409579,-0.48255291962295,-0.36726486055291,-0.630669313520461,-0.956251936187319],"make_playoffs":[0.9316,0.7944,0.7845,0.6888,0.6278,0.4237,0.2053,0.084,0.994,0.9706,0.9083,0.8761,0.4627,0.2094,0.1431,0.0011,0.9988,0.9498,0.7166,0.4086,0.1634,0.1336,0.0688,0.0203,0.9892,0.9803,0.6738,0.4857,0.1845,0.0802,0.041,0],"win_div":[0.4538,0.1745,0.1572,0.0994,0.0733,0.0313,0.0079,0.0026,0.5591,0.2535,0.1071,0.0717,0.007,0.001,0.0006,0,0.8103,0.1561,0.0275,0.0042,0.0008,0.0008,0.0003,0,0.5347,0.4157,0.0311,0.0157,0.0022,0.0002,0.0004,0],"presidents":[0.0595,0.0148,0.0104,0.0052,0.0039,0.0011,0,0,0.1553,0.0552,0.018,0.0086,0.0003,0.0001,0,0,0.4521,0.0539,0.0055,0.0008,0,0.0001,0,0,0.092,0.0613,0.0013,0.0006,0,0,0,0],"win_conf":[0.1535,0.0624,0.1092,0.0301,0.0395,0.0216,0.0097,0.0018,0.2132,0.1984,0.092,0.0784,0.011,0.0048,0.0018,0,0.3784,0.1248,0.0467,0.0141,0.0034,0.0032,0.0014,0.0002,0.1688,0.1709,0.0291,0.0277,0.002,0.0017,0.0002,0],"win_cup":[0.0798,0.0276,0.0549,0.0097,0.0159,0.0084,0.0034,0.0002,0.1092,0.1017,0.0392,0.0322,0.0029,0.0019,0.0004,0,0.2493,0.0603,0.0177,0.0051,0.0005,0.0013,0.0006,0,0.0777,0.0802,0.0096,0.0098,0.0002,0.0003,0,0],"first_pick":[0.0003,0.0011,0.0013,0.0036,0.0031,0.0111,0.0227,0.0508,0,0.0003,0.0014,0.0021,0.0176,0.0395,0.0482,0.1515,0,0.0004,0.0052,0.0154,0.0349,0.04,0.0544,0.0767,0.0001,0.0002,0.0091,0.0168,0.0476,0.0639,0.0857,0.195],"top3_pick":[0.0014,0.0046,0.0052,0.0093,0.0108,0.0288,0.058,0.1147,0.0002,0.0015,0.0043,0.0057,0.0445,0.092,0.1183,0.5421,0,0.001,0.0127,0.0357,0.0837,0.0966,0.1313,0.2086,0.0004,0.0007,0.0234,0.0467,0.1129,0.1678,0.2314,0.8057]},"columns":[{"id":"team","name":"Team","type":"character","vAlign":"center","className":"cell","headerClassName":"header","defaultSortDesc":false,"cell":[{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"Tampa Bay Lightning logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/tb.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Lightning",{"name":"span","attribs":{"className":"team-pts"},"children":["24 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"Montreal Canadiens logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/mtl.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Canadiens",{"name":"span","attribs":{"className":"team-pts"},"children":["25 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"Florida Panthers logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/fla.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Panthers",{"name":"span","attribs":{"className":"team-pts"},"children":["20 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"Boston Bruins logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/bos.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Bruins",{"name":"span","attribs":{"className":"team-pts"},"children":["27 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"Ottawa Senators logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/ott.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Senators",{"name":"span","attribs":{"className":"team-pts"},"children":["23 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"Buffalo Sabres logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/buf.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Sabres",{"name":"span","attribs":{"className":"team-pts"},"children":["19 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"Toronto Maple Leafs logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/tor.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Maple Leafs",{"name":"span","attribs":{"className":"team-pts"},"children":["18 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"Detroit Red Wings logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/det.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Red Wings",{"name":"span","attribs":{"className":"team-pts"},"children":["17 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"Minnesota Wild logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/min.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Wild",{"name":"span","attribs":{"className":"team-pts"},"children":["28 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"Colorado Avalanche logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/col.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Avalanche",{"name":"span","attribs":{"className":"team-pts"},"children":["22 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"Dallas Stars logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/dal.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Stars",{"name":"span","attribs":{"className":"team-pts"},"children":["22 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"Utah Mammoth logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/utah.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Mammoth",{"name":"span","attribs":{"className":"team-pts"},"children":["21 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"Nashville Predators logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/nsh.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Predators",{"name":"span","attribs":{"className":"team-pts"},"children":["21 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"St. Louis Blues logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/stl.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Blues",{"name":"span","attribs":{"className":"team-pts"},"children":["16 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"Winnipeg Jets logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/wpg.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Jets",{"name":"span","attribs":{"className":"team-pts"},"children":["17 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"Chicago Blackhawks logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/chi.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Blackhawks",{"name":"span","attribs":{"className":"team-pts"},"children":["9 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"Carolina Hurricanes logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/car.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Hurricanes",{"name":"span","attribs":{"className":"team-pts"},"children":["30 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"New Jersey Devils logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/nj.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Devils",{"name":"span","attribs":{"className":"team-pts"},"children":["26 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"Washington Capitals logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/wsh.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Capitals",{"name":"span","attribs":{"className":"team-pts"},"children":["18 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"New York Rangers logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/nyr.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Rangers",{"name":"span","attribs":{"className":"team-pts"},"children":["21 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"New York Islanders logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/nyi.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Islanders",{"name":"span","attribs":{"className":"team-pts"},"children":["17 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"Columbus Blue Jackets logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/cbj.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Blue Jackets",{"name":"span","attribs":{"className":"team-pts"},"children":["14 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"Pittsburgh Penguins logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/pit.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Penguins",{"name":"span","attribs":{"className":"team-pts"},"children":["14 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"Philadelphia Flyers logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/phi.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Flyers",{"name":"span","attribs":{"className":"team-pts"},"children":["13 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"Edmonton Oilers logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/edm.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Oilers",{"name":"span","attribs":{"className":"team-pts"},"children":["27 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"Vegas Golden Knights logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/vgk.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Golden Knights",{"name":"span","attribs":{"className":"team-pts"},"children":["26 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"Anaheim Ducks logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/ana.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Ducks",{"name":"span","attribs":{"className":"team-pts"},"children":["21 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"Los Angeles Kings logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/la.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Kings",{"name":"span","attribs":{"className":"team-pts"},"children":["12 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"Seattle Kraken logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/sea.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Kraken",{"name":"span","attribs":{"className":"team-pts"},"children":["19 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"San Jose Sharks logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/sj.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Sharks",{"name":"span","attribs":{"className":"team-pts"},"children":["15 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"Calgary Flames logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/cgy.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Flames",{"name":"span","attribs":{"className":"team-pts"},"children":["17 pts."]}]}]},{"name":"div","attribs":{"className":"team"},"children":[{"name":"img","attribs":{"alt":"Vancouver Canucks logo","src":"https://a.espncdn.com/i/teamlogos/nhl/500/van.png","className":"logo"},"children":[]},{"name":"div","attribs":{"className":"team-name"},"children":["Canucks",{"name":"span","attribs":{"className":"team-pts"},"children":["7 pts."]}]}]}],"minWidth":190},{"id":"group","name":"Division","type":"character","vAlign":"center","className":"cell group","headerClassName":"header","defaultSortDesc":false,"minWidth":130,"align":"center"},{"id":"proj_pts","name":"Proj. PTS","type":"numeric","vAlign":"center","className":"cell number","headerClassName":"header","format":{"cell":{"digits":0},"aggregated":{"digits":0}},"maxWidth":80,"align":"center"},{"id":"rating","name":"Rating","type":"numeric","vAlign":"center","className":"cell number","headerClassName":"header","cell":["+0.48","+0.19","+0.44","+0.00","+0.12","+0.05","-0.01","-0.20","+0.57","+0.57","+0.29","+0.25","-0.22","-0.26","-0.36","-0.76","+0.85","+0.41","+0.19","-0.05","-0.24","-0.22","-0.22","-0.34","+0.44","+0.45","-0.01","+0.04","-0.48","-0.37","-0.63","-0.96"],"header":{"name":"span","attribs":{"title":"Goals per game above or below a league-average opponent on neutral ice"},"children":["Rating"]},"maxWidth":80,"align":"center"},{"id":"make_playoffs","name":"Make Playoffs","type":"numeric","vAlign":"center","className":"cell number border-left","headerClassName":"header","defaultSortDesc":true,"cell":["93.2%","79.4%","78.5%","68.9%","62.8%","42.4%","20.5%","8.4%",">99%","97.1%","90.8%","87.6%","46.3%","20.9%","14.3%"," <1%",">99%","95.0%","71.7%","40.9%","16.3%","13.4%","6.9%","2.0%","98.9%","98.0%","67.4%","48.6%","18.4%","8.0%","4.1%","  – "],"maxWidth":80,"align":"center","style":[{"color":"#111","background":"#75BDE1"},{"color":"#111","background":"#94CEE9"},{"color":"#111","background":"#96CFEA"},{"color":"#111","background":"#A8D8EE"},{"color":"#111","background":"#B2DDF0"},{"color":"#111","background":"#D2EBF7"},{"color":"#111","background":"#ECF7FC"},{"color":"#111","background":"#F7FCFE"},{"color":"#111","background":"#66B6DD"},{"color":"#111","background":"#6BB8DF"},{"color":"#111","background":"#7AC0E3"},{"color":"#111","background":"#82C4E4"},{"color":"#111","background":"#CDE9F6"},{"color":"#111","background":"#ECF7FC"},{"color":"#111","background":"#F2F9FD"},{"color":"#aaa"},{"color":"#111","background":"#64B5DD"},{"color":"#111","background":"#71BBE0"},{"color":"#111","background":"#A3D6ED"},{"color":"#111","background":"#D4ECF7"},{"color":"#111","background":"#F0F8FC"},{"color":"#111","background":"#F3FAFD"},{"color":"#111","background":"#F9FCFE"},{"color":"#111","background":"#FDFEFF"},{"color":"#111","background":"#67B6DE"},{"color":"#111","background":"#69B7DE"},{"color":"#111","background":"#ABD9EF"},{"color":"#111","background":"#CAE8F5"},{"color":"#111","background":"#EEF8FC"},{"color":"#111","background":"#F8FCFE"},{"color":"#111","background":"#FBFDFE"},{"color":"#aaa"}]},{"id":"win_div","name":"Win Div","type":"numeric","vAlign":"center","className":"cell number ","headerClassName":"header","defaultSortDesc":true,"cell":["45.4%","17.4%","15.7%","9.9%","7.3%","3.1%"," <1%"," <1%","55.9%","25.4%","10.7%","7.2%"," <1%"," <1%"," <1%","  – ","81.0%","15.6%","2.8%"," <1%"," <1%"," <1%"," <1%","  – ","53.5%","41.6%","3.1%","1.6%"," <1%"," <1%"," <1%","  – "],"maxWidth":80,"align":"center","style":[{"color":"#111","background":"#CEEAF6"},{"color":"#111","background":"#EFF8FC"},{"color":"#111","background":"#F1F9FC"},{"color":"#111","background":"#F6FBFD"},{"color":"#111","background":"#F8FCFE"},{"color":"#111","background":"#FCFEFF"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#111","background":"#BEE2F3"},{"color":"#111","background":"#E8F5FB"},{"color":"#111","background":"#F5FBFD"},{"color":"#111","background":"#F8FCFE"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#111","background":"#90CCE8"},{"color":"#111","background":"#F1F9FD"},{"color":"#111","background":"#FCFEFF"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#111","background":"#C2E4F4"},{"color":"#111","background":"#D3ECF7"},{"color":"#111","background":"#FCFEFF"},{"color":"#111","background":"#FEFEFF"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"}]},{"id":"presidents","name":"Presidents' Trophy","type":"numeric","vAlign":"center","className":"cell number ","headerClassName":"header","defaultSortDesc":true,"cell":["5.9%","1.5%","1.0%"," <1%"," <1%"," <1%","  – ","  – ","15.5%","5.5%","1.8%"," <1%"," <1%"," <1%","  – ","  – ","45.2%","5.4%"," <1%"," <1%","  – "," <1%","  – ","  – ","9.2%","6.1%"," <1%"," <1%","  – ","  – ","  – ","  – "],"maxWidth":95,"align":"center","style":[{"color":"#111","background":"#FAFDFE"},{"color":"#111","background":"#FEFEFF"},{"color":"#111","background":"#FEFFFF"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#111","background":"#F1F9FD"},{"color":"#111","background":"#FAFDFE"},{"color":"#111","background":"#FDFEFF"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#111","background":"#CEEAF6"},{"color":"#111","background":"#FAFDFE"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#111","background":"#F7FBFE"},{"color":"#111","background":"#F9FDFE"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"}]},{"id":"win_conf","name":"Win Conf","type":"numeric","vAlign":"center","className":"cell number ","headerClassName":"header","defaultSortDesc":true,"cell":["15.3%","6.2%","10.9%","3.0%","4.0%","2.2%"," <1%"," <1%","21.3%","19.8%","9.2%","7.8%","1.1%"," <1%"," <1%","  – ","37.8%","12.5%","4.7%","1.4%"," <1%"," <1%"," <1%"," <1%","16.9%","17.1%","2.9%","2.8%"," <1%"," <1%"," <1%","  – "],"maxWidth":80,"align":"center","style":[{"color":"#111","background":"#F1F9FD"},{"color":"#111","background":"#F9FDFE"},{"color":"#111","background":"#F5FBFD"},{"color":"#111","background":"#FCFEFF"},{"color":"#111","background":"#FBFDFE"},{"color":"#111","background":"#FDFEFF"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#111","background":"#EBF6FC"},{"color":"#111","background":"#EDF7FC"},{"color":"#111","background":"#F7FBFE"},{"color":"#111","background":"#F8FCFE"},{"color":"#111","background":"#FEFFFF"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#111","background":"#D8EEF8"},{"color":"#111","background":"#F4FAFD"},{"color":"#111","background":"#FBFDFE"},{"color":"#111","background":"#FEFEFF"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#111","background":"#F0F8FC"},{"color":"#111","background":"#EFF8FC"},{"color":"#111","background":"#FCFEFF"},{"color":"#111","background":"#FCFEFF"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"}]},{"id":"win_cup","name":"Win Cup","type":"numeric","vAlign":"center","className":"cell number ","headerClassName":"header","defaultSortDesc":true,"cell":["8.0%","2.8%","5.5%"," <1%","1.6%"," <1%"," <1%"," <1%","10.9%","10.2%","3.9%","3.2%"," <1%"," <1%"," <1%","  – ","24.9%","6.0%","1.8%"," <1%"," <1%"," <1%"," <1%","  – ","7.8%","8.0%"," <1%"," <1%"," <1%"," <1%","  – ","  – "],"maxWidth":80,"align":"center","style":[{"color":"#111","background":"#F8FCFE"},{"color":"#111","background":"#FCFEFF"},{"color":"#111","background":"#FAFDFE"},{"color":"#aaa"},{"color":"#111","background":"#FEFEFF"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#111","background":"#F5FBFD"},{"color":"#111","background":"#F6FBFD"},{"color":"#111","background":"#FBFDFE"},{"color":"#111","background":"#FCFEFE"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#111","background":"#E8F5FB"},{"color":"#111","background":"#F9FDFE"},{"color":"#111","background":"#FDFEFF"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#111","background":"#F8FCFE"},{"color":"#111","background":"#F8FCFE"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"}]},{"id":"first_pick","name":"1st Pick","type":"numeric","vAlign":"center","className":"cell number border-left","headerClassName":"header","defaultSortDesc":true,"cell":[" <1%"," <1%"," <1%"," <1%"," <1%","1.1%","2.3%","5.1%","  – "," <1%"," <1%"," <1%","1.8%","4.0%","4.8%","15.2%","  – "," <1%"," <1%","1.5%","3.5%","4.0%","5.4%","7.7%"," <1%"," <1%"," <1%","1.7%","4.8%","6.4%","8.6%","19.5%"],"maxWidth":80,"align":"center","style":[{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#111","background":"#FFFDFC"},{"color":"#111","background":"#FFFBF9"},{"color":"#111","background":"#FFF5F1"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#111","background":"#FFFCFA"},{"color":"#111","background":"#FFF7F4"},{"color":"#111","background":"#FFF6F2"},{"color":"#111","background":"#FFE2D5"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#111","background":"#FFFCFB"},{"color":"#111","background":"#FFF8F5"},{"color":"#111","background":"#FFF7F4"},{"color":"#111","background":"#FFF5F0"},{"color":"#111","background":"#FFF0EA"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#111","background":"#FFFCFA"},{"color":"#111","background":"#FFF6F2"},{"color":"#111","background":"#FFF3ED"},{"color":"#111","background":"#FFEFE7"},{"color":"#111","background":"#FFDACA"}]},{"id":"top3_pick","name":"Top 3 Pick","type":"numeric","vAlign":"center","className":"cell number ","headerClassName":"header","defaultSortDesc":true,"cell":[" <1%"," <1%"," <1%"," <1%","1.1%","2.9%","5.8%","11.5%"," <1%"," <1%"," <1%"," <1%","4.5%","9.2%","11.8%","54.2%","  – "," <1%","1.3%","3.6%","8.4%","9.7%","13.1%","20.9%"," <1%"," <1%","2.3%","4.7%","11.3%","16.8%","23.1%","80.6%"],"maxWidth":80,"align":"center","style":[{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#111","background":"#FFFDFC"},{"color":"#111","background":"#FFFAF7"},{"color":"#111","background":"#FFF4EF"},{"color":"#111","background":"#FFE9DF"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#111","background":"#FFF7F3"},{"color":"#111","background":"#FFEDE6"},{"color":"#111","background":"#FFE8DE"},{"color":"#111","background":"#FF9D79"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#111","background":"#FFFDFB"},{"color":"#111","background":"#FFF8F5"},{"color":"#111","background":"#FFEFE8"},{"color":"#111","background":"#FFEDE4"},{"color":"#111","background":"#FFE6DB"},{"color":"#111","background":"#FFD7C6"},{"color":"#aaa"},{"color":"#aaa"},{"color":"#111","background":"#FFFBF9"},{"color":"#111","background":"#FFF6F2"},{"color":"#111","background":"#FFE9E0"},{"color":"#111","background":"#FFDFD1"},{"color":"#111","background":"#FFD3C0"},{"color":"#111","background":"#FC8D75"}]}],"columnGroups":[{"headerClassName":"group-header","name":"PLAYOFF CHANCES","columns":["make_playoffs","win_div","presidents","win_conf","win_cup"]},{"headerClassName":"group-header","name":"DRAFT LOTTERY","columns":["first_pick","top3_pick"]}],"defaultSortDesc":true,"defaultSorted":[{"id":"group","desc":false},{"id":"proj_pts","desc":true}],"pagination":false,"borderless":true,"showSortIcon":false,"className":"standings-table","rowClassName":"\n    function(rowInfo, state) {\n      const firstSorted = state.sorted[0]\n      if (firstSorted && firstSorted.id === 'group') {\n        const nextRow = state.pageRows[rowInfo.viewIndex + 1]\n        if (nextRow && rowInfo.row.group !== nextRow.group) {\n          return 'group-last'\n        }\n      }\n    }","dataKey":"6de69d19483ea2a105b442ca7d250fed"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.rowClassName"],"jsHooks":[]}</script>
+<div class="source">
+Simulation by Stephan Teodosescu (
+<a href="https://betweenthepipes.substack.com/">Between the Pipes</a>
+) via 10,000 simulated seasons | Data: fastRhockey / Hockey Reference
+</div>
+</div>
+</div>
+<div id="todays-games" class="section level3">
+<h3>Today’s Games</h3>
+<p>Win probabilities for Monday, November 9, including overtime and shootouts, from the same simulations as the Simulations tab. Projected goals are each team’s expected goals per game against this opponent.</p>
+<div id="ksuvsjuqku" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>@import url("https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cairo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+#ksuvsjuqku table {
+  font-family: Outfit, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', Cairo;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#ksuvsjuqku thead, #ksuvsjuqku tbody, #ksuvsjuqku tfoot, #ksuvsjuqku tr, #ksuvsjuqku td, #ksuvsjuqku th {
+  border-style: none;
+}
+
+#ksuvsjuqku p {
+  margin: 0;
+  padding: 0;
+}
+
+#ksuvsjuqku .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: none;
+  border-top-width: 3px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ksuvsjuqku .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ksuvsjuqku .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ksuvsjuqku .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ksuvsjuqku .gt_heading {
+  background-color: #FFFFFF;
+  text-align: left;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ksuvsjuqku .gt_bottom_border {
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ksuvsjuqku .gt_col_headings {
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #000000;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ksuvsjuqku .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ksuvsjuqku .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ksuvsjuqku .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ksuvsjuqku .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ksuvsjuqku .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #000000;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ksuvsjuqku .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ksuvsjuqku .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #000000;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#ksuvsjuqku .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #000000;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #FFFFFF;
+  vertical-align: middle;
+}
+
+#ksuvsjuqku .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ksuvsjuqku .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ksuvsjuqku .gt_row {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ksuvsjuqku .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 0px;
+  border-right-color: #FFFFFF;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ksuvsjuqku .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ksuvsjuqku .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ksuvsjuqku .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ksuvsjuqku .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ksuvsjuqku .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ksuvsjuqku .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ksuvsjuqku .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ksuvsjuqku .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ksuvsjuqku .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ksuvsjuqku .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ksuvsjuqku .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ksuvsjuqku .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ksuvsjuqku .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ksuvsjuqku .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ksuvsjuqku .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ksuvsjuqku .gt_sourcenote {
+  font-size: 12px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ksuvsjuqku .gt_left {
+  text-align: left;
+}
+
+#ksuvsjuqku .gt_center {
+  text-align: center;
+}
+
+#ksuvsjuqku .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ksuvsjuqku .gt_font_normal {
+  font-weight: normal;
+}
+
+#ksuvsjuqku .gt_font_bold {
+  font-weight: bold;
+}
+
+#ksuvsjuqku .gt_font_italic {
+  font-style: italic;
+}
+
+#ksuvsjuqku .gt_super {
+  font-size: 65%;
+}
+
+#ksuvsjuqku .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#ksuvsjuqku .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ksuvsjuqku .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ksuvsjuqku .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ksuvsjuqku .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ksuvsjuqku .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ksuvsjuqku .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#ksuvsjuqku .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#ksuvsjuqku div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+
+#ksuvsjuqku tbody tr:last-child {
+  border-bottom: 2px solid #ffffff00;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="8" class="gt_heading gt_title gt_font_normal" style="font-family: Chivo; font-weight: 700;"><span class='gt_from_md'><strong>Today’s Games</strong></span></td>
+    </tr>
+    <tr class="gt_heading">
+      <td colspan="8" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="font-family: Chivo; font-weight: 300;">Monday, November 9, 2026</td>
+    </tr>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-top-width: 0px; border-top-style: solid; border-top-color: black; font-family: Chivo; font-size: 14px; vertical-align: bottom; font-weight: 200; text-transform: uppercase;" scope="col" id="away_team_logo"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-top-width: 0px; border-top-style: solid; border-top-color: black; font-family: Chivo; font-size: 14px; vertical-align: bottom; font-weight: 200; text-transform: uppercase;" scope="col" id="away_team_name">Away</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" style="border-top-width: 0px; border-top-style: solid; border-top-color: black; font-family: Chivo; font-size: 14px; vertical-align: bottom; font-weight: 200; text-transform: uppercase;" scope="col" id="away_playoff">Playoff %</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" style="border-top-width: 0px; border-top-style: solid; border-top-color: black; font-family: Chivo; font-size: 14px; vertical-align: bottom; font-weight: 200; text-transform: uppercase;" scope="col" id="win_prob"><span style='color:#d73027'><b>  Away  </b></span>||<span style='color:#2b7bb9'><b>  Home  </b></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" style="border-top-width: 0px; border-top-style: solid; border-top-color: black; font-family: Chivo; font-size: 14px; vertical-align: bottom; font-weight: 200; text-transform: uppercase;" scope="col" id="home_playoff">Playoff %</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-top-width: 0px; border-top-style: solid; border-top-color: black; font-family: Chivo; font-size: 14px; vertical-align: bottom; font-weight: 200; text-transform: uppercase;" scope="col" id="home_team_name">Home</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-top-width: 0px; border-top-style: solid; border-top-color: black; font-family: Chivo; font-size: 14px; vertical-align: bottom; font-weight: 200; text-transform: uppercase;" scope="col" id="home_team_logo"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" style="border-top-width: 0px; border-top-style: solid; border-top-color: black; font-family: Chivo; font-size: 14px; vertical-align: bottom; font-weight: 200; text-transform: uppercase;" scope="col" id="proj">Proj. Goals</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="away_team_logo" class="gt_row gt_left"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/nyr.png" style="height:30px;"></td>
+<td headers="away_team_name" class="gt_row gt_right">New York Rangers</td>
+<td headers="away_playoff" class="gt_row gt_center">41%</td>
+<td headers="win_prob" class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='198.43pt' height='14.17pt' viewBox='0 0 198.43 14.17'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHwxOTguNDN8MC4wMHwxNC4xNw=='>    <rect x='0.00' y='0.00' width='198.43' height='14.17' />  </clipPath></defs><g clip-path='url(#cpMC4wMHwxOTguNDN8MC4wMHwxNC4xNw==)'><rect x='0.00' y='0.0000000000000018' width='198.43' height='14.17' style='stroke-width: 0.00; stroke: none;' /><rect x='0.00' y='0.0000000000000018' width='74.53' height='14.17' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #D73027;' /><rect x='74.53' y='0.0000000000000018' width='123.90' height='14.17' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #2B7BB9;' /><text x='37.26' y='9.52' text-anchor='middle' style='font-size: 8.54px;fill: #FFFFFF; font-family: "Courier";' textLength='25.60px' lengthAdjust='spacingAndGlyphs'>37.6%</text><text x='136.48' y='9.52' text-anchor='middle' style='font-size: 8.54px;fill: #FFFFFF; font-family: "Courier";' textLength='25.60px' lengthAdjust='spacingAndGlyphs'>62.4%</text></g></svg></td>
+<td headers="home_playoff" class="gt_row gt_center">99%</td>
+<td headers="home_team_name" class="gt_row gt_left">Edmonton Oilers</td>
+<td headers="home_team_logo" class="gt_row gt_left"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/edm.png" style="height:30px;"></td>
+<td headers="proj" class="gt_row gt_center">2.8 – 3.5</td></tr>
+    <tr><td headers="away_team_logo" class="gt_row gt_left"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/phi.png" style="height:30px;"></td>
+<td headers="away_team_name" class="gt_row gt_right">Philadelphia Flyers</td>
+<td headers="away_playoff" class="gt_row gt_center">2%</td>
+<td headers="win_prob" class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='198.43pt' height='14.17pt' viewBox='0 0 198.43 14.17'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHwxOTguNDN8MC4wMHwxNC4xNw=='>    <rect x='0.00' y='0.00' width='198.43' height='14.17' />  </clipPath></defs><g clip-path='url(#cpMC4wMHwxOTguNDN8MC4wMHwxNC4xNw==)'><rect x='0.00' y='0.0000000000000018' width='198.43' height='14.17' style='stroke-width: 0.00; stroke: none;' /><rect x='0.00' y='0.0000000000000018' width='113.50' height='14.17' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #D73027;' /><rect x='113.50' y='0.0000000000000018' width='84.93' height='14.17' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #2B7BB9;' /><text x='56.75' y='9.52' text-anchor='middle' style='font-size: 8.54px;fill: #FFFFFF; font-family: "Courier";' textLength='25.60px' lengthAdjust='spacingAndGlyphs'>57.2%</text><text x='155.96' y='9.52' text-anchor='middle' style='font-size: 8.54px;fill: #FFFFFF; font-family: "Courier";' textLength='25.60px' lengthAdjust='spacingAndGlyphs'>42.8%</text></g></svg></td>
+<td headers="home_playoff" class="gt_row gt_center">0%</td>
+<td headers="home_team_name" class="gt_row gt_left">Vancouver Canucks</td>
+<td headers="home_team_logo" class="gt_row gt_left"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/van.png" style="height:30px;"></td>
+<td headers="proj" class="gt_row gt_center">3.4 – 3.0</td></tr>
+    <tr><td headers="away_team_logo" class="gt_row gt_left"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/nyi.png" style="height:30px;"></td>
+<td headers="away_team_name" class="gt_row gt_right">New York Islanders</td>
+<td headers="away_playoff" class="gt_row gt_center">16%</td>
+<td headers="win_prob" class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='198.43pt' height='14.17pt' viewBox='0 0 198.43 14.17'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHwxOTguNDN8MC4wMHwxNC4xNw=='>    <rect x='0.00' y='0.00' width='198.43' height='14.17' />  </clipPath></defs><g clip-path='url(#cpMC4wMHwxOTguNDN8MC4wMHwxNC4xNw==)'><rect x='0.00' y='0.0000000000000018' width='198.43' height='14.17' style='stroke-width: 0.00; stroke: none;' /><rect x='0.00' y='0.0000000000000018' width='97.05' height='14.17' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #D73027;' /><rect x='97.05' y='0.0000000000000018' width='101.38' height='14.17' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #2B7BB9;' /><text x='48.52' y='9.52' text-anchor='middle' style='font-size: 8.54px;fill: #FFFFFF; font-family: "Courier";' textLength='25.60px' lengthAdjust='spacingAndGlyphs'>48.9%</text><text x='147.74' y='9.52' text-anchor='middle' style='font-size: 8.54px;fill: #FFFFFF; font-family: "Courier";' textLength='25.60px' lengthAdjust='spacingAndGlyphs'>51.1%</text></g></svg></td>
+<td headers="home_playoff" class="gt_row gt_center">8%</td>
+<td headers="home_team_name" class="gt_row gt_left">San Jose Sharks</td>
+<td headers="home_team_logo" class="gt_row gt_left"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/sj.png" style="height:30px;"></td>
+<td headers="proj" class="gt_row gt_center">3.1 – 3.2</td></tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="8"><span class='gt_from_md'>Win probability includes OT/SO. Playoff % = current chance to make the playoffs. Simulation by Stephan Teodosescu (Between the Pipes) via 10,000 simulated seasons.</span></td>
+    </tr>
+  </tfoot>
+  
+</table>
+</div>
+</div>
+<div id="playoff-odds-over-time" class="section level3 tabset">
+<h3 class="tabset">Playoff Odds Over Time</h3>
+<p>Each team’s chance of making the playoffs after every day of the season, from the same model. Earlier days are re-run using only the games played up to that date.</p>
+<div id="central" class="section level4">
+<h4>Central</h4>
+<div class="odds-chart" data-division="Central" style="width:100%;height:540px;">
+
+</div>
+</div>
+<div id="pacific" class="section level4">
+<h4>Pacific</h4>
+<div class="odds-chart" data-division="Pacific" style="width:100%;height:540px;">
+
+</div>
+</div>
+<div id="atlantic" class="section level4">
+<h4>Atlantic</h4>
+<div class="odds-chart" data-division="Atlantic" style="width:100%;height:540px;">
+
+</div>
+</div>
+<div id="metropolitan" class="section level4">
+<h4>Metropolitan</h4>
+<div class="odds-chart" data-division="Metropolitan" style="width:100%;height:540px;">
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/plotly.js-basic-dist-min@2.35.2/plotly-basic.min.js"></script>
+<script>window.NHL_ODDS = {"Central":{"teams":[{"abbr":"MIN","name":"Minnesota Wild","color":"#124734","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/min.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.875,0.875,0.896,0.8925,0.9275,0.92,0.921,0.906,0.9085,0.881,0.8815,0.921,0.9205,0.939,0.9195,0.9195,0.9365,0.9375,0.942,0.964,0.967,0.961,0.963,0.959,0.9585,0.981,0.9875,0.9865,0.994,0.992,0.992,0.995,0.9925,0.9955,0.995,0.996,0.996,0.9945,0.9965,0.995,0.994],"logo_y":1.08},{"abbr":"COL","name":"Colorado Avalanche","color":"#860038","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/col.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.9575,0.965,0.961,0.96,0.9755,0.9755,0.98,0.9755,0.9665,0.975,0.9735,0.9685,0.967,0.968,0.973,0.9685,0.9715,0.983,0.9875,0.988,0.976,0.9605,0.963,0.9595,0.968,0.969,0.942,0.9425,0.952,0.971,0.9705,0.9735,0.983,0.9805,0.9865,0.9695,0.97,0.964,0.964,0.9765,0.9706],"logo_y":1.005},{"abbr":"DAL","name":"Dallas Stars","color":"#20864c","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/dal.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.8375,0.8335,0.813,0.751,0.7115,0.712,0.7945,0.7995,0.7975,0.8245,0.818,0.8015,0.795,0.799,0.758,0.776,0.7795,0.78,0.8375,0.8365,0.8365,0.862,0.8645,0.887,0.886,0.898,0.926,0.9195,0.9095,0.9005,0.8575,0.8605,0.8855,0.8815,0.8865,0.904,0.898,0.8855,0.8825,0.9065,0.9083],"logo_y":0.93},{"abbr":"UTA","name":"Utah Mammoth","color":"#000000","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/utah.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.6675,0.677,0.768,0.7585,0.8195,0.758,0.7525,0.823,0.824,0.7855,0.787,0.8385,0.8355,0.827,0.8535,0.854,0.8945,0.8965,0.8675,0.8665,0.9055,0.902,0.9015,0.8695,0.8695,0.9045,0.902,0.8975,0.8835,0.881,0.911,0.9185,0.913,0.8925,0.8915,0.922,0.917,0.9015,0.8995,0.873,0.8761],"logo_y":0.855},{"abbr":"NSH","name":"Nashville Predators","color":"#fdba31","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/nsh.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.2135,0.223,0.17,0.162,0.1975,0.1985,0.191,0.181,0.185,0.231,0.2275,0.21,0.2045,0.209,0.172,0.167,0.167,0.1695,0.235,0.235,0.253,0.243,0.2415,0.169,0.1685,0.175,0.2385,0.2285,0.2605,0.2505,0.2085,0.218,0.2735,0.286,0.2865,0.344,0.3455,0.3945,0.3905,0.4845,0.4627],"logo_y":0.4416},{"abbr":"STL","name":"St. Louis Blues","color":"#0070b9","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/stl.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.249,0.26,0.258,0.34,0.2515,0.25,0.2415,0.2025,0.2005,0.203,0.2005,0.2565,0.2575,0.255,0.3585,0.356,0.2845,0.287,0.2505,0.245,0.253,0.2985,0.294,0.3575,0.3565,0.315,0.3065,0.3015,0.292,0.285,0.3495,0.3545,0.41,0.4125,0.4175,0.321,0.321,0.29,0.2865,0.2305,0.2094],"logo_y":0.197},{"abbr":"WPG","name":"Winnipeg Jets","color":"#002d62","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/wpg.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.1885,0.1985,0.199,0.1925,0.195,0.2235,0.2785,0.2845,0.3215,0.312,0.23,0.2085,0.21,0.2055,0.274,0.275,0.265,0.2685,0.241,0.235,0.2495,0.208,0.2115,0.192,0.201,0.219,0.1875,0.179,0.157,0.151,0.1085,0.084,0.0825,0.0535,0.0565,0.079,0.077,0.095,0.0975,0.106,0.1431],"logo_y":0.122},{"abbr":"CHI","name":"Chicago Blackhawks","color":"#e31937","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/chi.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.0665,0.0805,0.049,0.0495,0.0315,0.032,0.0305,0.0465,0.048,0.033,0.0345,0.023,0.023,0.0225,0.0285,0.0275,0.0375,0.036,0.029,0.026,0.0285,0.0295,0.029,0.029,0.019,0.023,0.0195,0.0185,0.031,0.031,0.019,0.019,0.016,0.0195,0.014,0.011,0.0075,0.0035,0.0035,0.0025,0.0011],"logo_y":-0.02}]},"Pacific":{"teams":[{"abbr":"EDM","name":"Edmonton Oilers","color":"#00205b","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/edm.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.919,0.9215,0.921,0.9235,0.944,0.94,0.9445,0.9465,0.9585,0.954,0.9495,0.9705,0.969,0.968,0.976,0.975,0.964,0.96,0.976,0.9755,0.978,0.982,0.981,0.985,0.9845,0.9805,0.979,0.972,0.979,0.986,0.9855,0.9845,0.9905,0.9925,0.994,0.992,0.9905,0.9865,0.9875,0.99,0.9892],"logo_y":1.0353},{"abbr":"VGK","name":"Vegas Golden Knights","color":"#344043","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/vgk.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.951,0.937,0.931,0.917,0.9115,0.938,0.946,0.964,0.964,0.972,0.973,0.9815,0.9775,0.9635,0.97,0.9705,0.981,0.9805,0.986,0.9845,0.9865,0.9795,0.98,0.968,0.9695,0.972,0.9725,0.972,0.9835,0.9845,0.983,0.9735,0.976,0.975,0.972,0.9735,0.975,0.977,0.9765,0.979,0.9803],"logo_y":0.9603},{"abbr":"ANA","name":"Anaheim Ducks","color":"#fc4c02","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/ana.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.6165,0.621,0.615,0.631,0.6365,0.64,0.6475,0.668,0.623,0.6135,0.702,0.744,0.733,0.729,0.655,0.6545,0.6475,0.61,0.632,0.629,0.5575,0.4435,0.4435,0.331,0.331,0.4575,0.4525,0.4345,0.44,0.434,0.373,0.3875,0.3925,0.4495,0.4525,0.484,0.4735,0.5245,0.604,0.6265,0.6738],"logo_y":0.6538},{"abbr":"LAK","name":"Los Angeles Kings","color":"#121212","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/la.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.637,0.5695,0.553,0.5595,0.579,0.5675,0.5705,0.524,0.5195,0.5145,0.5065,0.4775,0.4675,0.4715,0.4405,0.4395,0.4425,0.4475,0.391,0.3855,0.403,0.4635,0.461,0.507,0.502,0.426,0.418,0.4815,0.4485,0.444,0.5155,0.532,0.491,0.4865,0.493,0.475,0.5495,0.533,0.523,0.5005,0.4857],"logo_y":0.4657},{"abbr":"SEA","name":"Seattle Kraken","color":"#000d33","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/sea.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.1085,0.117,0.167,0.1735,0.1195,0.162,0.157,0.12,0.1195,0.122,0.1545,0.1415,0.1985,0.2005,0.2505,0.2485,0.237,0.242,0.183,0.176,0.195,0.221,0.222,0.2835,0.283,0.2105,0.2055,0.1985,0.2345,0.2765,0.279,0.2285,0.244,0.2435,0.247,0.2385,0.2635,0.251,0.246,0.197,0.1845],"logo_y":0.205},{"abbr":"SJS","name":"San Jose Sharks","color":"#00788a","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/sj.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.628,0.625,0.6265,0.62,0.6225,0.6275,0.496,0.5025,0.509,0.542,0.5305,0.439,0.428,0.429,0.352,0.3485,0.3785,0.388,0.4285,0.4345,0.3895,0.428,0.426,0.485,0.484,0.44,0.436,0.4185,0.3755,0.3665,0.4065,0.412,0.304,0.29,0.252,0.236,0.1655,0.156,0.111,0.098,0.0802],"logo_y":0.13},{"abbr":"CGY","name":"Calgary Flames","color":"#dd1a32","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/cgy.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.0445,0.0475,0.032,0.0315,0.016,0.01,0.0105,0.011,0.0105,0.0095,0.007,0.004,0.004,0.004,0.013,0.014,0.007,0.0075,0.008,0.013,0.015,0.014,0.0145,0.016,0.017,0.026,0.025,0.048,0.0545,0.0425,0.0375,0.0555,0.0435,0.0395,0.054,0.053,0.0495,0.0435,0.0315,0.0345,0.041],"logo_y":0.055},{"abbr":"VAN","name":"Vancouver Canucks","color":"#003e7e","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/van.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.0405,0.049,0.0405,0.038,0.0615,0.0455,0.0385,0.0455,0.0445,0.0275,0.0245,0.0145,0.0095,0.0095,0.006,0.006,0.0065,0.0065,0.0055,0.006,0.0065,0.004,0.004,0.002,0.002,0.003,0.002,0.0015,0.005,0.004,0.0035,0.0035,0.0025,0.002,0.0015,0.0015,0.001,0,0,0,0],"logo_y":-0.02}]},"Atlantic":{"teams":[{"abbr":"TBL","name":"Tampa Bay Lightning","color":"#003e7e","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/tb.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.824,0.8155,0.706,0.702,0.787,0.787,0.8585,0.86,0.861,0.8905,0.891,0.9065,0.9115,0.9105,0.8805,0.884,0.8945,0.8985,0.9295,0.93,0.929,0.937,0.9355,0.934,0.918,0.896,0.8975,0.908,0.9055,0.909,0.928,0.924,0.9,0.9075,0.904,0.9355,0.9335,0.9415,0.9405,0.9545,0.9316],"logo_y":0.9242},{"abbr":"MTL","name":"Montreal Canadiens","color":"#c41230","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/mtl.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.775,0.775,0.7655,0.77,0.7525,0.7535,0.7485,0.658,0.6565,0.586,0.5915,0.6185,0.622,0.616,0.6765,0.607,0.599,0.5935,0.6375,0.645,0.629,0.611,0.6115,0.601,0.663,0.6465,0.6695,0.6845,0.716,0.726,0.793,0.787,0.7885,0.7985,0.795,0.7575,0.7535,0.777,0.776,0.8,0.7944],"logo_y":0.8492},{"abbr":"FLA","name":"Florida Panthers","color":"#e51937","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/fla.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.898,0.8915,0.88,0.876,0.8905,0.8935,0.897,0.9195,0.919,0.9225,0.9265,0.87,0.868,0.826,0.8775,0.876,0.884,0.8805,0.9195,0.924,0.9175,0.914,0.8725,0.804,0.7975,0.7775,0.803,0.8145,0.8485,0.848,0.8495,0.878,0.8695,0.875,0.8315,0.834,0.8635,0.861,0.854,0.814,0.7845],"logo_y":0.7742},{"abbr":"BOS","name":"Boston Bruins","color":"#231f20","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/bos.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.228,0.2425,0.259,0.2705,0.208,0.205,0.1505,0.159,0.162,0.1895,0.1865,0.267,0.266,0.264,0.3545,0.3615,0.343,0.3955,0.456,0.454,0.448,0.4275,0.4235,0.518,0.5085,0.575,0.572,0.5895,0.52,0.5175,0.4405,0.4385,0.46,0.475,0.527,0.5435,0.543,0.6105,0.6095,0.5915,0.6888],"logo_y":0.6926},{"abbr":"OTT","name":"Ottawa Senators","color":"#dd1a32","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/ott.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.441,0.4355,0.447,0.4445,0.5145,0.522,0.584,0.4775,0.4765,0.5135,0.5195,0.5655,0.5645,0.6425,0.5295,0.537,0.598,0.6,0.516,0.523,0.516,0.512,0.6035,0.5225,0.516,0.5985,0.601,0.607,0.5185,0.525,0.449,0.4485,0.546,0.4985,0.49,0.512,0.567,0.5645,0.563,0.611,0.6278],"logo_y":0.6176},{"abbr":"BUF","name":"Buffalo Sabres","color":"#00468b","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/buf.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.542,0.539,0.4715,0.463,0.5475,0.5405,0.5455,0.6295,0.629,0.576,0.5835,0.472,0.4735,0.529,0.4975,0.5005,0.5365,0.539,0.5145,0.515,0.514,0.4995,0.4255,0.4085,0.4055,0.332,0.3355,0.3455,0.43,0.435,0.4575,0.4465,0.4825,0.5015,0.4875,0.496,0.4215,0.4065,0.4625,0.4615,0.4237],"logo_y":0.4134},{"abbr":"TOR","name":"Toronto Maple Leafs","color":"#003e7e","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/tor.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.4445,0.48,0.4925,0.4975,0.405,0.4015,0.4015,0.4585,0.458,0.4185,0.422,0.457,0.4625,0.4515,0.423,0.4305,0.3955,0.4005,0.331,0.33,0.367,0.4195,0.424,0.471,0.466,0.531,0.525,0.4265,0.419,0.3655,0.3575,0.3505,0.3865,0.404,0.396,0.3295,0.325,0.317,0.308,0.2545,0.2053],"logo_y":0.1951},{"abbr":"DET","name":"Detroit Red Wings","color":"#e30526","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/det.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.129,0.126,0.1455,0.1075,0.0965,0.0835,0.079,0.1235,0.1265,0.134,0.1015,0.1005,0.0965,0.0935,0.08,0.0795,0.1,0.0995,0.1115,0.1135,0.1135,0.099,0.096,0.139,0.139,0.105,0.107,0.1365,0.132,0.137,0.1965,0.2,0.1405,0.1475,0.1905,0.155,0.1585,0.118,0.1155,0.0805,0.084],"logo_y":0.0738}]},"Metropolitan":{"teams":[{"abbr":"CAR","name":"Carolina Hurricanes","color":"#e30426","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/car.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.9185,0.906,0.895,0.87,0.9065,0.905,0.9155,0.945,0.9445,0.967,0.9675,0.98,0.985,0.9865,0.9905,0.9905,0.9905,0.9905,0.993,0.988,0.987,0.9925,0.993,0.9915,0.991,0.993,0.993,0.9945,0.9965,0.997,0.996,0.995,0.997,0.9985,0.999,0.997,0.998,0.9985,0.9995,0.999,0.9988],"logo_y":1.0034},{"abbr":"NJD","name":"New Jersey Devils","color":"#e30b2b","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/nj.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.5675,0.5675,0.643,0.6275,0.555,0.5495,0.556,0.457,0.46,0.4575,0.468,0.5465,0.541,0.445,0.5345,0.529,0.635,0.6375,0.6075,0.6195,0.606,0.6645,0.6555,0.732,0.734,0.8095,0.813,0.823,0.861,0.809,0.8075,0.845,0.85,0.8575,0.859,0.89,0.891,0.912,0.9095,0.927,0.9498],"logo_y":0.9284},{"abbr":"WSH","name":"Washington Capitals","color":"#d71830","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/wsh.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.7755,0.766,0.748,0.7915,0.7145,0.697,0.721,0.7265,0.7785,0.773,0.82,0.8135,0.738,0.7365,0.6785,0.7325,0.72,0.7275,0.7355,0.7485,0.7435,0.6905,0.686,0.686,0.6845,0.722,0.7345,0.7475,0.7325,0.8015,0.8225,0.8165,0.823,0.757,0.757,0.706,0.7025,0.6915,0.694,0.7225,0.7166],"logo_y":0.6952},{"abbr":"NYR","name":"New York Rangers","color":"#0056ae","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/nyr.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.169,0.1685,0.2635,0.3335,0.331,0.388,0.4015,0.511,0.516,0.5175,0.439,0.4365,0.527,0.5315,0.6055,0.608,0.4935,0.502,0.4975,0.511,0.584,0.57,0.575,0.491,0.482,0.35,0.347,0.281,0.2755,0.2835,0.2745,0.2625,0.257,0.218,0.2125,0.2825,0.276,0.3195,0.3235,0.3825,0.4086],"logo_y":0.3872},{"abbr":"NYI","name":"New York Islanders","color":"#00529b","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/nyi.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.2435,0.219,0.2235,0.2125,0.2915,0.289,0.296,0.214,0.2115,0.264,0.257,0.221,0.2205,0.2185,0.2555,0.2565,0.2255,0.2325,0.2625,0.278,0.263,0.3315,0.3385,0.306,0.3075,0.296,0.2265,0.235,0.256,0.268,0.3055,0.295,0.235,0.2535,0.249,0.2525,0.2485,0.2055,0.205,0.1715,0.1634],"logo_y":0.2239},{"abbr":"CBJ","name":"Columbus Blue Jackets","color":"#002d62","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/cbj.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.3275,0.3435,0.401,0.3895,0.327,0.318,0.332,0.3365,0.3375,0.342,0.4175,0.339,0.3305,0.345,0.261,0.262,0.2595,0.2645,0.2775,0.1995,0.192,0.1525,0.149,0.1435,0.1405,0.1455,0.1485,0.158,0.1645,0.164,0.1395,0.131,0.0985,0.1105,0.112,0.15,0.1565,0.1755,0.1335,0.1215,0.1336],"logo_y":0.1489},{"abbr":"PIT","name":"Pittsburgh Penguins","color":"#000000","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/pit.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.267,0.4235,0.4175,0.4135,0.4715,0.471,0.389,0.3955,0.334,0.333,0.294,0.3365,0.3455,0.3505,0.301,0.2915,0.293,0.2035,0.164,0.17,0.1235,0.119,0.119,0.168,0.164,0.181,0.183,0.201,0.177,0.1865,0.157,0.155,0.14,0.1505,0.1475,0.125,0.127,0.079,0.083,0.087,0.0688],"logo_y":0.0739},{"abbr":"PHI","name":"Philadelphia Flyers","color":"#fe5823","logo":"https://a.espncdn.com/i/teamlogos/nhl/500/phi.png","x":["2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-03","2026-10-04","2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],"y":[0.45,0.301,0.2415,0.231,0.2015,0.196,0.1245,0.129,0.1295,0.1155,0.115,0.07,0.048,0.0535,0.0545,0.054,0.0325,0.035,0.047,0.051,0.067,0.06,0.092,0.084,0.083,0.0415,0.044,0.048,0.0475,0.0275,0.026,0.027,0.026,0.047,0.0425,0.034,0.035,0.0225,0.023,0.0215,0.0203],"logo_y":-0.0011}]}};
+window.NHL_ODDS_META = {"first":"2026-09-29","last":"2026-11-08","subtitle":"Chance to make the playoffs by date | 2026-27 regular season | Thru games as of November 8, 2026","caption":"Data: fastRhockey / Hockey Reference | Model re-run daily | Plot: @steodosescu"};
+// Playoff-odds-over-time charts for Predictions.Rmd. Data comes from
+// window.NHL_ODDS (one entry per division) and window.NHL_ODDS_META.
+(function () {
+  var DAY = 864e5;
+
+  function draw(el) {
+    var d = window.NHL_ODDS[el.dataset.division];
+    var meta = window.NHL_ODDS_META;
+    var first = new Date(meta.first).getTime();
+    var last = new Date(meta.last).getTime();
+    var span = Math.max(last - first, 10 * DAY);
+    var logoX = last + span * 0.025;    // logos just past the line ends
+    var logoW = span * 0.045;
+
+    var traces = d.teams.map(function (t) {
+      return {
+        x: t.x, y: t.y, type: "scatter", mode: "lines", name: t.name,
+        line: { color: t.color, width: 3 },
+        hovertemplate: t.name + ": %{y:.1%}<extra></extra>"
+      };
+    });
+    var images = d.teams.map(function (t) {
+      return {
+        source: t.logo, xref: "x", yref: "y",
+        x: new Date(logoX).toISOString().slice(0, 10), y: t.logo_y,
+        sizex: logoW, sizey: 0.09, xanchor: "left", yanchor: "middle",
+        sizing: "contain", layer: "above"
+      };
+    });
+    var shapes = d.teams.map(function (t) {
+      return {
+        type: "line", xref: "x", yref: "y",
+        x0: t.x[t.x.length - 1], y0: t.y[t.y.length - 1],
+        x1: new Date(logoX).toISOString().slice(0, 10), y1: t.logo_y,
+        line: { color: "#999", width: 1 }
+      };
+    });
+    [0, 0.5, 1].forEach(function (y) {
+      shapes.push({ type: "line", xref: "paper", x0: 0, x1: 1, yref: "y", y0: y, y1: y,
+                    layer: "below", line: { color: "#ccc", width: 1 } });
+    });
+
+    var layout = {
+      title: { text: "<b>" + el.dataset.division + " Division Playoff Odds</b>",
+               font: { size: 24 }, x: 0.5, y: 0.97 },
+      annotations: [
+        { text: meta.subtitle, xref: "paper", yref: "paper", x: 0.5, y: 1.07,
+          showarrow: false, font: { size: 13, color: "#666" } },
+        { text: meta.caption, xref: "paper", yref: "paper", x: 1, y: -0.12,
+          xanchor: "right", showarrow: false, font: { size: 11, color: "#666" } }
+      ],
+      font: { family: "Outfit, sans-serif", color: "#222" },
+      paper_bgcolor: "floralwhite", plot_bgcolor: "floralwhite",
+      margin: { l: 60, r: 20, t: 90, b: 70 },
+      showlegend: false,
+      hovermode: "x unified",
+      hoverlabel: { font: { family: "Outfit, sans-serif" } },
+      xaxis: { type: "date", tickformat: "%b %-d", showgrid: false,
+               range: [new Date(first - span * 0.01).toISOString().slice(0, 10),
+                       new Date(logoX + logoW * 1.3).toISOString().slice(0, 10)],
+               fixedrange: true },
+      yaxis: { tickformat: ".0%", range: [-0.06, 1.1], dtick: 0.25,
+               gridcolor: "#e8e8e8", zeroline: false, title: { text: "Playoff odds" },
+               fixedrange: true },
+      images: images, shapes: shapes
+    };
+    Plotly.newPlot(el, traces, layout, { responsive: true, displayModeBar: false });
+    el.dataset.drawn = "1";
+  }
+
+  function refresh() {
+    document.querySelectorAll(".odds-chart").forEach(function (el) {
+      if (el.offsetParent === null) return;          // hidden tab
+      if (el.dataset.drawn) Plotly.Plots.resize(el); else draw(el);
+    });
+  }
+
+  $(document).on("shown.bs.tab", refresh);
+  $(refresh);
+})();
+</script>
+</div>
+</div>
+</div>
+<div id="section" class="section level2 unnumbered">
+<h2 class="unnumbered"></h2>
+<hr />
+<div id="how-the-model-works" class="section level3">
+<h3>How the model works</h3>
+<ul>
+<li><strong>Team ratings.</strong> Every team starts the season with a rating taken from its preseason points over/under. As games are played, the rating moves toward the team’s actual results: 70% expected-goal differential per game, 30% real goal differential. By about 40 games, the season counts for half.</li>
+<li><strong>Games.</strong> Each remaining game is played out by drawing each team’s goals from its rating, with a small home-ice edge. Ties go to overtime or a shootout, and the loser gets a point. The share of games reaching overtime is matched to the NHL’s actual rate.</li>
+<li><strong>Uncertainty.</strong> Each simulated season draws its own team strengths around the ratings, so the forecast allows for teams being better or worse than they’ve looked so far.</li>
+<li><strong>Playoffs.</strong> The top three teams in each division and two wild cards per conference qualify, with ties broken by regulation wins. The bracket is played out in best-of-seven series, with home ice going to the team with more points.</li>
+<li><strong>Draft lottery.</strong> The 16 non-playoff teams go into the NHL’s two-draw lottery, using the official odds. A team can move up at most 10 spots.</li>
+</ul>
+</div>
+</div>
+
+<p>Copyright &copy; Stephan Teodosescu (<a href="https://betweenthepipes.substack.com/" target="_blank" rel="noopener noreferrer">Between the Pipes</a>)</p>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

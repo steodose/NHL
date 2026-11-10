@@ -6,6 +6,7 @@ This site is a season-to-date look at the NHL season through advanced analytics.
 
 - **Summary**: current division and league standings.
 - **Teams**: expected goals, shot share, PDO, performance vs. preseason expectations, and attendance by team.
+- **Predictions**: playoff, division, Stanley Cup and draft lottery odds from 10,000 simulations of the rest of the season, plus today's game odds, power ratings and playoff odds over time.
 
 The site refreshes automatically every morning. For live scores and box scores, see [NHL Scores](https://steodose.github.io/nhl-scores/).
 

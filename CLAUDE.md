@@ -7,8 +7,10 @@ and `*_files/` are committed on purpose. Live scores live in the separate
 `../nhl-scores` site; this site does not show them.
 
 Pages: `index.Rmd` (Summary: standings, the landing page), `Teams.Rmd` (charts),
-`Players.Rmd` (placeholder), `about.Rmd`. Shared setup is in `R/helpers.R` (themes, `nhl_season`,
-`nhl_teams`), `source()`d by each page.
+`Predictions.Rmd` (season simulations), `Players.Rmd` (placeholder), `about.Rmd`. Shared setup is in `R/helpers.R` (themes, `nhl_season`,
+`nhl_teams`), `source()`d by each page. `R/load_pbp.R` (pbp download with
+retry, cached in `tempdir()` so render_site downloads it once; `build_shots()`)
+is shared by Teams and Predictions.
 
 ## Rendering
 
@@ -53,6 +55,37 @@ those are called namespaced. Keep doing that.
   `nhl_teams.csv` maps NHL abbreviations to ESPN ones (LAK/LA, NJD/NJ, SJS/SJ,
   TBL/TB, UTA/UTAH).
 
+## Predictions model (`R/sim_model.R`)
+
+nflseedR is NFL-only, so the simulation is our own. Constants are in `sim_const`.
+
+- Rating = goals/game above average: preseason prior from the points O/U
+  (`(pts_ou - mean) / 0.33 / games`) blended with in-season
+  `0.7 * xGD/GP + 0.3 * GD/GP`, in-season weight `GP / (GP + 40)`. Each sim
+  draws its own strengths around the ratings (sd shrinks with GP).
+- Games: Poisson goals; a share of one-goal games is turned into ties so the
+  simulated OT rate matches the real one (~23%). Loser point for OT/SO.
+- Standings are rebuilt from the schedule (scores) + pbp (OT/SO from period
+  types), not `nhl_standings()`, so the "played" and "remaining" sets come
+  from the same snapshot. The live NHL standings can be a game ahead of the
+  schedule release; that's expected.
+- `predict_as_of()` runs everything as of a date and `check_sim_sums()` fails
+  the render unless playoffs sum to 16, divisions to 4, Cup/Presidents'/1st
+  pick to 1, conference to 2, top-3 picks to 3.
+- **R precedence trap:** `2 * !hw + x` parses as `2 * !(hw + x)`. The sim
+  uses an explicit `aw <- !hw`; keep it that way.
+- Playoff format (division bracket, better division winner plays WC2) and the
+  lottery odds / 10-spot max jump are hardcoded in `simulate_season()` and
+  `sim_const$lottery_odds`. Revisit if the NHL changes them.
+- Odds history: every render writes the day's rows to
+  `data/playoff_odds_history_<season>.csv` (same-date rows replaced), which
+  CI commits. `R/backfill_odds.R` rebuilt the 2026-27 history from opening
+  night (2,000 sims per date); it is a one-off, not run in CI.
+- The odds-over-time charts are plain Plotly.js (`R/odds_chart.js`), loaded
+  from jsDelivr with the data inlined as JSON. Don't switch to the R plotly
+  package: it commits a 3.6 MB plotly.js into `site_libs/`. Charts in hidden
+  tabs are drawn on the Bootstrap `shown.bs.tab` event.
+
 ## Styling
 
 Charts and gt/reactable tables use **Outfit** (loaded via `header.html`, installed in CI); page text keeps the cosmo theme font, as on the NFL site.
@@ -85,7 +118,10 @@ into a brand-new repo. Pushing any change to the workflow file re-registers it.
 by themselves. The one manual step is the preseason odds: add a new
 `data/<year>_preseason_odds.csv` (Hockey Reference: `Team`, `Stanley Cup Odds`,
 `Pts. O/U`, full team names matching `nhl_teams$team_name`) and point the
-`read_csv()` in Teams.Rmd's `expectations` chunk at it. That chunk
+`read_csv()` in Teams.Rmd's `expectations` chunk and the default path in
+`read_preseason()` (R/sim_model.R) at it. The odds history file is per
+season automatically; run `R/backfill_odds.R` again only if you want a
+backfill. That chunk
 `stopifnot()`s on 32 teams, so a name mismatch fails the render instead of
 dropping a team. Also clear `data/attendance.csv`: its cache is per season.
 If a team relocates or rebrands, update `data/nhl_teams.csv`.

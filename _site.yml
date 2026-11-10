@@ -9,6 +9,8 @@ navbar:
       href: Teams.html
     - text: "Players"
       href: Players.html
+    - text: "Predictions"
+      href: Predictions.html
     - text: "About"
       href: about.html
   right:

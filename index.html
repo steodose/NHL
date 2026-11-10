@@ -13,7 +13,7 @@
 
 <title>Summary</title>
 
-<script src="site_libs/header-attrs-2.32/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -36,10 +36,10 @@
 <script src="site_libs/react-18.2.0/react.min.js"></script>
 <script src="site_libs/react-18.2.0/react-dom.min.js"></script>
 <script src="site_libs/reactwidget-2.0.0/react-tools.js"></script>
-<link href="site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet" />
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
 <script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-<link href="site_libs/reactable-0.4.5/reactable.css" rel="stylesheet" />
-<script src="site_libs/reactable-binding-0.4.5/reactable.js"></script>
+<link href="site_libs/reactable-0.4.4/reactable.css" rel="stylesheet" />
+<script src="site_libs/reactable-binding-0.4.4/reactable.js"></script>
 <link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
 <!-- Outfit is loaded as a webfont rather than relied on as an installed
@@ -304,6 +304,9 @@ $(document).ready(function () {
   <a href="Players.html">Players</a>
 </li>
 <li>
+  <a href="Predictions.html">Predictions</a>
+</li>
+<li>
   <a href="about.html">About</a>
 </li>
       </ul>
@@ -352,36 +355,33 @@ $(document).ready(function () {
 /* Room for the two conference tables side by side. */
 .main-container { max-width: 1320px; }
 </style>
-<p>Current NHL standings for the 2026-27 season. Data comes from the <a
-href="https://fastrhockey.sportsdataverse.org/">fastRhockey</a> package
-from the SportsDataverse. For live scores and box scores, see <a
-href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
+<p>Current NHL standings for the 2026-27 season. Data comes from the <a href="https://fastrhockey.sportsdataverse.org/">fastRhockey</a> package from the SportsDataverse. For live scores and box scores, see <a href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
 <hr />
 <div id="division-standings" class="section level3">
 <h3>Division Standings</h3>
 <div style="display:flex; flex-wrap:wrap; gap:24px; justify-content:center; align-items:flex-start;">
-<div style="flex:1 1 560px; min-width:0; overflow-x:auto;"><div id="fpkbktayjj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div style="flex:1 1 560px; min-width:0; overflow-x:auto;"><div id="uhjbpfugwt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   <style>@import url("https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cairo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#fpkbktayjj table {
+#uhjbpfugwt table {
   font-family: Outfit, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', Cairo;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fpkbktayjj thead, #fpkbktayjj tbody, #fpkbktayjj tfoot, #fpkbktayjj tr, #fpkbktayjj td, #fpkbktayjj th {
+#uhjbpfugwt thead, #uhjbpfugwt tbody, #uhjbpfugwt tfoot, #uhjbpfugwt tr, #uhjbpfugwt td, #uhjbpfugwt th {
   border-style: none;
 }
 
-#fpkbktayjj p {
+#uhjbpfugwt p {
   margin: 0;
   padding: 0;
 }
 
-#fpkbktayjj .gt_table {
+#uhjbpfugwt .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -407,12 +407,12 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   border-left-color: #D3D3D3;
 }
 
-#fpkbktayjj .gt_caption {
+#uhjbpfugwt .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fpkbktayjj .gt_title {
+#uhjbpfugwt .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -424,7 +424,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   border-bottom-width: 0;
 }
 
-#fpkbktayjj .gt_subtitle {
+#uhjbpfugwt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -436,7 +436,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   border-top-width: 0;
 }
 
-#fpkbktayjj .gt_heading {
+#uhjbpfugwt .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -448,13 +448,13 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   border-right-color: #D3D3D3;
 }
 
-#fpkbktayjj .gt_bottom_border {
+#uhjbpfugwt .gt_bottom_border {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fpkbktayjj .gt_col_headings {
+#uhjbpfugwt .gt_col_headings {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -469,7 +469,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   border-right-color: #D3D3D3;
 }
 
-#fpkbktayjj .gt_col_heading {
+#uhjbpfugwt .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -489,7 +489,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   overflow-x: hidden;
 }
 
-#fpkbktayjj .gt_column_spanner_outer {
+#uhjbpfugwt .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -501,15 +501,15 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   padding-right: 4px;
 }
 
-#fpkbktayjj .gt_column_spanner_outer:first-child {
+#uhjbpfugwt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fpkbktayjj .gt_column_spanner_outer:last-child {
+#uhjbpfugwt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fpkbktayjj .gt_column_spanner {
+#uhjbpfugwt .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #000000;
@@ -521,11 +521,11 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   width: 100%;
 }
 
-#fpkbktayjj .gt_spanner_row {
+#uhjbpfugwt .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fpkbktayjj .gt_group_heading {
+#uhjbpfugwt .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -551,7 +551,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   text-align: left;
 }
 
-#fpkbktayjj .gt_empty_group_heading {
+#uhjbpfugwt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -566,15 +566,15 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   vertical-align: middle;
 }
 
-#fpkbktayjj .gt_from_md > :first-child {
+#uhjbpfugwt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fpkbktayjj .gt_from_md > :last-child {
+#uhjbpfugwt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fpkbktayjj .gt_row {
+#uhjbpfugwt .gt_row {
   padding-top: 3px;
   padding-bottom: 3px;
   padding-left: 5px;
@@ -593,7 +593,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   overflow-x: hidden;
 }
 
-#fpkbktayjj .gt_stub {
+#uhjbpfugwt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -606,7 +606,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   padding-right: 5px;
 }
 
-#fpkbktayjj .gt_stub_row_group {
+#uhjbpfugwt .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -620,15 +620,15 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   vertical-align: top;
 }
 
-#fpkbktayjj .gt_row_group_first td {
+#uhjbpfugwt .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fpkbktayjj .gt_row_group_first th {
+#uhjbpfugwt .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fpkbktayjj .gt_summary_row {
+#uhjbpfugwt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -638,16 +638,16 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   padding-right: 5px;
 }
 
-#fpkbktayjj .gt_first_summary_row {
+#uhjbpfugwt .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fpkbktayjj .gt_first_summary_row.thick {
+#uhjbpfugwt .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fpkbktayjj .gt_last_summary_row {
+#uhjbpfugwt .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -657,7 +657,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#fpkbktayjj .gt_grand_summary_row {
+#uhjbpfugwt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -667,7 +667,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   padding-right: 5px;
 }
 
-#fpkbktayjj .gt_first_grand_summary_row {
+#uhjbpfugwt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -677,7 +677,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   border-top-color: #D3D3D3;
 }
 
-#fpkbktayjj .gt_last_grand_summary_row_top {
+#uhjbpfugwt .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -687,11 +687,11 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#fpkbktayjj .gt_striped {
+#uhjbpfugwt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fpkbktayjj .gt_table_body {
+#uhjbpfugwt .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -700,7 +700,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#fpkbktayjj .gt_footnotes {
+#uhjbpfugwt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -714,7 +714,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   border-right-color: #D3D3D3;
 }
 
-#fpkbktayjj .gt_footnote {
+#uhjbpfugwt .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -723,7 +723,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   padding-right: 5px;
 }
 
-#fpkbktayjj .gt_sourcenotes {
+#uhjbpfugwt .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -737,7 +737,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   border-right-color: #D3D3D3;
 }
 
-#fpkbktayjj .gt_sourcenote {
+#uhjbpfugwt .gt_sourcenote {
   font-size: 12px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -745,76 +745,76 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   padding-right: 5px;
 }
 
-#fpkbktayjj .gt_left {
+#uhjbpfugwt .gt_left {
   text-align: left;
 }
 
-#fpkbktayjj .gt_center {
+#uhjbpfugwt .gt_center {
   text-align: center;
 }
 
-#fpkbktayjj .gt_right {
+#uhjbpfugwt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fpkbktayjj .gt_font_normal {
+#uhjbpfugwt .gt_font_normal {
   font-weight: normal;
 }
 
-#fpkbktayjj .gt_font_bold {
+#uhjbpfugwt .gt_font_bold {
   font-weight: bold;
 }
 
-#fpkbktayjj .gt_font_italic {
+#uhjbpfugwt .gt_font_italic {
   font-style: italic;
 }
 
-#fpkbktayjj .gt_super {
+#uhjbpfugwt .gt_super {
   font-size: 65%;
 }
 
-#fpkbktayjj .gt_footnote_marks {
+#uhjbpfugwt .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fpkbktayjj .gt_asterisk {
+#uhjbpfugwt .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fpkbktayjj .gt_indent_1 {
+#uhjbpfugwt .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fpkbktayjj .gt_indent_2 {
+#uhjbpfugwt .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fpkbktayjj .gt_indent_3 {
+#uhjbpfugwt .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fpkbktayjj .gt_indent_4 {
+#uhjbpfugwt .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fpkbktayjj .gt_indent_5 {
+#uhjbpfugwt .gt_indent_5 {
   text-indent: 25px;
 }
 
-#fpkbktayjj .katex-display {
+#uhjbpfugwt .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#fpkbktayjj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#uhjbpfugwt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 
-#fpkbktayjj tbody tr:last-child {
+#uhjbpfugwt tbody tr:last-child {
   border-bottom: 2px solid #ffffff00;
 }
 </style>
@@ -856,7 +856,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
 <td headers="Central  losses" class="gt_row gt_center">3</td>
 <td headers="Central  ot_losses" class="gt_row gt_center">4</td>
 <td headers="Central  points" class="gt_row gt_center" style="font-weight: bold;">28</td>
-<td headers="Central  point_pctg" class="gt_row gt_center" style="background-color: #6AB8DE; color: #000000;">0.737</td>
+<td headers="Central  point_pctg" class="gt_row gt_center" style="background-color: #6FBAE0; color: #000000;">0.737</td>
 <td headers="Central  regulation_wins" class="gt_row gt_center">12</td>
 <td headers="Central  goals_for" class="gt_row gt_center">63</td>
 <td headers="Central  goals_against" class="gt_row gt_center">43</td>
@@ -871,7 +871,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
 <td headers="Central  losses" class="gt_row gt_center">5</td>
 <td headers="Central  ot_losses" class="gt_row gt_center">2</td>
 <td headers="Central  points" class="gt_row gt_center" style="font-weight: bold;">22</td>
-<td headers="Central  point_pctg" class="gt_row gt_center" style="background-color: #8FCBE8; color: #000000;">0.647</td>
+<td headers="Central  point_pctg" class="gt_row gt_center" style="background-color: #92CDE9; color: #000000;">0.647</td>
 <td headers="Central  regulation_wins" class="gt_row gt_center">7</td>
 <td headers="Central  goals_for" class="gt_row gt_center">49</td>
 <td headers="Central  goals_against" class="gt_row gt_center">41</td>
@@ -886,7 +886,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
 <td headers="Central  losses" class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">6</td>
 <td headers="Central  ot_losses" class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">2</td>
 <td headers="Central  points" class="gt_row gt_center" style="font-weight: bold; border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">22</td>
-<td headers="Central  point_pctg" class="gt_row gt_center" style="background-color: #9CD2EC; color: #000000; border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">0.611</td>
+<td headers="Central  point_pctg" class="gt_row gt_center" style="background-color: #9FD4EC; color: #000000; border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">0.611</td>
 <td headers="Central  regulation_wins" class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">10</td>
 <td headers="Central  goals_for" class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">72</td>
 <td headers="Central  goals_against" class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">56</td>
@@ -901,7 +901,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
 <td headers="Central  losses" class="gt_row gt_center">4</td>
 <td headers="Central  ot_losses" class="gt_row gt_center">5</td>
 <td headers="Central  points" class="gt_row gt_center" style="font-weight: bold;">21</td>
-<td headers="Central  point_pctg" class="gt_row gt_center" style="background-color: #9AD1EB; color: #000000;">0.618</td>
+<td headers="Central  point_pctg" class="gt_row gt_center" style="background-color: #9CD3EC; color: #000000;">0.618</td>
 <td headers="Central  regulation_wins" class="gt_row gt_center">6</td>
 <td headers="Central  goals_for" class="gt_row gt_center">52</td>
 <td headers="Central  goals_against" class="gt_row gt_center">51</td>
@@ -916,7 +916,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
 <td headers="Central  losses" class="gt_row gt_center">7</td>
 <td headers="Central  ot_losses" class="gt_row gt_center">1</td>
 <td headers="Central  points" class="gt_row gt_center" style="font-weight: bold;">21</td>
-<td headers="Central  point_pctg" class="gt_row gt_center" style="background-color: #A5D7EE; color: #000000;">0.583</td>
+<td headers="Central  point_pctg" class="gt_row gt_center" style="background-color: #A7D7EE; color: #000000;">0.583</td>
 <td headers="Central  regulation_wins" class="gt_row gt_center">8</td>
 <td headers="Central  goals_for" class="gt_row gt_center">63</td>
 <td headers="Central  goals_against" class="gt_row gt_center">63</td>
@@ -931,7 +931,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
 <td headers="Central  losses" class="gt_row gt_center">8</td>
 <td headers="Central  ot_losses" class="gt_row gt_center">3</td>
 <td headers="Central  points" class="gt_row gt_center" style="font-weight: bold;">17</td>
-<td headers="Central  point_pctg" class="gt_row gt_center" style="background-color: #C6E6F5; color: #000000;">0.472</td>
+<td headers="Central  point_pctg" class="gt_row gt_center" style="background-color: #C7E7F5; color: #000000;">0.472</td>
 <td headers="Central  regulation_wins" class="gt_row gt_center">6</td>
 <td headers="Central  goals_for" class="gt_row gt_center">49</td>
 <td headers="Central  goals_against" class="gt_row gt_center">63</td>
@@ -946,7 +946,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
 <td headers="Central  losses" class="gt_row gt_center">8</td>
 <td headers="Central  ot_losses" class="gt_row gt_center">2</td>
 <td headers="Central  points" class="gt_row gt_center" style="font-weight: bold;">16</td>
-<td headers="Central  point_pctg" class="gt_row gt_center" style="background-color: #C7E7F5; color: #000000;">0.471</td>
+<td headers="Central  point_pctg" class="gt_row gt_center" style="background-color: #C8E7F5; color: #000000;">0.471</td>
 <td headers="Central  regulation_wins" class="gt_row gt_center">7</td>
 <td headers="Central  goals_for" class="gt_row gt_center">50</td>
 <td headers="Central  goals_against" class="gt_row gt_center">53</td>
@@ -961,7 +961,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
 <td headers="Central  losses" class="gt_row gt_center">13</td>
 <td headers="Central  ot_losses" class="gt_row gt_center">1</td>
 <td headers="Central  points" class="gt_row gt_center" style="font-weight: bold;">9</td>
-<td headers="Central  point_pctg" class="gt_row gt_center" style="background-color: #F4FAFD; color: #000000;">0.250</td>
+<td headers="Central  point_pctg" class="gt_row gt_center" style="background-color: #F3FAFD; color: #000000;">0.250</td>
 <td headers="Central  regulation_wins" class="gt_row gt_center">3</td>
 <td headers="Central  goals_for" class="gt_row gt_center">39</td>
 <td headers="Central  goals_against" class="gt_row gt_center">76</td>
@@ -974,18 +974,18 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
     <tr class="gt_row_group_first"><td headers="Pacific  team_logo" class="gt_row gt_left"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/edm.png" style="height:25px;"></td>
 <td headers="Pacific  team_common_name" class="gt_row gt_left">Oilers</td>
 <td headers="Pacific  pos" class="gt_row gt_center" style="color: #7F7F7F; font-size: 12px;">P1</td>
-<td headers="Pacific  games_played" class="gt_row gt_center">18</td>
-<td headers="Pacific  wins" class="gt_row gt_center">12</td>
+<td headers="Pacific  games_played" class="gt_row gt_center">19</td>
+<td headers="Pacific  wins" class="gt_row gt_center">13</td>
 <td headers="Pacific  losses" class="gt_row gt_center">3</td>
 <td headers="Pacific  ot_losses" class="gt_row gt_center">3</td>
-<td headers="Pacific  points" class="gt_row gt_center" style="font-weight: bold;">27</td>
-<td headers="Pacific  point_pctg" class="gt_row gt_center" style="background-color: #64B5DD; color: #000000;">0.750</td>
-<td headers="Pacific  regulation_wins" class="gt_row gt_center">10</td>
-<td headers="Pacific  goals_for" class="gt_row gt_center">75</td>
-<td headers="Pacific  goals_against" class="gt_row gt_center">55</td>
-<td headers="Pacific  goal_differential" class="gt_row gt_center" style="color: #1A9850; font-weight: bold;">+20</td>
+<td headers="Pacific  points" class="gt_row gt_center" style="font-weight: bold;">29</td>
+<td headers="Pacific  point_pctg" class="gt_row gt_center" style="background-color: #64B5DD; color: #000000;">0.763</td>
+<td headers="Pacific  regulation_wins" class="gt_row gt_center">11</td>
+<td headers="Pacific  goals_for" class="gt_row gt_center">78</td>
+<td headers="Pacific  goals_against" class="gt_row gt_center">56</td>
+<td headers="Pacific  goal_differential" class="gt_row gt_center" style="color: #1A9850; font-weight: bold;">+22</td>
 <td headers="Pacific  l10" class="gt_row gt_center">6-2-2</td>
-<td headers="Pacific  streak" class="gt_row gt_center">W1</td></tr>
+<td headers="Pacific  streak" class="gt_row gt_center">W2</td></tr>
     <tr><td headers="Pacific  team_logo" class="gt_row gt_left"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/vgk.png" style="height:25px;"></td>
 <td headers="Pacific  team_common_name" class="gt_row gt_left">Golden Knights</td>
 <td headers="Pacific  pos" class="gt_row gt_center" style="color: #7F7F7F; font-size: 12px;">P2</td>
@@ -994,7 +994,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
 <td headers="Pacific  losses" class="gt_row gt_center">5</td>
 <td headers="Pacific  ot_losses" class="gt_row gt_center">2</td>
 <td headers="Pacific  points" class="gt_row gt_center" style="font-weight: bold;">26</td>
-<td headers="Pacific  point_pctg" class="gt_row gt_center" style="background-color: #80C3E4; color: #000000;">0.684</td>
+<td headers="Pacific  point_pctg" class="gt_row gt_center" style="background-color: #84C5E5; color: #000000;">0.684</td>
 <td headers="Pacific  regulation_wins" class="gt_row gt_center">10</td>
 <td headers="Pacific  goals_for" class="gt_row gt_center">64</td>
 <td headers="Pacific  goals_against" class="gt_row gt_center">51</td>
@@ -1009,7 +1009,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
 <td headers="Pacific  losses" class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">7</td>
 <td headers="Pacific  ot_losses" class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">1</td>
 <td headers="Pacific  points" class="gt_row gt_center" style="font-weight: bold; border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">21</td>
-<td headers="Pacific  point_pctg" class="gt_row gt_center" style="background-color: #A5D7EE; color: #000000; border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">0.583</td>
+<td headers="Pacific  point_pctg" class="gt_row gt_center" style="background-color: #A7D7EE; color: #000000; border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">0.583</td>
 <td headers="Pacific  regulation_wins" class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">9</td>
 <td headers="Pacific  goals_for" class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">69</td>
 <td headers="Pacific  goals_against" class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">66</td>
@@ -1024,7 +1024,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
 <td headers="Pacific  losses" class="gt_row gt_center">6</td>
 <td headers="Pacific  ot_losses" class="gt_row gt_center">1</td>
 <td headers="Pacific  points" class="gt_row gt_center" style="font-weight: bold;">19</td>
-<td headers="Pacific  point_pctg" class="gt_row gt_center" style="background-color: #A2D5ED; color: #000000;">0.594</td>
+<td headers="Pacific  point_pctg" class="gt_row gt_center" style="background-color: #A4D6ED; color: #000000;">0.594</td>
 <td headers="Pacific  regulation_wins" class="gt_row gt_center">6</td>
 <td headers="Pacific  goals_for" class="gt_row gt_center">57</td>
 <td headers="Pacific  goals_against" class="gt_row gt_center">57</td>
@@ -1039,7 +1039,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
 <td headers="Pacific  losses" class="gt_row gt_center">9</td>
 <td headers="Pacific  ot_losses" class="gt_row gt_center">1</td>
 <td headers="Pacific  points" class="gt_row gt_center" style="font-weight: bold;">17</td>
-<td headers="Pacific  point_pctg" class="gt_row gt_center" style="background-color: #C6E6F5; color: #000000;">0.472</td>
+<td headers="Pacific  point_pctg" class="gt_row gt_center" style="background-color: #C7E7F5; color: #000000;">0.472</td>
 <td headers="Pacific  regulation_wins" class="gt_row gt_center">7</td>
 <td headers="Pacific  goals_for" class="gt_row gt_center">46</td>
 <td headers="Pacific  goals_against" class="gt_row gt_center">63</td>
@@ -1054,7 +1054,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
 <td headers="Pacific  losses" class="gt_row gt_center">11</td>
 <td headers="Pacific  ot_losses" class="gt_row gt_center">1</td>
 <td headers="Pacific  points" class="gt_row gt_center" style="font-weight: bold;">15</td>
-<td headers="Pacific  point_pctg" class="gt_row gt_center" style="background-color: #D9EEF8; color: #000000;">0.395</td>
+<td headers="Pacific  point_pctg" class="gt_row gt_center" style="background-color: #D8EEF8; color: #000000;">0.395</td>
 <td headers="Pacific  regulation_wins" class="gt_row gt_center">2</td>
 <td headers="Pacific  goals_for" class="gt_row gt_center">48</td>
 <td headers="Pacific  goals_against" class="gt_row gt_center">69</td>
@@ -1079,48 +1079,49 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
     <tr><td headers="Pacific  team_logo" class="gt_row gt_left"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/van.png" style="height:25px;"></td>
 <td headers="Pacific  team_common_name" class="gt_row gt_left">Canucks</td>
 <td headers="Pacific  pos" class="gt_row gt_center" style="color: #7F7F7F; font-size: 12px;"></td>
-<td headers="Pacific  games_played" class="gt_row gt_center">19</td>
+<td headers="Pacific  games_played" class="gt_row gt_center">20</td>
 <td headers="Pacific  wins" class="gt_row gt_center">3</td>
-<td headers="Pacific  losses" class="gt_row gt_center">15</td>
+<td headers="Pacific  losses" class="gt_row gt_center">16</td>
 <td headers="Pacific  ot_losses" class="gt_row gt_center">1</td>
 <td headers="Pacific  points" class="gt_row gt_center" style="font-weight: bold;">7</td>
-<td headers="Pacific  point_pctg" class="gt_row gt_center" style="background-color: #FFFFFF; color: #000000;">0.184</td>
+<td headers="Pacific  point_pctg" class="gt_row gt_center" style="background-color: #FFFFFF; color: #000000;">0.175</td>
 <td headers="Pacific  regulation_wins" class="gt_row gt_center">1</td>
-<td headers="Pacific  goals_for" class="gt_row gt_center">55</td>
-<td headers="Pacific  goals_against" class="gt_row gt_center">87</td>
-<td headers="Pacific  goal_differential" class="gt_row gt_center" style="color: #D73027; font-weight: bold;">−32</td>
+<td headers="Pacific  goals_for" class="gt_row gt_center">56</td>
+<td headers="Pacific  goals_against" class="gt_row gt_center">90</td>
+<td headers="Pacific  goal_differential" class="gt_row gt_center" style="color: #D73027; font-weight: bold;">−34</td>
 <td headers="Pacific  l10" class="gt_row gt_center">1-9-0</td>
-<td headers="Pacific  streak" class="gt_row gt_center">L5</td></tr>
+<td headers="Pacific  streak" class="gt_row gt_center">L6</td></tr>
   </tbody>
-  <tfoot>
-    <tr class="gt_sourcenotes">
+  <tfoot class="gt_sourcenotes">
+    <tr>
       <td class="gt_sourcenote" colspan="15"><span class='gt_from_md'>Dashed line = top 3 in division. <strong>WC</strong> = wild card. Data: fastRhockey</span></td>
     </tr>
   </tfoot>
+  
 </table>
 </div></div>
-<div style="flex:1 1 560px; min-width:0; overflow-x:auto;"><div id="vzlsbxbcwz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div style="flex:1 1 560px; min-width:0; overflow-x:auto;"><div id="otrhaetmcd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   <style>@import url("https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cairo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#vzlsbxbcwz table {
+#otrhaetmcd table {
   font-family: Outfit, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', Cairo;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vzlsbxbcwz thead, #vzlsbxbcwz tbody, #vzlsbxbcwz tfoot, #vzlsbxbcwz tr, #vzlsbxbcwz td, #vzlsbxbcwz th {
+#otrhaetmcd thead, #otrhaetmcd tbody, #otrhaetmcd tfoot, #otrhaetmcd tr, #otrhaetmcd td, #otrhaetmcd th {
   border-style: none;
 }
 
-#vzlsbxbcwz p {
+#otrhaetmcd p {
   margin: 0;
   padding: 0;
 }
 
-#vzlsbxbcwz .gt_table {
+#otrhaetmcd .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1146,12 +1147,12 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   border-left-color: #D3D3D3;
 }
 
-#vzlsbxbcwz .gt_caption {
+#otrhaetmcd .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vzlsbxbcwz .gt_title {
+#otrhaetmcd .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1163,7 +1164,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   border-bottom-width: 0;
 }
 
-#vzlsbxbcwz .gt_subtitle {
+#otrhaetmcd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1175,7 +1176,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   border-top-width: 0;
 }
 
-#vzlsbxbcwz .gt_heading {
+#otrhaetmcd .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -1187,13 +1188,13 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   border-right-color: #D3D3D3;
 }
 
-#vzlsbxbcwz .gt_bottom_border {
+#otrhaetmcd .gt_bottom_border {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vzlsbxbcwz .gt_col_headings {
+#otrhaetmcd .gt_col_headings {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1208,7 +1209,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   border-right-color: #D3D3D3;
 }
 
-#vzlsbxbcwz .gt_col_heading {
+#otrhaetmcd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1228,7 +1229,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   overflow-x: hidden;
 }
 
-#vzlsbxbcwz .gt_column_spanner_outer {
+#otrhaetmcd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1240,15 +1241,15 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   padding-right: 4px;
 }
 
-#vzlsbxbcwz .gt_column_spanner_outer:first-child {
+#otrhaetmcd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vzlsbxbcwz .gt_column_spanner_outer:last-child {
+#otrhaetmcd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vzlsbxbcwz .gt_column_spanner {
+#otrhaetmcd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #000000;
@@ -1260,11 +1261,11 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   width: 100%;
 }
 
-#vzlsbxbcwz .gt_spanner_row {
+#otrhaetmcd .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vzlsbxbcwz .gt_group_heading {
+#otrhaetmcd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1290,7 +1291,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   text-align: left;
 }
 
-#vzlsbxbcwz .gt_empty_group_heading {
+#otrhaetmcd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1305,15 +1306,15 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   vertical-align: middle;
 }
 
-#vzlsbxbcwz .gt_from_md > :first-child {
+#otrhaetmcd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vzlsbxbcwz .gt_from_md > :last-child {
+#otrhaetmcd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vzlsbxbcwz .gt_row {
+#otrhaetmcd .gt_row {
   padding-top: 3px;
   padding-bottom: 3px;
   padding-left: 5px;
@@ -1332,7 +1333,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   overflow-x: hidden;
 }
 
-#vzlsbxbcwz .gt_stub {
+#otrhaetmcd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1345,7 +1346,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   padding-right: 5px;
 }
 
-#vzlsbxbcwz .gt_stub_row_group {
+#otrhaetmcd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1359,15 +1360,15 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   vertical-align: top;
 }
 
-#vzlsbxbcwz .gt_row_group_first td {
+#otrhaetmcd .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vzlsbxbcwz .gt_row_group_first th {
+#otrhaetmcd .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vzlsbxbcwz .gt_summary_row {
+#otrhaetmcd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1377,16 +1378,16 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   padding-right: 5px;
 }
 
-#vzlsbxbcwz .gt_first_summary_row {
+#otrhaetmcd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vzlsbxbcwz .gt_first_summary_row.thick {
+#otrhaetmcd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vzlsbxbcwz .gt_last_summary_row {
+#otrhaetmcd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1396,7 +1397,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#vzlsbxbcwz .gt_grand_summary_row {
+#otrhaetmcd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1406,7 +1407,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   padding-right: 5px;
 }
 
-#vzlsbxbcwz .gt_first_grand_summary_row {
+#otrhaetmcd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1416,7 +1417,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   border-top-color: #D3D3D3;
 }
 
-#vzlsbxbcwz .gt_last_grand_summary_row_top {
+#otrhaetmcd .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1426,11 +1427,11 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#vzlsbxbcwz .gt_striped {
+#otrhaetmcd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vzlsbxbcwz .gt_table_body {
+#otrhaetmcd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1439,7 +1440,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#vzlsbxbcwz .gt_footnotes {
+#otrhaetmcd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1453,7 +1454,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   border-right-color: #D3D3D3;
 }
 
-#vzlsbxbcwz .gt_footnote {
+#otrhaetmcd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1462,7 +1463,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   padding-right: 5px;
 }
 
-#vzlsbxbcwz .gt_sourcenotes {
+#otrhaetmcd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1476,7 +1477,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   border-right-color: #D3D3D3;
 }
 
-#vzlsbxbcwz .gt_sourcenote {
+#otrhaetmcd .gt_sourcenote {
   font-size: 12px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1484,76 +1485,76 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
   padding-right: 5px;
 }
 
-#vzlsbxbcwz .gt_left {
+#otrhaetmcd .gt_left {
   text-align: left;
 }
 
-#vzlsbxbcwz .gt_center {
+#otrhaetmcd .gt_center {
   text-align: center;
 }
 
-#vzlsbxbcwz .gt_right {
+#otrhaetmcd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vzlsbxbcwz .gt_font_normal {
+#otrhaetmcd .gt_font_normal {
   font-weight: normal;
 }
 
-#vzlsbxbcwz .gt_font_bold {
+#otrhaetmcd .gt_font_bold {
   font-weight: bold;
 }
 
-#vzlsbxbcwz .gt_font_italic {
+#otrhaetmcd .gt_font_italic {
   font-style: italic;
 }
 
-#vzlsbxbcwz .gt_super {
+#otrhaetmcd .gt_super {
   font-size: 65%;
 }
 
-#vzlsbxbcwz .gt_footnote_marks {
+#otrhaetmcd .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vzlsbxbcwz .gt_asterisk {
+#otrhaetmcd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vzlsbxbcwz .gt_indent_1 {
+#otrhaetmcd .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vzlsbxbcwz .gt_indent_2 {
+#otrhaetmcd .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vzlsbxbcwz .gt_indent_3 {
+#otrhaetmcd .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vzlsbxbcwz .gt_indent_4 {
+#otrhaetmcd .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vzlsbxbcwz .gt_indent_5 {
+#otrhaetmcd .gt_indent_5 {
   text-indent: 25px;
 }
 
-#vzlsbxbcwz .katex-display {
+#otrhaetmcd .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#vzlsbxbcwz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#otrhaetmcd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 
-#vzlsbxbcwz tbody tr:last-child {
+#otrhaetmcd tbody tr:last-child {
   border-bottom: 2px solid #ffffff00;
 }
 </style>
@@ -1595,7 +1596,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
 <td headers="Atlantic  losses" class="gt_row gt_center">4</td>
 <td headers="Atlantic  ot_losses" class="gt_row gt_center">1</td>
 <td headers="Atlantic  points" class="gt_row gt_center" style="font-weight: bold;">27</td>
-<td headers="Atlantic  point_pctg" class="gt_row gt_center" style="background-color: #7ABFE2; color: #000000;">0.750</td>
+<td headers="Atlantic  point_pctg" class="gt_row gt_center" style="background-color: #7BC0E3; color: #000000;">0.750</td>
 <td headers="Atlantic  regulation_wins" class="gt_row gt_center">10</td>
 <td headers="Atlantic  goals_for" class="gt_row gt_center">68</td>
 <td headers="Atlantic  goals_against" class="gt_row gt_center">41</td>
@@ -1610,7 +1611,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
 <td headers="Atlantic  losses" class="gt_row gt_center">3</td>
 <td headers="Atlantic  ot_losses" class="gt_row gt_center">3</td>
 <td headers="Atlantic  points" class="gt_row gt_center" style="font-weight: bold;">25</td>
-<td headers="Atlantic  point_pctg" class="gt_row gt_center" style="background-color: #81C3E4; color: #000000;">0.735</td>
+<td headers="Atlantic  point_pctg" class="gt_row gt_center" style="background-color: #83C5E5; color: #000000;">0.735</td>
 <td headers="Atlantic  regulation_wins" class="gt_row gt_center">7</td>
 <td headers="Atlantic  goals_for" class="gt_row gt_center">61</td>
 <td headers="Atlantic  goals_against" class="gt_row gt_center">53</td>
@@ -1625,7 +1626,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
 <td headers="Atlantic  losses" class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">4</td>
 <td headers="Atlantic  ot_losses" class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">2</td>
 <td headers="Atlantic  points" class="gt_row gt_center" style="font-weight: bold; border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">24</td>
-<td headers="Atlantic  point_pctg" class="gt_row gt_center" style="background-color: #90CBE8; color: #000000; border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">0.706</td>
+<td headers="Atlantic  point_pctg" class="gt_row gt_center" style="background-color: #93CDE9; color: #000000; border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">0.706</td>
 <td headers="Atlantic  regulation_wins" class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">9</td>
 <td headers="Atlantic  goals_for" class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">63</td>
 <td headers="Atlantic  goals_against" class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">53</td>
@@ -1640,7 +1641,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
 <td headers="Atlantic  losses" class="gt_row gt_center">6</td>
 <td headers="Atlantic  ot_losses" class="gt_row gt_center">1</td>
 <td headers="Atlantic  points" class="gt_row gt_center" style="font-weight: bold;">23</td>
-<td headers="Atlantic  point_pctg" class="gt_row gt_center" style="background-color: #ACDAEF; color: #000000;">0.639</td>
+<td headers="Atlantic  point_pctg" class="gt_row gt_center" style="background-color: #B1DCF0; color: #000000;">0.639</td>
 <td headers="Atlantic  regulation_wins" class="gt_row gt_center">9</td>
 <td headers="Atlantic  goals_for" class="gt_row gt_center">58</td>
 <td headers="Atlantic  goals_against" class="gt_row gt_center">54</td>
@@ -1655,7 +1656,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
 <td headers="Atlantic  losses" class="gt_row gt_center">7</td>
 <td headers="Atlantic  ot_losses" class="gt_row gt_center">2</td>
 <td headers="Atlantic  points" class="gt_row gt_center" style="font-weight: bold;">20</td>
-<td headers="Atlantic  point_pctg" class="gt_row gt_center" style="background-color: #CBE8F6; color: #000000;">0.556</td>
+<td headers="Atlantic  point_pctg" class="gt_row gt_center" style="background-color: #D0EBF7; color: #000000;">0.556</td>
 <td headers="Atlantic  regulation_wins" class="gt_row gt_center">7</td>
 <td headers="Atlantic  goals_for" class="gt_row gt_center">56</td>
 <td headers="Atlantic  goals_against" class="gt_row gt_center">55</td>
@@ -1670,7 +1671,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
 <td headers="Atlantic  losses" class="gt_row gt_center">6</td>
 <td headers="Atlantic  ot_losses" class="gt_row gt_center">3</td>
 <td headers="Atlantic  points" class="gt_row gt_center" style="font-weight: bold;">19</td>
-<td headers="Atlantic  point_pctg" class="gt_row gt_center" style="background-color: #CAE8F5; color: #000000;">0.559</td>
+<td headers="Atlantic  point_pctg" class="gt_row gt_center" style="background-color: #CFEAF6; color: #000000;">0.559</td>
 <td headers="Atlantic  regulation_wins" class="gt_row gt_center">6</td>
 <td headers="Atlantic  goals_for" class="gt_row gt_center">50</td>
 <td headers="Atlantic  goals_against" class="gt_row gt_center">57</td>
@@ -1685,7 +1686,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
 <td headers="Atlantic  losses" class="gt_row gt_center">9</td>
 <td headers="Atlantic  ot_losses" class="gt_row gt_center">2</td>
 <td headers="Atlantic  points" class="gt_row gt_center" style="font-weight: bold;">18</td>
-<td headers="Atlantic  point_pctg" class="gt_row gt_center" style="background-color: #E2F3FA; color: #000000;">0.474</td>
+<td headers="Atlantic  point_pctg" class="gt_row gt_center" style="background-color: #E9F5FB; color: #000000;">0.474</td>
 <td headers="Atlantic  regulation_wins" class="gt_row gt_center">7</td>
 <td headers="Atlantic  goals_for" class="gt_row gt_center">64</td>
 <td headers="Atlantic  goals_against" class="gt_row gt_center">64</td>
@@ -1700,7 +1701,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
 <td headers="Atlantic  losses" class="gt_row gt_center">8</td>
 <td headers="Atlantic  ot_losses" class="gt_row gt_center">3</td>
 <td headers="Atlantic  points" class="gt_row gt_center" style="font-weight: bold;">17</td>
-<td headers="Atlantic  point_pctg" class="gt_row gt_center" style="background-color: #E3F3FA; color: #000000;">0.472</td>
+<td headers="Atlantic  point_pctg" class="gt_row gt_center" style="background-color: #E9F6FB; color: #000000;">0.472</td>
 <td headers="Atlantic  regulation_wins" class="gt_row gt_center">5</td>
 <td headers="Atlantic  goals_for" class="gt_row gt_center">49</td>
 <td headers="Atlantic  goals_against" class="gt_row gt_center">56</td>
@@ -1733,7 +1734,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
 <td headers="Metropolitan  losses" class="gt_row gt_center">5</td>
 <td headers="Metropolitan  ot_losses" class="gt_row gt_center">0</td>
 <td headers="Metropolitan  points" class="gt_row gt_center" style="font-weight: bold;">26</td>
-<td headers="Metropolitan  point_pctg" class="gt_row gt_center" style="background-color: #88C7E6; color: #000000;">0.722</td>
+<td headers="Metropolitan  point_pctg" class="gt_row gt_center" style="background-color: #8AC8E7; color: #000000;">0.722</td>
 <td headers="Metropolitan  regulation_wins" class="gt_row gt_center">8</td>
 <td headers="Metropolitan  goals_for" class="gt_row gt_center">66</td>
 <td headers="Metropolitan  goals_against" class="gt_row gt_center">51</td>
@@ -1743,18 +1744,18 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
     <tr><td headers="Metropolitan  team_logo" class="gt_row gt_left" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/nyr.png" style="height:25px;"></td>
 <td headers="Metropolitan  team_common_name" class="gt_row gt_left" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">Rangers</td>
 <td headers="Metropolitan  pos" class="gt_row gt_center" style="color: #7F7F7F; font-size: 12px; border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">M3</td>
-<td headers="Metropolitan  games_played" class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">18</td>
+<td headers="Metropolitan  games_played" class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">19</td>
 <td headers="Metropolitan  wins" class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">10</td>
-<td headers="Metropolitan  losses" class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">7</td>
+<td headers="Metropolitan  losses" class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">8</td>
 <td headers="Metropolitan  ot_losses" class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">1</td>
 <td headers="Metropolitan  points" class="gt_row gt_center" style="font-weight: bold; border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">21</td>
-<td headers="Metropolitan  point_pctg" class="gt_row gt_center" style="background-color: #C1E4F4; color: #000000; border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">0.583</td>
+<td headers="Metropolitan  point_pctg" class="gt_row gt_center" style="background-color: #D1EBF7; color: #000000; border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">0.553</td>
 <td headers="Metropolitan  regulation_wins" class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">10</td>
-<td headers="Metropolitan  goals_for" class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">55</td>
-<td headers="Metropolitan  goals_against" class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">52</td>
-<td headers="Metropolitan  goal_differential" class="gt_row gt_center" style="color: #1A9850; font-weight: bold; border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">+3</td>
+<td headers="Metropolitan  goals_for" class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">56</td>
+<td headers="Metropolitan  goals_against" class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">55</td>
+<td headers="Metropolitan  goal_differential" class="gt_row gt_center" style="color: #1A9850; font-weight: bold; border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">+1</td>
 <td headers="Metropolitan  l10" class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">4-5-1</td>
-<td headers="Metropolitan  streak" class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">W3</td></tr>
+<td headers="Metropolitan  streak" class="gt_row gt_center" style="border-bottom-width: 2px; border-bottom-style: dashed; border-bottom-color: grey60;">L1</td></tr>
     <tr><td headers="Metropolitan  team_logo" class="gt_row gt_left"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/wsh.png" style="height:25px;"></td>
 <td headers="Metropolitan  team_common_name" class="gt_row gt_left">Capitals</td>
 <td headers="Metropolitan  pos" class="gt_row gt_center" style="color: #7F7F7F; font-size: 12px;"></td>
@@ -1763,7 +1764,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
 <td headers="Metropolitan  losses" class="gt_row gt_center">6</td>
 <td headers="Metropolitan  ot_losses" class="gt_row gt_center">0</td>
 <td headers="Metropolitan  points" class="gt_row gt_center" style="font-weight: bold;">18</td>
-<td headers="Metropolitan  point_pctg" class="gt_row gt_center" style="background-color: #BBE1F2; color: #000000;">0.600</td>
+<td headers="Metropolitan  point_pctg" class="gt_row gt_center" style="background-color: #C1E4F3; color: #000000;">0.600</td>
 <td headers="Metropolitan  regulation_wins" class="gt_row gt_center">8</td>
 <td headers="Metropolitan  goals_for" class="gt_row gt_center">53</td>
 <td headers="Metropolitan  goals_against" class="gt_row gt_center">51</td>
@@ -1778,13 +1779,28 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
 <td headers="Metropolitan  losses" class="gt_row gt_center">6</td>
 <td headers="Metropolitan  ot_losses" class="gt_row gt_center">3</td>
 <td headers="Metropolitan  points" class="gt_row gt_center" style="font-weight: bold;">17</td>
-<td headers="Metropolitan  point_pctg" class="gt_row gt_center" style="background-color: #D2EBF7; color: #000000;">0.531</td>
+<td headers="Metropolitan  point_pctg" class="gt_row gt_center" style="background-color: #D8EEF8; color: #000000;">0.531</td>
 <td headers="Metropolitan  regulation_wins" class="gt_row gt_center">5</td>
 <td headers="Metropolitan  goals_for" class="gt_row gt_center">47</td>
 <td headers="Metropolitan  goals_against" class="gt_row gt_center">49</td>
 <td headers="Metropolitan  goal_differential" class="gt_row gt_center" style="color: #D73027; font-weight: bold;">−2</td>
 <td headers="Metropolitan  l10" class="gt_row gt_center">4-3-3</td>
 <td headers="Metropolitan  streak" class="gt_row gt_center">OT1</td></tr>
+    <tr><td headers="Metropolitan  team_logo" class="gt_row gt_left"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/phi.png" style="height:25px;"></td>
+<td headers="Metropolitan  team_common_name" class="gt_row gt_left">Flyers</td>
+<td headers="Metropolitan  pos" class="gt_row gt_center" style="color: #7F7F7F; font-size: 12px;"></td>
+<td headers="Metropolitan  games_played" class="gt_row gt_center">20</td>
+<td headers="Metropolitan  wins" class="gt_row gt_center">5</td>
+<td headers="Metropolitan  losses" class="gt_row gt_center">10</td>
+<td headers="Metropolitan  ot_losses" class="gt_row gt_center">5</td>
+<td headers="Metropolitan  points" class="gt_row gt_center" style="font-weight: bold;">15</td>
+<td headers="Metropolitan  point_pctg" class="gt_row gt_center" style="background-color: #FFFFFF; color: #000000;">0.375</td>
+<td headers="Metropolitan  regulation_wins" class="gt_row gt_center">5</td>
+<td headers="Metropolitan  goals_for" class="gt_row gt_center">45</td>
+<td headers="Metropolitan  goals_against" class="gt_row gt_center">66</td>
+<td headers="Metropolitan  goal_differential" class="gt_row gt_center" style="color: #D73027; font-weight: bold;">−21</td>
+<td headers="Metropolitan  l10" class="gt_row gt_center">4-4-2</td>
+<td headers="Metropolitan  streak" class="gt_row gt_center">W1</td></tr>
     <tr><td headers="Metropolitan  team_logo" class="gt_row gt_left"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/cbj.png" style="height:25px;"></td>
 <td headers="Metropolitan  team_common_name" class="gt_row gt_left">Blue Jackets</td>
 <td headers="Metropolitan  pos" class="gt_row gt_center" style="color: #7F7F7F; font-size: 12px;"></td>
@@ -1793,7 +1809,7 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
 <td headers="Metropolitan  losses" class="gt_row gt_center">8</td>
 <td headers="Metropolitan  ot_losses" class="gt_row gt_center">0</td>
 <td headers="Metropolitan  points" class="gt_row gt_center" style="font-weight: bold;">14</td>
-<td headers="Metropolitan  point_pctg" class="gt_row gt_center" style="background-color: #E4F3FA; color: #000000;">0.467</td>
+<td headers="Metropolitan  point_pctg" class="gt_row gt_center" style="background-color: #EBF6FB; color: #000000;">0.467</td>
 <td headers="Metropolitan  regulation_wins" class="gt_row gt_center">2</td>
 <td headers="Metropolitan  goals_for" class="gt_row gt_center">40</td>
 <td headers="Metropolitan  goals_against" class="gt_row gt_center">47</td>
@@ -1808,34 +1824,20 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
 <td headers="Metropolitan  losses" class="gt_row gt_center">10</td>
 <td headers="Metropolitan  ot_losses" class="gt_row gt_center">2</td>
 <td headers="Metropolitan  points" class="gt_row gt_center" style="font-weight: bold;">14</td>
-<td headers="Metropolitan  point_pctg" class="gt_row gt_center" style="background-color: #F5FBFD; color: #000000;">0.389</td>
+<td headers="Metropolitan  point_pctg" class="gt_row gt_center" style="background-color: #FCFEFE; color: #000000;">0.389</td>
 <td headers="Metropolitan  regulation_wins" class="gt_row gt_center">3</td>
 <td headers="Metropolitan  goals_for" class="gt_row gt_center">58</td>
 <td headers="Metropolitan  goals_against" class="gt_row gt_center">65</td>
 <td headers="Metropolitan  goal_differential" class="gt_row gt_center" style="color: #D73027; font-weight: bold;">−7</td>
 <td headers="Metropolitan  l10" class="gt_row gt_center">3-6-1</td>
 <td headers="Metropolitan  streak" class="gt_row gt_center">L1</td></tr>
-    <tr><td headers="Metropolitan  team_logo" class="gt_row gt_left"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/phi.png" style="height:25px;"></td>
-<td headers="Metropolitan  team_common_name" class="gt_row gt_left">Flyers</td>
-<td headers="Metropolitan  pos" class="gt_row gt_center" style="color: #7F7F7F; font-size: 12px;"></td>
-<td headers="Metropolitan  games_played" class="gt_row gt_center">19</td>
-<td headers="Metropolitan  wins" class="gt_row gt_center">4</td>
-<td headers="Metropolitan  losses" class="gt_row gt_center">10</td>
-<td headers="Metropolitan  ot_losses" class="gt_row gt_center">5</td>
-<td headers="Metropolitan  points" class="gt_row gt_center" style="font-weight: bold;">13</td>
-<td headers="Metropolitan  point_pctg" class="gt_row gt_center" style="background-color: #FFFFFF; color: #000000;">0.342</td>
-<td headers="Metropolitan  regulation_wins" class="gt_row gt_center">4</td>
-<td headers="Metropolitan  goals_for" class="gt_row gt_center">42</td>
-<td headers="Metropolitan  goals_against" class="gt_row gt_center">65</td>
-<td headers="Metropolitan  goal_differential" class="gt_row gt_center" style="color: #D73027; font-weight: bold;">−23</td>
-<td headers="Metropolitan  l10" class="gt_row gt_center">4-4-2</td>
-<td headers="Metropolitan  streak" class="gt_row gt_center">OT1</td></tr>
   </tbody>
-  <tfoot>
-    <tr class="gt_sourcenotes">
+  <tfoot class="gt_sourcenotes">
+    <tr>
       <td class="gt_sourcenote" colspan="15"><span class='gt_from_md'>Dashed line = top 3 in division. <strong>WC</strong> = wild card. Data: fastRhockey</span></td>
     </tr>
   </tfoot>
+  
 </table>
 </div></div>
 </div>
@@ -1843,10 +1845,9 @@ href="https://steodose.github.io/nhl-scores/">NHL Scores</a>.</p>
 </div>
 <div id="league-standings" class="section level3">
 <h3>League Standings</h3>
-<p>Click a column header to sort. Teams are ranked by points
-percentage.</p>
-<div class="reactable html-widget html-fill-item" id="htmlwidget-6ac22738a375f538c583" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-6ac22738a375f538c583">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"rank":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32],"team_logo":["https://a.espncdn.com/i/teamlogos/nhl/500/car.png","https://a.espncdn.com/i/teamlogos/nhl/500/bos.png","https://a.espncdn.com/i/teamlogos/nhl/500/edm.png","https://a.espncdn.com/i/teamlogos/nhl/500/min.png","https://a.espncdn.com/i/teamlogos/nhl/500/mtl.png","https://a.espncdn.com/i/teamlogos/nhl/500/nj.png","https://a.espncdn.com/i/teamlogos/nhl/500/tb.png","https://a.espncdn.com/i/teamlogos/nhl/500/vgk.png","https://a.espncdn.com/i/teamlogos/nhl/500/dal.png","https://a.espncdn.com/i/teamlogos/nhl/500/ott.png","https://a.espncdn.com/i/teamlogos/nhl/500/nsh.png","https://a.espncdn.com/i/teamlogos/nhl/500/col.png","https://a.espncdn.com/i/teamlogos/nhl/500/wsh.png","https://a.espncdn.com/i/teamlogos/nhl/500/sea.png","https://a.espncdn.com/i/teamlogos/nhl/500/nyr.png","https://a.espncdn.com/i/teamlogos/nhl/500/ana.png","https://a.espncdn.com/i/teamlogos/nhl/500/utah.png","https://a.espncdn.com/i/teamlogos/nhl/500/buf.png","https://a.espncdn.com/i/teamlogos/nhl/500/fla.png","https://a.espncdn.com/i/teamlogos/nhl/500/nyi.png","https://a.espncdn.com/i/teamlogos/nhl/500/tor.png","https://a.espncdn.com/i/teamlogos/nhl/500/cgy.png","https://a.espncdn.com/i/teamlogos/nhl/500/wpg.png","https://a.espncdn.com/i/teamlogos/nhl/500/det.png","https://a.espncdn.com/i/teamlogos/nhl/500/stl.png","https://a.espncdn.com/i/teamlogos/nhl/500/cbj.png","https://a.espncdn.com/i/teamlogos/nhl/500/la.png","https://a.espncdn.com/i/teamlogos/nhl/500/sj.png","https://a.espncdn.com/i/teamlogos/nhl/500/pit.png","https://a.espncdn.com/i/teamlogos/nhl/500/phi.png","https://a.espncdn.com/i/teamlogos/nhl/500/chi.png","https://a.espncdn.com/i/teamlogos/nhl/500/van.png"],"team_name":["Carolina Hurricanes","Boston Bruins","Edmonton Oilers","Minnesota Wild","Montréal Canadiens","New Jersey Devils","Tampa Bay Lightning","Vegas Golden Knights","Dallas Stars","Ottawa Senators","Nashville Predators","Colorado Avalanche","Washington Capitals","Seattle Kraken","New York Rangers","Anaheim Ducks","Utah Mammoth","Buffalo Sabres","Florida Panthers","New York Islanders","Toronto Maple Leafs","Calgary Flames","Winnipeg Jets","Detroit Red Wings","St. Louis Blues","Columbus Blue Jackets","Los Angeles Kings","San Jose Sharks","Pittsburgh Penguins","Philadelphia Flyers","Chicago Blackhawks","Vancouver Canucks"],"conference_name":["Eastern","Eastern","Western","Western","Eastern","Eastern","Eastern","Western","Western","Eastern","Western","Western","Eastern","Western","Eastern","Western","Western","Eastern","Eastern","Eastern","Eastern","Western","Western","Eastern","Western","Eastern","Western","Western","Eastern","Eastern","Western","Western"],"division_name":["Metropolitan","Atlantic","Pacific","Central","Atlantic","Metropolitan","Atlantic","Pacific","Central","Atlantic","Central","Central","Metropolitan","Pacific","Metropolitan","Pacific","Central","Atlantic","Atlantic","Metropolitan","Atlantic","Pacific","Central","Atlantic","Central","Metropolitan","Pacific","Pacific","Metropolitan","Metropolitan","Central","Pacific"],"games_played":[19,18,18,19,17,18,17,19,17,18,17,18,15,16,18,18,18,17,18,16,19,18,18,18,17,15,15,19,18,19,18,19],"wins":[14,13,12,12,11,13,11,12,10,11,8,10,9,9,10,10,10,8,9,7,8,8,7,7,7,7,5,7,6,4,4,3],"losses":[3,4,3,3,3,5,4,5,5,6,4,6,6,6,7,7,7,6,7,6,9,9,8,8,8,8,8,11,10,10,13,15],"ot_losses":[2,1,3,4,3,0,2,2,2,1,5,2,0,1,1,1,1,3,2,3,2,1,3,3,2,0,2,1,2,5,1,1],"points":[30,27,27,28,25,26,24,26,22,23,21,22,18,19,21,21,21,19,20,17,18,17,17,17,16,14,12,15,14,13,9,7],"point_pctg":[0.789474,0.75,0.75,0.736842,0.735294,0.722222,0.705882,0.684211,0.647059,0.638889,0.617647,0.611111,0.6,0.59375,0.583333,0.583333,0.583333,0.558824,0.555556,0.53125,0.473684,0.472222,0.472222,0.472222,0.470588,0.466667,0.4,0.394737,0.388889,0.342105,0.25,0.184211],"gf_gp":[4.10526315789474,3.77777777777778,4.16666666666667,3.31578947368421,3.58823529411765,3.66666666666667,3.70588235294118,3.36842105263158,2.88235294117647,3.22222222222222,3.05882352941176,4,3.53333333333333,3.5625,3.05555555555556,3.83333333333333,3.5,2.94117647058824,3.11111111111111,2.9375,3.36842105263158,2.55555555555556,2.72222222222222,2.72222222222222,2.94117647058824,2.66666666666667,3,2.52631578947368,3.22222222222222,2.21052631578947,2.16666666666667,2.89473684210526],"ga_gp":[2.36842105263158,2.27777777777778,3.05555555555556,2.26315789473684,3.11764705882353,2.83333333333333,3.11764705882353,2.68421052631579,2.41176470588235,3,3,3.11111111111111,3.4,3.5625,2.88888888888889,3.66666666666667,3.5,3.35294117647059,3.05555555555556,3.0625,3.36842105263158,3.5,3.5,3.11111111111111,3.11764705882353,3.13333333333333,3.46666666666667,3.63157894736842,3.61111111111111,3.42105263157895,4.22222222222222,4.57894736842105],"goal_differential":[33,27,20,20,8,15,10,13,8,4,1,16,2,0,3,3,0,-7,1,-2,0,-17,-14,-7,-3,-7,-7,-21,-7,-23,-37,-32],"l10":["7-2-1","7-2-1","6-2-2","6-1-3","8-0-2","9-1-0","6-2-2","5-3-2","7-2-1","5-4-1","6-2-2","5-4-1","6-4-0","5-4-1","4-5-1","6-3-1","4-5-1","5-3-2","5-5-0","4-3-3","5-5-0","6-3-1","3-6-1","4-5-1","4-5-1","5-5-0","5-5-0","3-7-0","3-6-1","4-4-2","1-8-1","1-9-0"],"streak":["W2","W4","W1","OT1","W2","W5","L1","W3","W1","W2","W4","W1","W1","L1","W3","W5","L1","L1","L2","OT1","L3","W1","W3","L3","L1","L1","L1","L5","L1","OT1","L4","L5"]},"columns":[{"id":"rank","name":"Rank","type":"numeric","minWidth":60,"align":"center","maxWidth":55},{"id":"team_logo","name":"","type":"character","minWidth":60,"align":"center","sortable":false,"cell":[{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/car.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/bos.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/edm.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/min.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/mtl.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/nj.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/tb.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/vgk.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/dal.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/ott.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/nsh.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/col.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/wsh.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/sea.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/nyr.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/ana.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/utah.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/buf.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/fla.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/nyi.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/tor.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/cgy.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/wpg.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/det.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/stl.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/cbj.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/la.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/sj.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/pit.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/phi.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/chi.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/van.png","align":"center","height":"25","width":"25"},"children":[]}]}]}],"maxWidth":50},{"id":"team_name","name":"Team","type":"character","minWidth":180,"align":"left"},{"id":"conference_name","name":"Conf","type":"character","minWidth":80,"align":"center"},{"id":"division_name","name":"Division","type":"character","minWidth":100,"align":"center"},{"id":"games_played","name":"GP","type":"numeric","minWidth":60,"align":"center"},{"id":"wins","name":"W","type":"numeric","minWidth":60,"align":"center"},{"id":"losses","name":"L","type":"numeric","minWidth":60,"align":"center"},{"id":"ot_losses","name":"OTL","type":"numeric","minWidth":60,"align":"center"},{"id":"points","name":"PTS","type":"numeric","minWidth":60,"align":"center","style":{"fontWeight":"bold"}},{"id":"point_pctg","name":"P%","type":"numeric","minWidth":70,"align":"center","format":{"cell":{"digits":3},"aggregated":{"digits":3}},"style":[{"background":"#64B5DDFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#72BCE0FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#72BCE0FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#77BFE2FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#78BFE2FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#7DC2E3FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#83C5E5FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#8BC9E7FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#99D1EBFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#9CD2EBFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#A2D5EDFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#A4D6EDFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#A7D8EEFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#A9D8EEFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#ACDAEFFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#ACDAEFFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#ACDAEFFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#B3DDF0FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#B4DDF0FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#BBE1F2FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#CAE8F5FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#CBE8F5FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#CBE8F5FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#CBE8F5FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#CBE8F5FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#CCE8F5FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#DAEFF8FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#DBEFF8FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#DCF0F8FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#E6F4FAFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#F5FAFDFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""},{"background":"#FFFFFFFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease","borderStyle":"","borderWidth":"px","borderColor":""}]},{"id":"gf_gp","name":"GF/GP","type":"numeric","minWidth":70,"align":"center","format":{"cell":{"digits":2},"aggregated":{"digits":2}}},{"id":"ga_gp","name":"GA/GP","type":"numeric","minWidth":70,"align":"center","format":{"cell":{"digits":2},"aggregated":{"digits":2}}},{"id":"goal_differential","name":"DIFF","type":"numeric","minWidth":60,"align":"center","style":[{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#333","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#333","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#333","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"}]},{"id":"l10","name":"L10","type":["glue","character"],"minWidth":70,"align":"center","sortable":false},{"id":"streak","name":"STRK","type":"character","minWidth":60,"align":"center","sortable":false}],"searchable":true,"pagination":false,"compact":true,"inline":true,"theme":{"borderColor":"#CDCDCD","style":{"fontFamily":"Outfit"},"headerStyle":{"&:hover[aria-sort]":{"background":"hsl(0, 0%, 80%)"},"&[aria-sort='ascending'], &[aria-sort='descending']":{"background":"#555","color":"#FFF"},"borderColor":"#333"},"searchInputStyle":{"width":"31%","backgroundColor":"#F9F9F9"}},"language":{"searchPlaceholder":"SEARCH FOR A TEAM..."},"dataKey":"ad564a79718a8165a3099ee88f7ac1c3"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<p>Click a column header to sort. Teams are ranked by points percentage.</p>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-7177be5f213344817c59" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-7177be5f213344817c59">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"rank":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32],"team_logo":["https://a.espncdn.com/i/teamlogos/nhl/500/car.png","https://a.espncdn.com/i/teamlogos/nhl/500/edm.png","https://a.espncdn.com/i/teamlogos/nhl/500/bos.png","https://a.espncdn.com/i/teamlogos/nhl/500/min.png","https://a.espncdn.com/i/teamlogos/nhl/500/mtl.png","https://a.espncdn.com/i/teamlogos/nhl/500/nj.png","https://a.espncdn.com/i/teamlogos/nhl/500/tb.png","https://a.espncdn.com/i/teamlogos/nhl/500/vgk.png","https://a.espncdn.com/i/teamlogos/nhl/500/dal.png","https://a.espncdn.com/i/teamlogos/nhl/500/ott.png","https://a.espncdn.com/i/teamlogos/nhl/500/nsh.png","https://a.espncdn.com/i/teamlogos/nhl/500/col.png","https://a.espncdn.com/i/teamlogos/nhl/500/wsh.png","https://a.espncdn.com/i/teamlogos/nhl/500/sea.png","https://a.espncdn.com/i/teamlogos/nhl/500/ana.png","https://a.espncdn.com/i/teamlogos/nhl/500/utah.png","https://a.espncdn.com/i/teamlogos/nhl/500/buf.png","https://a.espncdn.com/i/teamlogos/nhl/500/fla.png","https://a.espncdn.com/i/teamlogos/nhl/500/nyr.png","https://a.espncdn.com/i/teamlogos/nhl/500/nyi.png","https://a.espncdn.com/i/teamlogos/nhl/500/tor.png","https://a.espncdn.com/i/teamlogos/nhl/500/cgy.png","https://a.espncdn.com/i/teamlogos/nhl/500/wpg.png","https://a.espncdn.com/i/teamlogos/nhl/500/det.png","https://a.espncdn.com/i/teamlogos/nhl/500/stl.png","https://a.espncdn.com/i/teamlogos/nhl/500/cbj.png","https://a.espncdn.com/i/teamlogos/nhl/500/la.png","https://a.espncdn.com/i/teamlogos/nhl/500/sj.png","https://a.espncdn.com/i/teamlogos/nhl/500/pit.png","https://a.espncdn.com/i/teamlogos/nhl/500/phi.png","https://a.espncdn.com/i/teamlogos/nhl/500/chi.png","https://a.espncdn.com/i/teamlogos/nhl/500/van.png"],"team_name":["Carolina Hurricanes","Edmonton Oilers","Boston Bruins","Minnesota Wild","Montréal Canadiens","New Jersey Devils","Tampa Bay Lightning","Vegas Golden Knights","Dallas Stars","Ottawa Senators","Nashville Predators","Colorado Avalanche","Washington Capitals","Seattle Kraken","Anaheim Ducks","Utah Mammoth","Buffalo Sabres","Florida Panthers","New York Rangers","New York Islanders","Toronto Maple Leafs","Calgary Flames","Winnipeg Jets","Detroit Red Wings","St. Louis Blues","Columbus Blue Jackets","Los Angeles Kings","San Jose Sharks","Pittsburgh Penguins","Philadelphia Flyers","Chicago Blackhawks","Vancouver Canucks"],"conference_name":["Eastern","Western","Eastern","Western","Eastern","Eastern","Eastern","Western","Western","Eastern","Western","Western","Eastern","Western","Western","Western","Eastern","Eastern","Eastern","Eastern","Eastern","Western","Western","Eastern","Western","Eastern","Western","Western","Eastern","Eastern","Western","Western"],"division_name":["Metropolitan","Pacific","Atlantic","Central","Atlantic","Metropolitan","Atlantic","Pacific","Central","Atlantic","Central","Central","Metropolitan","Pacific","Pacific","Central","Atlantic","Atlantic","Metropolitan","Metropolitan","Atlantic","Pacific","Central","Atlantic","Central","Metropolitan","Pacific","Pacific","Metropolitan","Metropolitan","Central","Pacific"],"games_played":[19,19,18,19,17,18,17,19,17,18,17,18,15,16,18,18,17,18,19,16,19,18,18,18,17,15,15,19,18,20,18,20],"wins":[14,13,13,12,11,13,11,12,10,11,8,10,9,9,10,10,8,9,10,7,8,8,7,7,7,7,5,7,6,5,4,3],"losses":[3,3,4,3,3,5,4,5,5,6,4,6,6,6,7,7,6,7,8,6,9,9,8,8,8,8,8,11,10,10,13,16],"ot_losses":[2,3,1,4,3,0,2,2,2,1,5,2,0,1,1,1,3,2,1,3,2,1,3,3,2,0,2,1,2,5,1,1],"points":[30,29,27,28,25,26,24,26,22,23,21,22,18,19,21,21,19,20,21,17,18,17,17,17,16,14,12,15,14,15,9,7],"point_pctg":[0.789474,0.763158,0.75,0.736842,0.735294,0.722222,0.705882,0.684211,0.647059,0.638889,0.617647,0.611111,0.6,0.59375,0.583333,0.583333,0.558824,0.555556,0.552632,0.53125,0.473684,0.472222,0.472222,0.472222,0.470588,0.466667,0.4,0.394737,0.388889,0.375,0.25,0.175],"gf_gp":[4.10526315789474,4.10526315789474,3.77777777777778,3.31578947368421,3.58823529411765,3.66666666666667,3.70588235294118,3.36842105263158,2.88235294117647,3.22222222222222,3.05882352941176,4,3.53333333333333,3.5625,3.83333333333333,3.5,2.94117647058824,3.11111111111111,2.94736842105263,2.9375,3.36842105263158,2.55555555555556,2.72222222222222,2.72222222222222,2.94117647058824,2.66666666666667,3,2.52631578947368,3.22222222222222,2.25,2.16666666666667,2.8],"ga_gp":[2.36842105263158,2.94736842105263,2.27777777777778,2.26315789473684,3.11764705882353,2.83333333333333,3.11764705882353,2.68421052631579,2.41176470588235,3,3,3.11111111111111,3.4,3.5625,3.66666666666667,3.5,3.35294117647059,3.05555555555556,2.89473684210526,3.0625,3.36842105263158,3.5,3.5,3.11111111111111,3.11764705882353,3.13333333333333,3.46666666666667,3.63157894736842,3.61111111111111,3.3,4.22222222222222,4.5],"goal_differential":[33,22,27,20,8,15,10,13,8,4,1,16,2,0,3,0,-7,1,1,-2,0,-17,-14,-7,-3,-7,-7,-21,-7,-21,-37,-34],"l10":["7-2-1","6-2-2","7-2-1","6-1-3","8-0-2","9-1-0","6-2-2","5-3-2","7-2-1","5-4-1","6-2-2","5-4-1","6-4-0","5-4-1","6-3-1","4-5-1","5-3-2","5-5-0","4-5-1","4-3-3","5-5-0","6-3-1","3-6-1","4-5-1","4-5-1","5-5-0","5-5-0","3-7-0","3-6-1","4-4-2","1-8-1","1-9-0"],"streak":["W2","W2","W4","OT1","W2","W5","L1","W3","W1","W2","W4","W1","W1","L1","W5","L1","L1","L2","L1","OT1","L3","W1","W3","L3","L1","L1","L1","L5","L1","W1","L4","L6"]},"columns":[{"id":"rank","name":"Rank","type":"numeric","minWidth":60,"align":"center","maxWidth":55},{"id":"team_logo","name":"","type":"character","minWidth":60,"align":"center","sortable":false,"cell":[{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/car.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/edm.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/bos.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/min.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/mtl.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/nj.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/tb.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/vgk.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/dal.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/ott.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/nsh.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/col.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/wsh.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/sea.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/ana.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/utah.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/buf.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/fla.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/nyr.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/nyi.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/tor.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/cgy.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/wpg.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/det.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/stl.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/cbj.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/la.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/sj.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/pit.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/phi.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/chi.png","align":"center","height":"25","width":"25"},"children":[]}]}]},{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"display":"flex","justifyContent":"center"}},"children":[{"name":"img","attribs":{"src":"https://a.espncdn.com/i/teamlogos/nhl/500/van.png","align":"center","height":"25","width":"25"},"children":[]}]}]}],"maxWidth":50},{"id":"team_name","name":"Team","type":"character","minWidth":180,"align":"left"},{"id":"conference_name","name":"Conf","type":"character","minWidth":80,"align":"center"},{"id":"division_name","name":"Division","type":"character","minWidth":100,"align":"center"},{"id":"games_played","name":"GP","type":"numeric","minWidth":60,"align":"center"},{"id":"wins","name":"W","type":"numeric","minWidth":60,"align":"center"},{"id":"losses","name":"L","type":"numeric","minWidth":60,"align":"center"},{"id":"ot_losses","name":"OTL","type":"numeric","minWidth":60,"align":"center"},{"id":"points","name":"PTS","type":"numeric","minWidth":60,"align":"center","style":{"fontWeight":"bold"}},{"id":"point_pctg","name":"P%","type":"numeric","minWidth":70,"align":"center","format":{"cell":{"digits":3},"aggregated":{"digits":3}},"style":[{"background":"#64B5DDFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#6DBADFFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#72BCE0FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#77BFE2FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#78BFE2FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#7CC2E3FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#83C5E5FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#8BC9E7FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#98D0EAFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#9BD2EBFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#A2D5EDFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#A3D6EDFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#A7D7EEFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#A8D8EEFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#ABD9EFFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#ABD9EFFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#B2DDF0FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#B3DDF0FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#B4DDF0FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#BAE0F2FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#C9E7F5FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#CAE7F5FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#CAE7F5FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#CAE7F5FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#CAE8F5FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#CBE8F5FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#D9EEF8FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#DAEEF8FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#DBEFF8FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#DEF0F9FF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#F3FAFDFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"},{"background":"#FFFFFFFF","color":"black","fontSize":null,"fontWeight":"normal","transition":"background 1s ease"}]},{"id":"gf_gp","name":"GF/GP","type":"numeric","minWidth":70,"align":"center","format":{"cell":{"digits":2},"aggregated":{"digits":2}}},{"id":"ga_gp","name":"GA/GP","type":"numeric","minWidth":70,"align":"center","format":{"cell":{"digits":2},"aggregated":{"digits":2}}},{"id":"goal_differential","name":"DIFF","type":"numeric","minWidth":60,"align":"center","style":[{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#333","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#333","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#1a9850","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#333","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"},{"color":"#d73027","fontWeight":"bold"}]},{"id":"l10","name":"L10","type":["glue","character"],"minWidth":70,"align":"center","sortable":false},{"id":"streak","name":"STRK","type":"character","minWidth":60,"align":"center","sortable":false}],"searchable":true,"pagination":false,"compact":true,"inline":true,"theme":{"borderColor":"#CDCDCD","style":{"fontFamily":"Outfit"},"headerStyle":{"&:hover[aria-sort]":{"background":"hsl(0, 0%, 80%)"},"&[aria-sort='ascending'], &[aria-sort='descending']":{"background":"#555","color":"#FFF"},"borderColor":"#333"},"searchInputStyle":{"width":"31%","backgroundColor":"#F9F9F9"}},"language":{"searchPlaceholder":"SEARCH FOR A TEAM..."},"dataKey":"1c9f37009fdc9098282f9684d5731755"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 
 <p>Copyright &copy; Stephan Teodosescu (<a href="https://betweenthepipes.substack.com/" target="_blank" rel="noopener noreferrer">Between the Pipes</a>)</p>
