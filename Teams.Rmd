@@ -202,7 +202,7 @@ ggplot(xgd_race, aes(x = game_num, y = xgd_running, group = team)) +
   geom_hline(yintercept = 0, color = "grey60") +
   geom_line(linewidth = 0.8, color = "grey70") +
   geom_image(data = race_ends, aes(x = game_num, y = xgd_running, image = team_logo),
-             size = 0.04, inherit.aes = FALSE) +
+             size = 0.048, inherit.aes = FALSE) +
   scale_x_continuous(limits = c(0, race_games),
                      breaks = seq(0, race_games, by = 12)) +
   labs(x = "Game number", y = "Cumulative xGD",
