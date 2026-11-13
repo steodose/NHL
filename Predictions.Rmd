@@ -132,11 +132,12 @@ sim_df <- odds %>%
 # keep the path and column names stable). Percentages are numbers 0-100.
 # Logo is a Markdown image (ESPN combiner URL), which Datawrapper tables render.
 sim_df %>%
+  arrange(desc(win_cup), desc(make_playoffs)) %>%
   transmute(
-    Division = group,
     # ESPN's image "combiner" URL, which Datawrapper renders; alt text = team.
     Logo = glue("![{team_name}]({sub('^https://a.espncdn.com/', 'https://a.espncdn.com/combiner/i?img=/', team_logo)})"),
     Team = team,
+    Division = group,
     PTS = pts,
     `Proj. PTS` = round(proj_pts),
     Rating = round(rating, 2),
@@ -148,6 +149,14 @@ sim_df %>%
          `Presidents' Trophy` = presidents, `Win Conf` = win_conf,
          `Win Cup` = win_cup, `1st Pick` = first_pick, `Top 3 Pick` = top3_pick) %>%
   readr::write_csv("data/nhl_simulations.csv")
+
+# Datawrapper "external metadata": the table's subtitle, refreshed with the
+# data so it always shows the latest update. Only the subtitle (intro) is set,
+# so the title and notes stay whatever is written in Datawrapper.
+jsonlite::write_json(
+  list(describe = list(intro = glue(
+    "Thru games as of {thru_label} | {format(n_sims, big.mark = ',')} simulated seasons"))),
+  "data/nhl_simulations_meta.json", auto_unbox = TRUE, pretty = TRUE)
 
 sim_table <- reactable(
   select(sim_df, -team_logo, -team_name, -pts),

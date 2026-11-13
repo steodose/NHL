@@ -85,6 +85,8 @@ nflseedR is NFL-only, so the simulation is our own. Constants are in `sim_const`
   Simulations table) feeds a Datawrapper table embedded on Substack via
   `https://raw.githubusercontent.com/steodose/NHL/master/data/nhl_simulations.csv`.
   Don't rename the file or its columns, or the embed breaks.
+  Its subtitle comes from `data/nhl_simulations_meta.json` (Datawrapper
+  external metadata, `describe.intro`), also written on each render.
 - **Open idea (not done):** slide the in-season blend from xG toward actual
   goals as GP grows (actual goals become more reliable with sample size),
   instead of the fixed 70/30. Test it before switching: backtest a past
