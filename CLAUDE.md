@@ -81,6 +81,10 @@ nflseedR is NFL-only, so the simulation is our own. Constants are in `sim_const`
   `data/playoff_odds_history_<season>.csv` (same-date rows replaced), which
   CI commits. `R/backfill_odds.R` rebuilt the 2026-27 history from opening
   night (2,000 sims per date); it is a one-off, not run in CI.
+- `data/nhl_simulations.csv` (written on each render, same columns as the
+  Simulations table) feeds a Datawrapper table embedded on Substack via
+  `https://raw.githubusercontent.com/steodose/NHL/master/data/nhl_simulations.csv`.
+  Don't rename the file or its columns, or the embed breaks.
 - **Open idea (not done):** slide the in-season blend from xG toward actual
   goals as GP grows (actual goals become more reliable with sample size),
   instead of the fixed 70/30. Test it before switching: backtest a past

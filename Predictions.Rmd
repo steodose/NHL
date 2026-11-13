@@ -127,6 +127,27 @@ sim_df <- odds %>%
          make_playoffs, win_div, presidents, win_conf, win_cup,
          first_pick, top3_pick)
 
+# Same columns as the table below, written for the Datawrapper table embedded
+# on Between the Pipes (Datawrapper reads the raw GitHub URL of this file, so
+# keep the path and column names stable). Percentages are numbers 0-100.
+# Logo is a Markdown image, which Datawrapper tables render.
+sim_df %>%
+  transmute(
+    Division = group,
+    Logo = glue("![]({team_logo})"),
+    Team = team,
+    PTS = pts,
+    `Proj. PTS` = round(proj_pts),
+    Rating = round(rating, 2),
+    across(c(make_playoffs, win_div, presidents, win_conf, win_cup,
+             first_pick, top3_pick), ~ round(.x * 100, 1)),
+    Updated = thru_date
+  ) %>%
+  rename(`Make Playoffs` = make_playoffs, `Win Div` = win_div,
+         `Presidents' Trophy` = presidents, `Win Conf` = win_conf,
+         `Win Cup` = win_cup, `1st Pick` = first_pick, `Top 3 Pick` = top3_pick) %>%
+  readr::write_csv("data/nhl_simulations.csv")
+
 sim_table <- reactable(
   select(sim_df, -team_logo, -team_name, -pts),
   pagination = FALSE,
