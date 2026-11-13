@@ -130,11 +130,12 @@ sim_df <- odds %>%
 # Same columns as the table below, written for the Datawrapper table embedded
 # on Between the Pipes (Datawrapper reads the raw GitHub URL of this file, so
 # keep the path and column names stable). Percentages are numbers 0-100.
-# Logo is a Markdown image, which Datawrapper tables render.
+# Logo is a Markdown image (ESPN combiner URL), which Datawrapper tables render.
 sim_df %>%
   transmute(
     Division = group,
-    Logo = glue("![]({team_logo})"),
+    # ESPN's image "combiner" URL, which Datawrapper renders; alt text = team.
+    Logo = glue("![{team_name}]({sub('^https://a.espncdn.com/', 'https://a.espncdn.com/combiner/i?img=/', team_logo)})"),
     Team = team,
     PTS = pts,
     `Proj. PTS` = round(proj_pts),
